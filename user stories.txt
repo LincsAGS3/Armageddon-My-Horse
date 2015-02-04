@@ -1,0 +1,16 @@
+As a consumer I want 4K at 120fps because framerates and resolution
+As a consumer I want easy to read interface becasue I have poor eyesight
+As a consumer I want lots of audio settings because I have poor hearing
+As a consumer I want kinect controls because I'm in a wheelchair
+As a consumer I want like sensitivity options for the controls because I have difficulty turning my wheelchair
+As a consumer I want easily navigable menus because I'm easily frustrated
+As a consumer I want to be able to turn blood effects off because I dislike gore and get light headed at the sight of blood
+As a consumer I want a consistant art style because this will keep me immersed in the game
+As a consumer I want architecturally accurate castles, moats and other buildings, because I'm a history buff (so that it looks right)
+As a consumer I want an enjoyable soundtrack to accompany the game that will keep me immersed
+As a consumer I want easily distinguishable allies and enemies to ba able to tell them apart
+As a consumer I want replayablity so that I can enjoy the game just as much on my 1st play through as my 100th play through
+As a consumer I want the enemies to be challenging and varied so that I don't get bored when playing the game
+As a consumer I want a story to give context as to why I'm hacking people up
+As a consumer I want to be able to save the game because I don't want to lose progress if I make a mistake or need to take a break
+As a consumer I want character progression and a levelling system 
