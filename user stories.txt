@@ -9,7 +9,7 @@ As a consumer I want a consistent art style because this will keep me immersed i
 As a consumer I want architecturally accurate castles, moats and other buildings, because I'm a history buff (so that it looks right)
 As a consumer I want an enjoyable soundtrack to accompany the game that will keep me immersed
 As a consumer I want easily distinguishable allies and enemies to ba able to tell them apart
-As a consumer I want replayablity so that I can enjoy the game just as much on my 1st play through as my 100th play through
+As a consumer I want replayability so that I can enjoy the game just as much on my 1st play through as my 100th play through
 As a consumer I want the enemies to be challenging and varied so that I don't get bored when playing the game
 As a consumer I want a story to give context as to why I'm hacking people up
 As a consumer I want to be able to save the game because I don't want to lose progress if I make a mistake or need to take a break
