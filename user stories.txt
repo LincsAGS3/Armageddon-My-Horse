@@ -5,7 +5,7 @@ As a consumer I want kinect controls because I'm in a wheelchair
 As a consumer I want sensitivity options for the controls because I have difficulty turning my wheelchair
 As a consumer I want easily navigable menus because I'm easily frustrated
 As a consumer I want to be able to turn blood effects off because I dislike gore and get light headed at the sight of blood
-As a consumer I want a consistant art style because this will keep me immersed in the game
+As a consumer I want a consistent art style because this will keep me immersed in the game
 As a consumer I want architecturally accurate castles, moats and other buildings, because I'm a history buff (so that it looks right)
 As a consumer I want an enjoyable soundtrack to accompany the game that will keep me immersed
 As a consumer I want easily distinguishable allies and enemies to ba able to tell them apart
