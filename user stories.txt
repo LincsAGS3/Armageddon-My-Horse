@@ -1,5 +1,5 @@
 As a consumer I want 4K at 120fps because framerates and resolution
-As a consumer I want easy to read interface becasue I have poor eyesight
+As a consumer I want easy to read interface because I have poor eyesight
 As a consumer I want lots of audio settings because I have poor hearing
 As a consumer I want kinect controls because I'm in a wheelchair
 As a consumer I want like sensitivity options for the controls because I have difficulty turning my wheelchair
