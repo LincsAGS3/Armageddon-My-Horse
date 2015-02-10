@@ -9,9 +9,9 @@ GameObject:
   m_Component:
   - 4: {fileID: 488210}
   - 212: {fileID: 21288210}
-  - 61: {fileID: 6188210}
   - 50: {fileID: 5088210}
   - 114: {fileID: 11402164}
+  - 58: {fileID: 5897520}
   m_Layer: 0
   m_Name: Infantry
   m_TagString: Untagged
@@ -41,13 +41,13 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: .0500000007
   m_GravityScale: 0
-  m_FixedAngle: 0
+  m_FixedAngle: 1
   m_IsKinematic: 0
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
---- !u!61 &6188210
-BoxCollider2D:
+--- !u!58 &5897520
+CircleCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -55,7 +55,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Size: {x: .600000024, y: .610000014}
+  m_Radius: .5
   m_Center: {x: 0, y: 0}
 --- !u!114 &11402164
 MonoBehaviour:
@@ -69,6 +69,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   groupPoint: {fileID: 0}
+  maxSpeed: 4
+  wanderRadius: 15
 --- !u!212 &21288210
 SpriteRenderer:
   m_ObjectHideFlags: 1
