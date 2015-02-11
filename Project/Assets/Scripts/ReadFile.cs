@@ -5,9 +5,9 @@ using System.IO;  //added
 
 public class ReadFile : MonoBehaviour {
 
-	public string [,] LeaderboardCompletionTimeArray = new string[10,2];
-	public string [,] LeaderboardEnemiesKilledArray = new string[10,2];
-	public string [,] LeaderboardLeastDamageArray = new string[10, 2];
+	public static string [,] LeaderboardCompletionTimeArray = new string[10,2];
+	public static string [,] LeaderboardEnemiesKilledArray = new string[10,2];
+	public static string [,] LeaderboardLeastDamageArray = new string[10, 2];
 
 	//public TextAsset FileAsset;
 
@@ -48,7 +48,7 @@ public class ReadFile : MonoBehaviour {
 							TimeNumber++;
 						}
 
-						if(SplitLine[0] == "#Killed")
+						if(SplitLine[0] == "Killed")
 						{
 
 							LeaderboardEnemiesKilledArray[EnemiesNumber,0] = SplitLine[1];
@@ -59,7 +59,7 @@ public class ReadFile : MonoBehaviour {
 						if(SplitLine[0] == "Damage")
 						{
 							LeaderboardLeastDamageArray[DamageNumber,0] = SplitLine[1];
-							LeaderboardLeastDamageArray[DamageNumber,1] = SplitLine[1];
+							LeaderboardLeastDamageArray[DamageNumber,1] = SplitLine[2];
 							DamageNumber++;
 						}
 					}
@@ -70,6 +70,8 @@ public class ReadFile : MonoBehaviour {
 		}
 		catch(FileNotFoundException){
 				}
+
+		SaveFile.SaveCSV ("Assets/Data Files/TestLeaderboard2.txt");// added purely to test the save file
 	}
 
 }
