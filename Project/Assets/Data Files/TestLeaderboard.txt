@@ -1,0 +1,30 @@
+#Completion Time,dds,6m 59s
+#Completion Time,gff,7m 9s
+#Completion Time,reg,7m 14s
+#Completion Time,gfr,8m 24s
+#Completion Time,dds,10m 34s
+#Completion Time,sfs,10m 25s
+#Completion Time,ggs,12m 45s
+#Completion Time,rgr,13m 54s
+#Completion Time,ggf,14m 12s
+#Completion Time,sfw,15m 32s
+#Enemies Killed,dds,59
+#Enemies Killed,gff,9
+#Enemies Killed,reg,14
+#Enemies Killed,gfr,24
+#Enemies Killed,dds,34
+#Enemies Killed,sfs,25
+#Enemies Killed,ggs,45
+#Enemies Killed,rgr,54
+#Enemies Killed,ggf,12
+#Enemies Killed,sfw,32
+#Least Damage,dds,59
+#Least Damage,gff,9
+#Least Damage,reg,14
+#Least Damage,gfr,24
+#Least Damage,dds,34
+#Least Damage,sfs,25
+#Least Damage,ggs,45
+#Least Damage,rgr,54
+#Least Damage,ggf,12
+#Least Damage,sfw,32
