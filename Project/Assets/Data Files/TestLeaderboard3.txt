@@ -1,0 +1,30 @@
+Time,dds,6m 59s
+Time,gff,7m 9s
+Time,reg,7m 14s
+Time,gfr,8m 24s
+Time,dds,10m 34s
+Time,sfs,10m 25s
+Time,ggs,12m 45s
+Time,rgr,13m 54s
+Time,ggf,14m 12s
+Time,sfw,15m 32s
+Killed,dds,59
+Killed,gff,9
+Killed,reg,14
+Killed,gfr,24
+Killed,dds,34
+Killed,sfs,25
+Killed,ggs,45
+Killed,rgr,54
+Killed,ggf,12
+Killed,sfw,32
+Damage,dds,59
+Damage,gff,9
+Damage,reg,14
+Damage,gfr,24
+Damage,dds,34
+Damage,sfs,25
+Damage,ggs,45
+Damage,rgr,54
+Damage,ggf,12
+Damage,sfw,32

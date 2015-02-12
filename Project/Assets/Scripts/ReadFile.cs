@@ -37,7 +37,7 @@ public class ReadFile : MonoBehaviour
 		public static List<LeaderboardCompletionTimeData> CTD = new List<LeaderboardCompletionTimeData> ();
 		public static List<LeaderboardEnemiesKilledData> EKD = new List<LeaderboardEnemiesKilledData> ();
 		public static List<LeaderboardLeastDamageData> LDD = new List<LeaderboardLeastDamageData> ();
-		int counter = 1;
+		int counter = 0;
 		// Use this for initialization
 		void Start ()
 		{
@@ -46,15 +46,13 @@ public class ReadFile : MonoBehaviour
 
 				//this is just for testing, to paste the LeaderboardCompletionTimeArray to console to check it has read the file
 				do {
-						Debug.Log (CTD [counter].PlayerName + " | " + CTD [counter].CompletionTime);
+						Debug.Log ("Completion Time Data : Player Name : " + CTD [counter].PlayerName + " | Time Played : " + CTD [counter].CompletionTime);
 
 						//Old code used when using arrays
 						//Debug.Log (LeaderboardCompletionTimeArray [counter, 0] + " | " + LeaderboardCompletionTimeArray [counter, 1]); 
 
 						counter++;
 				} while (counter <10);
-
-
 		}
 
 		public static void Load (string FileName)

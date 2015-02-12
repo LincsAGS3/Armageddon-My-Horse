@@ -4,16 +4,8 @@ using UnityEngine.UI;//added
 
 public class MenuOptionsSelectionScript : MonoBehaviour
 {
-	
-
 		static string[] AspectRatios = {"5:4","4:3","16:10","5:3","16:9",};
-		static string[] Resolutions = {
-				"1024x768",
-				"1280x1024",
-				"1680,1050",
-				"1920x1080",
-				"1920x1200"
-		};
+		static string[] Resolutions = {"1024x768","1280x1024","1680,1050","1920x1080","1920x1200"};
 		static bool FullScreen;
 		static string[] Blood = {"Off","Red","Green"};
 		static GameObject AspectRatioObject;
