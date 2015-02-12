@@ -6,7 +6,6 @@ public class MenuChangeSelectionScript : MonoBehaviour
 
 		//Variables		
 		bool Turned;
-		public static bool MovedFowards;
 		int CurrentSelection;
 		public GameObject Quit_Button;			//0
 		public GameObject Play_Button;			//1
@@ -19,12 +18,12 @@ public class MenuChangeSelectionScript : MonoBehaviour
 		static GameObject Leaderboard;	//2 = Leaderboard
 
 		static GameObject Icon;	//Options Icon
-		static GameObject MainMenu_Button;
+		static GameObject MainMenu_Button;//Main menu button
 		Vector3 IconStartPosition;
 		// Use this for initialization
 		void Start ()
 		{
-				MovedFowards = false;
+				
 				Turned = false;
 				CurrentSelection = 1; // defualt is Play button
 
@@ -42,6 +41,7 @@ public class MenuChangeSelectionScript : MonoBehaviour
 		// Update is called once per frame
 		void Update ()
 		{
+		//turning left and right
 				if (Turned == false) {
 						if (WheelchairMovementScript.CurrentAngle < 315 && WheelchairMovementScript.CurrentAngle > 180) {
 								Turned = true;
@@ -61,25 +61,29 @@ public class MenuChangeSelectionScript : MonoBehaviour
 								Debug.Log (Turned);
 						}
 				}
+
+		//moving backwards and fowards
 				if (reset == false) {
-						if (MovedFowards == true) {
+						if (WheelchairMovementScript.MovedFowards == true) {
+
 								Debug.Log ("MovedFowards Equals true");
 
-				//main menu
+								//main menu
 								if (MainMenu.activeSelf) {
 										MenuMainSelectionScript.ProcessSelection (CurrentSelection);
 										CurrentSelection = 0; // reset the selection for next menu
 								}
-				//options menu
-				if(Options.activeSelf){
-					Debug.Log ("Options"+ CurrentSelection);
+								//options menu
+								if (Options.activeSelf) {
+										Debug.Log ("Options" + CurrentSelection);
 
-					MenuOptionsSelectionScript.ProcessSelection (CurrentSelection);
+										MenuOptionsSelectionScript.ProcessSelection (CurrentSelection);
 
-				}
+								}
 								reset = true;
 						}
-						if (MovedFowards == false) {
+				}else{
+						if (WheelchairMovementScript.MovedFowards == false) {
 								Debug.Log ("MovedFowards Equals false");
 								reset = false;
 						}
@@ -92,8 +96,7 @@ public class MenuChangeSelectionScript : MonoBehaviour
 		void OnGUI ()
 		{
 				GUI.Label (new Rect (10, 30, 200, 20), "CurrentSelection: " + CurrentSelection);  //  Display the CurrentSelection on a label in the top left
-				GUI.Label (new Rect (10, 50, 200, 20), "Player Turned: " + Turned);  //  Display the turned bool on a label in the top left
-				GUI.Label (new Rect (10, 70, 200, 20), "Player MovedFowards: " + MovedFowards);  //  Display the MovedFowards on a label in the top left
+				GUI.Label (new Rect (10, 50, 200, 20), "Player Turned: " + Turned);  //  Display the turned bool on a label in the top lef
 		}
 
 		void ChangeMenuSelection ()
@@ -156,19 +159,19 @@ public class MenuChangeSelectionScript : MonoBehaviour
 				case 0:
 					
 						Icon.transform.localPosition = new Vector3 (IconStartPosition.x, IconStartPosition.y, IconStartPosition.y);
-			UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(null);
+						UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject (null);
 						break;
 				case 1:
 						Icon.transform.localPosition = new Vector3 (IconStartPosition.x, IconStartPosition.y - 25f, IconStartPosition.y);
-			UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(null);
+						UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject (null);
 						break;
 				case 2:
 						Icon.transform.localPosition = new Vector3 (IconStartPosition.x, IconStartPosition.y - 50f, IconStartPosition.y);
-			UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(null);
+						UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject (null);
 						break;
 				case 3:
 						Icon.transform.localPosition = new Vector3 (IconStartPosition.x, IconStartPosition.y - 75f, IconStartPosition.y);
-						UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(null);
+						UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject (null);
 						break;
 				case 4:
 						UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject (MainMenu_Button);

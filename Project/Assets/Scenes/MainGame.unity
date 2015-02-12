@@ -510,7 +510,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Button
+  m_Text: 'Continue
+
+'
 --- !u!222 &758638801
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -942,7 +944,7 @@ GameObject:
   - 114: {fileID: 1624173904}
   - 114: {fileID: 1624173903}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Main Menu Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1516,6 +1518,7 @@ GameObject:
   - 223: {fileID: 2144480579}
   - 114: {fileID: 2144480578}
   - 114: {fileID: 2144480577}
+  - 114: {fileID: 2144480581}
   m_Layer: 5
   m_Name: NameInputMenu
   m_TagString: Untagged
@@ -1597,3 +1600,14 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &2144480581
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2144480576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7cddd318555d534c9970b788a7a5c5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

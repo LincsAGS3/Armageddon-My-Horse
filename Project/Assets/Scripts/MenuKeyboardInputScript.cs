@@ -17,6 +17,7 @@ public class MenuKeyboardInputScript : MonoBehaviour
 								WheelchairMovementScript.CurrentAngle = WheelchairMovementScript.CurrentAngle - 0.5f; // was WheelchairMovementScript.CurrentAngle-- but moved way to fast
 						}
 				}
+
 				//turn right
 				if (Input.GetKey (KeyCode.RightArrow)) {
 						Debug.Log ("Clicked right arrow");
@@ -26,20 +27,21 @@ public class MenuKeyboardInputScript : MonoBehaviour
 								WheelchairMovementScript.CurrentAngle = WheelchairMovementScript.CurrentAngle + 0.5f; // was WheelchairMovementScript.CurrentAngle++ but moved way to fast
 						}
 				}
+
 				//move fowards
 				if (Input.GetKeyDown (KeyCode.UpArrow)) {
 						Debug.Log ("Clicked up arrow");
-						if (MenuChangeSelectionScript.MovedFowards == false) {
-								MenuChangeSelectionScript.MovedFowards = true;
+
+						if (WheelchairMovementScript.MovedFowards == false) {
+								WheelchairMovementScript.MovedFowards = true;
 						}
-						
 				}
 	
 				//move backwards
 				if (Input.GetKeyDown (KeyCode.DownArrow)) {
 						Debug.Log ("Clicked down arrow");
-						if (MenuChangeSelectionScript.MovedFowards == true) {
-								MenuChangeSelectionScript.MovedFowards = false;
+						if (WheelchairMovementScript.MovedFowards == true) {
+								WheelchairMovementScript.MovedFowards = false;
 						}
 				}
 		}
