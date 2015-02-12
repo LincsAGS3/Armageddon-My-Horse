@@ -3,7 +3,6 @@ using System.Collections;
 using System;//added for array.sort
 using UnityEngine.UI;//added
 
-//added
 public class MenuInputThreeInitials : MonoBehaviour
 {
 
@@ -54,7 +53,6 @@ public class MenuInputThreeInitials : MonoBehaviour
 		// Use this for initialization
 		void Start ()
 		{
-
 				Acounter = 0;
 				Bcounter = 0;
 				Ccounter = 0;
@@ -205,8 +203,6 @@ public class MenuInputThreeInitials : MonoBehaviour
 				if (Ccounter > 26) {
 						Ccounter = 0;
 				}
-
-	
 		}
 
 		void CreateName ()
@@ -214,29 +210,29 @@ public class MenuInputThreeInitials : MonoBehaviour
 				Name = AlphabetArray [Acounter] + AlphabetArray [Bcounter] + AlphabetArray [Ccounter];
 				Debug.Log (Name);
 
-		//load in the CSV file for the leaderboard
-		ReadFile.Load ("Assets/Data Files/TestLeaderboard.txt");
+				//load in the CSV file for the leaderboard
+				ReadFile.Load ("Assets/Data Files/TestLeaderboard.txt");
 
-		ReadFile.LeaderboardCompletionTimeArray [10, 0] = Name;
-		ReadFile.LeaderboardCompletionTimeArray [10, 1] = "0";
-		//ReadFile.LeaderboardCompletionTimeArray [11, 1] = CompletionTime;
-		int TimeRank;// used when looping to find the players rank
+				ReadFile.LeaderboardCompletionTimeArray [10, 0] = Name;
+				ReadFile.LeaderboardCompletionTimeArray [10, 1] = "0";
+				//ReadFile.LeaderboardCompletionTimeArray [11, 1] = CompletionTime;
+				int TimeRank;// used when looping to find the players rank
 
-		//Array.Sort (ReadFile.LeaderboardCompletionTimeArray);
+				//Array.Sort (ReadFile.LeaderboardCompletionTimeArray);
 
-		ReadFile.LeaderboardEnemiesKilledArray [10, 0] = Name;
-		ReadFile.LeaderboardEnemiesKilledArray [10, 1] = "1000";
-		//ReadFile.LeaderboardEnemiesKilledArray [11, 1] = EnemiesKilled;
-		int EnemiesRank;// used when looping to find the players rank
+				ReadFile.LeaderboardEnemiesKilledArray [10, 0] = Name;
+				ReadFile.LeaderboardEnemiesKilledArray [10, 1] = "1000";
+				//ReadFile.LeaderboardEnemiesKilledArray [11, 1] = EnemiesKilled;
+				int EnemiesRank;// used when looping to find the players rank
 
-		//Array.Sort (ReadFile.LeaderboardCompletionTimeArray., ReadFile.LeaderboardCompletionTimeArray [0, 1]);
-		Debug.Log ("hello" + ReadFile.LeaderboardEnemiesKilledArray [10, 0] + " | " + ReadFile.LeaderboardEnemiesKilledArray [10, 1]);
+				//Array.Sort (ReadFile.LeaderboardCompletionTimeArray., ReadFile.LeaderboardCompletionTimeArray [0, 1]);
+				Debug.Log ("hello" + ReadFile.LeaderboardEnemiesKilledArray [10, 0] + " | " + ReadFile.LeaderboardEnemiesKilledArray [10, 1]);
 
-		ReadFile.LeaderboardLeastDamageArray[10, 0] = Name;
-		ReadFile.LeaderboardLeastDamageArray[10, 1] = "0";
-		//ReadFile.LeaderboardLeastDamageArray[11, 1] = LeastDamage;
-		int DamageRank;// used when looping to find the players rank
-		//
+				ReadFile.LeaderboardLeastDamageArray [10, 0] = Name;
+				ReadFile.LeaderboardLeastDamageArray [10, 1] = "0";
+				//ReadFile.LeaderboardLeastDamageArray[11, 1] = LeastDamage;
+				int DamageRank;// used when looping to find the players rank
+				//
 				SaveFile.SaveCSV ("Assets/Data Files/TestLeaderboard2.txt");// added purely to test the save file
 		}
 }

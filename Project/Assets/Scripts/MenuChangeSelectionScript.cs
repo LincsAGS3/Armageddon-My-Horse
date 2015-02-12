@@ -3,10 +3,9 @@ using System.Collections;
 
 public class MenuChangeSelectionScript : MonoBehaviour
 {
-
 		//Variables		
 		bool Turned;
-		int CurrentSelection;
+		public static int CurrentSelection;
 		public GameObject Quit_Button;			//0
 		public GameObject Play_Button;			//1
 		public GameObject Options_Button;		//2
@@ -45,9 +44,9 @@ public class MenuChangeSelectionScript : MonoBehaviour
 				if (Turned == false) {
 						if (WheelchairMovementScript.CurrentAngle < 315 && WheelchairMovementScript.CurrentAngle > 180) {
 								Turned = true;
-								if (WheelchairMovementScript.MovedFowards == true) {
+								if (WheelchairMovementScript.MovedFowards == true && Options.activeSelf) {
 										MenuOptionsSelectionScript.SubSelection--;
-					MenuOptionsSelectionScript.ProcessSelection (CurrentSelection);
+										MenuOptionsSelectionScript.ProcessSelection (CurrentSelection);
 								} else {
 										CurrentSelection--;
 										ChangeMenuSelection ();
@@ -56,9 +55,9 @@ public class MenuChangeSelectionScript : MonoBehaviour
 						}
 						if (WheelchairMovementScript.CurrentAngle > 45 && WheelchairMovementScript.CurrentAngle < 180) {
 								Turned = true;
-								if (WheelchairMovementScript.MovedFowards == true) {
+								if (WheelchairMovementScript.MovedFowards == true && Options.activeSelf) {
 										MenuOptionsSelectionScript.SubSelection++;
-					MenuOptionsSelectionScript.ProcessSelection (CurrentSelection);
+										MenuOptionsSelectionScript.ProcessSelection (CurrentSelection);
 								} else {
 										CurrentSelection++;
 										ChangeMenuSelection ();
@@ -100,10 +99,8 @@ public class MenuChangeSelectionScript : MonoBehaviour
 
 								}
 								reset = false;
-						}
-						
+						}					
 				}
-
 				OnGUI ();
 		}
 
