@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
-
-using UnityEngine.UI;
+using System;//added for array.sort
+using UnityEngine.UI;//added
 
 //added
 public class MenuInputThreeInitials : MonoBehaviour
@@ -11,7 +11,7 @@ public class MenuInputThreeInitials : MonoBehaviour
 		int Bcounter;
 		int Ccounter;
 		string[]AlphabetArray = {
-				" " ,
+				" ",
 				"a",
 				"b",
 				"c",
@@ -213,5 +213,30 @@ public class MenuInputThreeInitials : MonoBehaviour
 		{
 				Name = AlphabetArray [Acounter] + AlphabetArray [Bcounter] + AlphabetArray [Ccounter];
 				Debug.Log (Name);
+
+		//load in the CSV file for the leaderboard
+		ReadFile.Load ("Assets/Data Files/TestLeaderboard.txt");
+
+		ReadFile.LeaderboardCompletionTimeArray [10, 0] = Name;
+		ReadFile.LeaderboardCompletionTimeArray [10, 1] = "0";
+		//ReadFile.LeaderboardCompletionTimeArray [11, 1] = CompletionTime;
+		int TimeRank;// used when looping to find the players rank
+
+		//Array.Sort (ReadFile.LeaderboardCompletionTimeArray);
+
+		ReadFile.LeaderboardEnemiesKilledArray [10, 0] = Name;
+		ReadFile.LeaderboardEnemiesKilledArray [10, 1] = "1000";
+		//ReadFile.LeaderboardEnemiesKilledArray [11, 1] = EnemiesKilled;
+		int EnemiesRank;// used when looping to find the players rank
+
+		//Array.Sort (ReadFile.LeaderboardCompletionTimeArray., ReadFile.LeaderboardCompletionTimeArray [0, 1]);
+		Debug.Log ("hello" + ReadFile.LeaderboardEnemiesKilledArray [10, 0] + " | " + ReadFile.LeaderboardEnemiesKilledArray [10, 1]);
+
+		ReadFile.LeaderboardLeastDamageArray[10, 0] = Name;
+		ReadFile.LeaderboardLeastDamageArray[10, 1] = "0";
+		//ReadFile.LeaderboardLeastDamageArray[11, 1] = LeastDamage;
+		int DamageRank;// used when looping to find the players rank
+		//
+				SaveFile.SaveCSV ("Assets/Data Files/TestLeaderboard2.txt");// added purely to test the save file
 		}
 }

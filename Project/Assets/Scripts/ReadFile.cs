@@ -5,11 +5,9 @@ using System.IO;  //added
 
 public class ReadFile : MonoBehaviour {
 
-	public static string [,] LeaderboardCompletionTimeArray = new string[10,2];
-	public static string [,] LeaderboardEnemiesKilledArray = new string[10,2];
-	public static string [,] LeaderboardLeastDamageArray = new string[10, 2];
-
-	//public TextAsset FileAsset;
+	public static string [,] LeaderboardCompletionTimeArray = new string[11,2]; // these are size 11 because the extra one is going to be used for when the player finishes a game
+	public static string [,] LeaderboardEnemiesKilledArray = new string[11,2]; //only the first 10 rows are used within the read file
+	public static string [,] LeaderboardLeastDamageArray = new string[11, 2]; // the 11th row will be culled one the file is resaved
 
 	int counter = 0;
 	// Use this for initialization
@@ -23,7 +21,7 @@ public class ReadFile : MonoBehaviour {
 		} while (counter <10);
 	}
 
-		void Load(string FileName)
+		public static void Load(string FileName)
 	{
 		try
 		{
