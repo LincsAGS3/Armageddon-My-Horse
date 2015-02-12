@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
-using System;//added for array.sort
+using System;
+
+//added for array.sort
 using UnityEngine.UI;//added
 
 public class MenuInputThreeInitials : MonoBehaviour
@@ -9,7 +11,35 @@ public class MenuInputThreeInitials : MonoBehaviour
 		int Acounter;
 		int Bcounter;
 		int Ccounter;
-		string[]AlphabetArray = {" ","a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"};
+		string[]AlphabetArray = {
+				" ",
+				"a",
+				"b",
+				"c",
+				"d",
+				"e",
+				"f",
+				"g",
+				"h",
+				"i",
+				"j",
+				"k",
+				"l",
+				"m",
+				"n",
+				"o",
+				"p",
+				"q",
+				"r",
+				"s",
+				"t",
+				"u",
+				"v",
+				"w",
+				"x",
+				"y",
+				"z"
+		};
 		string Name;
 		static GameObject A;
 		static GameObject B;
@@ -185,29 +215,34 @@ public class MenuInputThreeInitials : MonoBehaviour
 				//load in the CSV file for the leaderboard
 				ReadFile.Load ("Assets/Data Files/TestLeaderboard.txt");
 
-				//Old code used when using arrays
-				//ReadFile.LeaderboardCompletionTimeArray [10, 0] = Name;
-				//ReadFile.LeaderboardCompletionTimeArray [10, 1] = "0";
 
-				ReadFile.CTD.Add(new ReadFile.LeaderboardCompletionTimeData{PlayerName = Name, CompletionTime = "0"});
-				//ReadFile.CTD.Sort ();
-				int TimeRank;// used when looping to find the players rank
+				int score = 500;// will be changed ot the attual score
+				int TimeRank = 0;// used when looping to find the players rank
+
+				for (int x = 0; x < ReadFile.CompletionTimeData.Count; x++) {
+						if (ReadFile.CompletionTimeData [x].Data > score) {
+								TimeRank = x;
+						}
+				}
+				Debug.Log (TimeRank);
+				ReadFile.CompletionTimeData.Insert (TimeRank, new ReadFile.LeaderboardData (Name, score));
+
+
+				int EnemiesRank = 0;// used when looping to find the players rank
+				for (int x = 0; x < ReadFile.EnemiesKilledData.Count; x++) {
+						if (ReadFile.EnemiesKilledData [x].Data > score) {
+								EnemiesRank = x;					
+						}
+				}
+				ReadFile.EnemiesKilledData.Insert (EnemiesRank, new ReadFile.LeaderboardData (Name, score));
 			
-
-				//Old code used when using arrays
-				//ReadFile.LeaderboardEnemiesKilledArray [10, 0] = Name;
-				//ReadFile.LeaderboardEnemiesKilledArray [10, 1] = "1000";
-				ReadFile.EKD.Add (new ReadFile.LeaderboardEnemiesKilledData{PlayerName = Name, EnemiesKilled = "1000"});
-				//ReadFile.EKD.Sort ();
-				int EnemiesRank;// used when looping to find the players rank
-
-				//Old code used when using arrays
-				//ReadFile.LeaderboardLeastDamageArray [10, 0] = Name;
-				//ReadFile.LeaderboardLeastDamageArray [10, 1] = "0";
-				ReadFile.LDD.Add (new ReadFile.LeaderboardLeastDamageData{PlayerName = Name, LeastDamage = "1000"});
-				//ReadFile.LDD.Sort ();
-				int DamageRank;// used when looping to find the players rank
-				
+				int DamageRank = 0;// used when looping to find the players rank
+				for (int x = 0; x < ReadFile.LeastDamageData.Count; x++) {
+						if (ReadFile.LeastDamageData [x].Data > score) {
+								DamageRank = x;					
+						}
+				}
+				ReadFile.LeastDamageData.Insert (DamageRank, new ReadFile.LeaderboardData (Name, score));
 				SaveFile.SaveCSV ("Assets/Data Files/TestLeaderboard3.txt");// added purely to test the save file
 		}
 }
