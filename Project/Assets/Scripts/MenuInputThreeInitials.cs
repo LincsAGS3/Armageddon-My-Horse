@@ -213,26 +213,29 @@ public class MenuInputThreeInitials : MonoBehaviour
 				//load in the CSV file for the leaderboard
 				ReadFile.Load ("Assets/Data Files/TestLeaderboard.txt");
 
-				ReadFile.LeaderboardCompletionTimeArray [10, 0] = Name;
-				ReadFile.LeaderboardCompletionTimeArray [10, 1] = "0";
-				//ReadFile.LeaderboardCompletionTimeArray [11, 1] = CompletionTime;
+				//Old code used when using arrays
+				//ReadFile.LeaderboardCompletionTimeArray [10, 0] = Name;
+				//ReadFile.LeaderboardCompletionTimeArray [10, 1] = "0";
+
+				ReadFile.CTD.Add(new ReadFile.LeaderboardCompletionTimeData{PlayerName = Name, CompletionTime = "0"});
+				//ReadFile.CTD.Sort ();
 				int TimeRank;// used when looping to find the players rank
+			
 
-				//Array.Sort (ReadFile.LeaderboardCompletionTimeArray);
-
-				ReadFile.LeaderboardEnemiesKilledArray [10, 0] = Name;
-				ReadFile.LeaderboardEnemiesKilledArray [10, 1] = "1000";
-				//ReadFile.LeaderboardEnemiesKilledArray [11, 1] = EnemiesKilled;
+				//Old code used when using arrays
+				//ReadFile.LeaderboardEnemiesKilledArray [10, 0] = Name;
+				//ReadFile.LeaderboardEnemiesKilledArray [10, 1] = "1000";
+				ReadFile.EKD.Add (new ReadFile.LeaderboardEnemiesKilledData{PlayerName = Name, EnemiesKilled = "1000"});
+				//ReadFile.EKD.Sort ();
 				int EnemiesRank;// used when looping to find the players rank
 
-				//Array.Sort (ReadFile.LeaderboardCompletionTimeArray., ReadFile.LeaderboardCompletionTimeArray [0, 1]);
-				Debug.Log ("hello" + ReadFile.LeaderboardEnemiesKilledArray [10, 0] + " | " + ReadFile.LeaderboardEnemiesKilledArray [10, 1]);
-
-				ReadFile.LeaderboardLeastDamageArray [10, 0] = Name;
-				ReadFile.LeaderboardLeastDamageArray [10, 1] = "0";
-				//ReadFile.LeaderboardLeastDamageArray[11, 1] = LeastDamage;
+				//Old code used when using arrays
+				//ReadFile.LeaderboardLeastDamageArray [10, 0] = Name;
+				//ReadFile.LeaderboardLeastDamageArray [10, 1] = "0";
+				ReadFile.LDD.Add (new ReadFile.LeaderboardLeastDamageData{PlayerName = Name, LeastDamage = "1000"});
+				//ReadFile.LDD.Sort ();
 				int DamageRank;// used when looping to find the players rank
-				//
-				SaveFile.SaveCSV ("Assets/Data Files/TestLeaderboard2.txt");// added purely to test the save file
+				
+				SaveFile.SaveCSV ("Assets/Data Files/TestLeaderboard3.txt");// added purely to test the save file
 		}
 }
