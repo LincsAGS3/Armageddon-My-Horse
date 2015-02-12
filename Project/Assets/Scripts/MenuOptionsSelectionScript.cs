@@ -5,10 +5,10 @@ using UnityEngine.UI;//added
 public class MenuOptionsSelectionScript : MonoBehaviour {
 	
 
-	string[] AspectRatios = {"4:3","16:9","16:10"};
-	string[] Resolutions = {"1024x768","1920x1200"};
+	static string[] AspectRatios = {"4:3","16:9","16:10"};
+	static string[] Resolutions = {"1024x768","1920x1200"};
 	static bool FullScreen;
-	string[] Blood = {"Off","Red","Green"};
+	static string[] Blood = {"Off","Red","Green"};
 
 
 	static GameObject AspectRatioObject;
@@ -22,6 +22,8 @@ public class MenuOptionsSelectionScript : MonoBehaviour {
 
 	static GameObject MainCamera;
 	static Camera camera; 
+
+	public static int SubSelection;
 	// Use this for initialization
 	void Start () {
 		FullScreen = false;
@@ -41,24 +43,39 @@ public class MenuOptionsSelectionScript : MonoBehaviour {
 		BloodObject.GetComponent<Text> ().text = Blood [BloodCounter];
 
 		MainCamera = GameObject.Find ("Main Camera");
-	
-			camera = 	MainCamera.GetComponent<Camera>();
+		camera = 	MainCamera.GetComponent<Camera>();
+
+
 	}
 	
 	public static void ProcessSelection(int CurrentSelection)
 	{
-		Debug.Log("Is it entering?????"+ CurrentSelection);
+
 		switch (CurrentSelection) {
-		case 0:
+		case 0://aspect ratio
+			if(SubSelection > 3) SubSelection =0;
+			if(SubSelection < 0) SubSelection =3;
+			AspectRatioCounter = SubSelection;
+			Debug.Log("Aspect Ratio set to : " + AspectRatioCounter);
+			AspectRatioObject.GetComponent<Text>().text = AspectRatios[AspectRatioCounter];
 			break;
-		case 1:
-
+		case 1://resolution
+			if(SubSelection > 2) SubSelection =0;
+			if(SubSelection < 0) SubSelection =2;
+			ResolutionsCounter = SubSelection;
+			ResolutionsObject.GetComponent<Text> ().text = Resolutions [ResolutionsCounter];
 			break;
-		case 2:
-		
+		case 2://full screen
+			if(SubSelection > 1) SubSelection =0;
+			if(SubSelection < 0) SubSelection =1;
+			FullScreen = !FullScreen;
+			FullScreenObject.GetComponent<Text> ().text = FullScreen.ToString();
 			break;
-		case 3:
-
+		case 3://Blood
+			if(SubSelection > 3) SubSelection =0;
+			if(SubSelection < 0) SubSelection =3;
+			BloodCounter = SubSelection;
+			BloodObject.GetComponent<Text> ().text = Blood [BloodCounter];
 			break;
 		case 4:
 			//change aspect ratio resolution full screen and blood here
@@ -67,12 +84,15 @@ public class MenuOptionsSelectionScript : MonoBehaviour {
 			switch(AspectRatioCounter)
 			{
 			case 0://4:3
+				Debug.Log ("Aspect Ratio 4:3 Selected");
 				AspectRatioChange(4/3);
 				break;
 			case 1://16:9
+				Debug.Log ("Aspect Ratio 16:9 Selected");
 				AspectRatioChange(16/9);
 				break;
 			case 2://16:10
+				Debug.Log ("Aspect Ratio 16:10 Selected");
 				AspectRatioChange(16/10);
 				break;
 			}

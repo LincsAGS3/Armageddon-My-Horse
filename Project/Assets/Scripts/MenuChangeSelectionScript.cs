@@ -41,19 +41,29 @@ public class MenuChangeSelectionScript : MonoBehaviour
 		// Update is called once per frame
 		void Update ()
 		{
-		//turning left and right
+				//turning left and right
 				if (Turned == false) {
 						if (WheelchairMovementScript.CurrentAngle < 315 && WheelchairMovementScript.CurrentAngle > 180) {
 								Turned = true;
-								CurrentSelection--;
-								ChangeMenuSelection ();
-								Debug.Log (CurrentSelection + "" + Turned);
+								if (WheelchairMovementScript.MovedFowards == true) {
+										MenuOptionsSelectionScript.SubSelection--;
+					MenuOptionsSelectionScript.ProcessSelection (CurrentSelection);
+								} else {
+										CurrentSelection--;
+										ChangeMenuSelection ();
+										Debug.Log (CurrentSelection + "" + Turned);
+								}
 						}
 						if (WheelchairMovementScript.CurrentAngle > 45 && WheelchairMovementScript.CurrentAngle < 180) {
 								Turned = true;
-								CurrentSelection++;
-								ChangeMenuSelection ();
-								Debug.Log (CurrentSelection + "" + Turned);
+								if (WheelchairMovementScript.MovedFowards == true) {
+										MenuOptionsSelectionScript.SubSelection++;
+					MenuOptionsSelectionScript.ProcessSelection (CurrentSelection);
+								} else {
+										CurrentSelection++;
+										ChangeMenuSelection ();
+										Debug.Log (CurrentSelection + "" + Turned);
+								}
 						}
 				} else if (Turned == true) {
 						if (WheelchairMovementScript.CurrentAngle > 340 || WheelchairMovementScript.CurrentAngle < 20) {
@@ -62,7 +72,7 @@ public class MenuChangeSelectionScript : MonoBehaviour
 						}
 				}
 
-		//moving backwards and fowards
+				//moving backwards and fowards
 				if (reset == false) {
 						if (WheelchairMovementScript.MovedFowards == true) {
 
@@ -82,9 +92,13 @@ public class MenuChangeSelectionScript : MonoBehaviour
 								}
 								reset = true;
 						}
-				}else{
+				} else {
 						if (WheelchairMovementScript.MovedFowards == false) {
 								Debug.Log ("MovedFowards Equals false");
+								if (Options.activeSelf) {
+										MenuOptionsSelectionScript.SubSelection = 0; // reset the subselection
+
+								}
 								reset = false;
 						}
 						
@@ -97,6 +111,7 @@ public class MenuChangeSelectionScript : MonoBehaviour
 		{
 				GUI.Label (new Rect (10, 30, 200, 20), "CurrentSelection: " + CurrentSelection);  //  Display the CurrentSelection on a label in the top left
 				GUI.Label (new Rect (10, 50, 200, 20), "Player Turned: " + Turned);  //  Display the turned bool on a label in the top lef
+				GUI.Label (new Rect (10, 90, 200, 20), "SubSelection: " + MenuOptionsSelectionScript.SubSelection);  //  Display the turned bool on a label in the top lef
 		}
 
 		void ChangeMenuSelection ()
