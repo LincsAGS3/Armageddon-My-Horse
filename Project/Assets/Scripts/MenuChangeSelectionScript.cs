@@ -64,10 +64,19 @@ public class MenuChangeSelectionScript : MonoBehaviour
 				if (reset == false) {
 						if (MovedFowards == true) {
 								Debug.Log ("MovedFowards Equals true");
+
+				//main menu
 								if (MainMenu.activeSelf) {
 										MenuMainSelectionScript.ProcessSelection (CurrentSelection);
 										CurrentSelection = 0; // reset the selection for next menu
 								}
+				//options menu
+				if(Options.activeSelf){
+					Debug.Log ("Options"+ CurrentSelection);
+
+					MenuOptionsSelectionScript.ProcessSelection (CurrentSelection);
+
+				}
 								reset = true;
 						}
 						if (MovedFowards == false) {
@@ -145,17 +154,21 @@ public class MenuChangeSelectionScript : MonoBehaviour
 				//change which button is selected
 				switch (CurrentSelection) {
 				case 0:
-						Debug.Log ("im here");
+					
 						Icon.transform.localPosition = new Vector3 (IconStartPosition.x, IconStartPosition.y, IconStartPosition.y);
+			UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(null);
 						break;
 				case 1:
 						Icon.transform.localPosition = new Vector3 (IconStartPosition.x, IconStartPosition.y - 25f, IconStartPosition.y);
+			UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(null);
 						break;
 				case 2:
 						Icon.transform.localPosition = new Vector3 (IconStartPosition.x, IconStartPosition.y - 50f, IconStartPosition.y);
+			UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(null);
 						break;
 				case 3:
 						Icon.transform.localPosition = new Vector3 (IconStartPosition.x, IconStartPosition.y - 75f, IconStartPosition.y);
+						UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(null);
 						break;
 				case 4:
 						UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject (MainMenu_Button);
