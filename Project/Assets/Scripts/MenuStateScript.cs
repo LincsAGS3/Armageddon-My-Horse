@@ -21,23 +21,23 @@ public class MenuStateScript : MonoBehaviour
 		{
 				switch (MenuState) {
 				case 0: //Main Menu
-						MainMenu.SetActive (true);
-						Options.SetActive (false);
-						Leaderboard.SetActive (false);
-						MenuChangeSelectionScript.CurrentSelection = 1;
-						UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject (GameObject.Find ("Play button"));
+						MainMenu.SetActive (true); // displays the menu
+						Options.SetActive (false);// hides the options menu
+						Leaderboard.SetActive (false); // hides the leaderboard
+						MenuChangeSelectionScript.CurrentSelection = 1; // changes the current selection to 1 which is the play button
+						UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject (GameObject.Find ("Play button")); // sets the Play button to the active button
 						break;
 				case 1: //Options
-						MainMenu.SetActive (false);
-						Options.SetActive (true);
-						Leaderboard.SetActive (false);
-						MenuChangeSelectionScript.CurrentSelection = 0;
+						MainMenu.SetActive (false); // hides the main menu
+						Options.SetActive (true); // displays the option menu
+						Leaderboard.SetActive (false);// hides the leaderboard
+						MenuChangeSelectionScript.CurrentSelection = 0; // resets the current selection to 0
 						break;
 				case 2: //Leaderboard
-						MainMenu.SetActive (false);
-						Options.SetActive (false);
-						Leaderboard.SetActive (true);
-						MenuChangeSelectionScript.CurrentSelection = 0;
+						MainMenu.SetActive (false);// hides the main menu
+						Options.SetActive (false); // hides the options menu
+						Leaderboard.SetActive (true); // displays the leaderboard
+						MenuChangeSelectionScript.CurrentSelection = 0;// resets the current selection to 0
 						break;
 				}
 		}

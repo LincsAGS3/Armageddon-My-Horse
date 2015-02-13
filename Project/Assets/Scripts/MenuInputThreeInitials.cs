@@ -11,35 +11,7 @@ public class MenuInputThreeInitials : MonoBehaviour
 		int Acounter;
 		int Bcounter;
 		int Ccounter;
-		string[]AlphabetArray = {
-				" ",
-				"a",
-				"b",
-				"c",
-				"d",
-				"e",
-				"f",
-				"g",
-				"h",
-				"i",
-				"j",
-				"k",
-				"l",
-				"m",
-				"n",
-				"o",
-				"p",
-				"q",
-				"r",
-				"s",
-				"t",
-				"u",
-				"v",
-				"w",
-				"x",
-				"y",
-				"z"
-		};
+		string[]AlphabetArray = {" ","a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"};
 		string Name;
 		static GameObject A;
 		static GameObject B;
@@ -55,18 +27,20 @@ public class MenuInputThreeInitials : MonoBehaviour
 		// Use this for initialization
 		void Start ()
 		{
+				//counters which go from 0 to 27, blank space + the alphapbet
 				Acounter = 0;
 				Bcounter = 0;
 				Ccounter = 0;
 
+				//fins the the game objects which contain the players letters
 				A = GameObject.Find ("TextFirstLetter");
 				B = GameObject.Find ("TextSecondLetter");
 				C = GameObject.Find ("TextThirdLetter");
-
+	
 				Icon = GameObject.Find ("Selection icon Image");
 				MainMenu_Button = GameObject.Find ("Main Menu Button");
 
-				IconStartPosition = new Vector3 (Icon.transform.localPosition.x, Icon.transform.localPosition.y, Icon.transform.localPosition.z);
+				IconStartPosition = new Vector3 (Icon.transform.localPosition.x, Icon.transform.localPosition.y, Icon.transform.localPosition.z); // starting position of the icon
 
 				Turned = false;			
 				reset = false;
@@ -122,11 +96,12 @@ public class MenuInputThreeInitials : MonoBehaviour
 						}
 				}
 
+				//Updats the text on the GUI
 				A.GetComponent<Text> ().text = AlphabetArray [Acounter];
 				B.GetComponent<Text> ().text = AlphabetArray [Bcounter];
 				C.GetComponent<Text> ().text = AlphabetArray [Ccounter];
 
-				OnGUI ();
+				OnGUI (); // used for testing can be removed later on
 		}
 
 		void OnGUI ()
@@ -210,12 +185,10 @@ public class MenuInputThreeInitials : MonoBehaviour
 		void CreateName ()
 		{
 				Name = AlphabetArray [Acounter] + AlphabetArray [Bcounter] + AlphabetArray [Ccounter];
-				Debug.Log (Name);
 
 				//load in the CSV file for the leaderboard
 				ReadFile.Load ("Assets/Data Files/TestLeaderboard.txt");
-
-
+	
 				int score = 500;// will be changed ot the attual score
 				int TimeRank = 0;// used when looping to find the players rank
 
@@ -224,7 +197,6 @@ public class MenuInputThreeInitials : MonoBehaviour
 								TimeRank = x;
 						}
 				}
-				Debug.Log (TimeRank);
 				ReadFile.CompletionTimeData.Insert (TimeRank, new ReadFile.LeaderboardData (Name, score));
 
 
@@ -243,6 +215,6 @@ public class MenuInputThreeInitials : MonoBehaviour
 						}
 				}
 				ReadFile.LeastDamageData.Insert (DamageRank, new ReadFile.LeaderboardData (Name, score));
-				SaveFile.SaveCSV ("Assets/Data Files/TestLeaderboard3.txt");// added purely to test the save file
+				SaveFile.SaveCSV ("Assets/Data Files/Leaderboard.txt");// added purely to test the save file
 		}
 }

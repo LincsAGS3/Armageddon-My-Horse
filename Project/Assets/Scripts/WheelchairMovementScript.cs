@@ -8,13 +8,14 @@ public class WheelchairMovementScript : MonoBehaviour
 		// Use this for initialization
 		void Start ()
 		{
-				CurrentAngle = 0;
-				MovedFowards = false;
+				CurrentAngle = 0;// sets the current angle to 0
+				MovedFowards = false; //the player has not moved fowards
 		}
 	
 		// Update is called once per frame
 		void Update ()
 		{
+				//this is used for debugging to display the variables on the screen, can be removed later 
 				OnGUI ();
 		}
 

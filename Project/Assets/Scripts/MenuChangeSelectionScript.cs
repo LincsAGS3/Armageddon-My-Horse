@@ -22,19 +22,19 @@ public class MenuChangeSelectionScript : MonoBehaviour
 		// Use this for initialization
 		void Start ()
 		{
-				
-				Turned = false;
+				Turned = false; //Player has not turned
 				CurrentSelection = 1; // defualt is Play button
 
-				reset = false;
+				reset = false;// used to reset the moving fowards and backwards
 
-				MainMenu = GameObject.Find ("Main Menu"); 
-				Options = GameObject.Find ("Options Menu");
-				Leaderboard = GameObject.Find ("Leaderboard Menu");
+				//finding the game objects in the scene
+				MainMenu = GameObject.Find ("Main Menu"); //main menu holder
+				Options = GameObject.Find ("Options Menu");//options holder
+				Leaderboard = GameObject.Find ("Leaderboard Menu");//leaderboard holder
 
-				Icon = GameObject.Find ("Selection icon Image");
-				MainMenu_Button = GameObject.Find ("Main Menu Button");
-				IconStartPosition = new Vector3 (Icon.transform.localPosition.x, Icon.transform.localPosition.y, Icon.transform.localPosition.z);
+				Icon = GameObject.Find ("Selection icon Image");// icon used to display selection
+				MainMenu_Button = GameObject.Find ("Main Menu Button");// main menu button
+				IconStartPosition = new Vector3 (Icon.transform.localPosition.x, Icon.transform.localPosition.y, Icon.transform.localPosition.z);//icons start position
 		}
 	
 		// Update is called once per frame
@@ -101,11 +101,12 @@ public class MenuChangeSelectionScript : MonoBehaviour
 								reset = false;
 						}					
 				}
-				OnGUI ();
+				OnGUI (); // used to display variable to the screen to debug
 		}
 
 		void OnGUI ()
 		{
+		//used for debugging, can be removed in main game
 				GUI.Label (new Rect (10, 30, 200, 20), "CurrentSelection: " + CurrentSelection);  //  Display the CurrentSelection on a label in the top left
 				GUI.Label (new Rect (10, 50, 200, 20), "Player Turned: " + Turned);  //  Display the turned bool on a label in the top lef
 				GUI.Label (new Rect (10, 90, 200, 20), "SubSelection: " + MenuOptionsSelectionScript.SubSelection);  //  Display the turned bool on a label in the top lef
@@ -156,6 +157,7 @@ public class MenuChangeSelectionScript : MonoBehaviour
 				}
 		}
 
+		//this hole thing needs to be moved to its own file at some point
 		void OptionsMenuSelection ()
 		{
 				//cycle round the buttons
@@ -166,7 +168,7 @@ public class MenuChangeSelectionScript : MonoBehaviour
 						CurrentSelection = 0;
 				}
 				Debug.Log (IconStartPosition.x);
-				//change which button is selected
+				//change which button is selected aswell as moving the selection icon
 				switch (CurrentSelection) {
 				case 0:
 					

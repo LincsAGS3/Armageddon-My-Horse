@@ -4,28 +4,38 @@ using UnityEngine.UI;//added
 
 public class MenuOptionsSelectionScript : MonoBehaviour
 {
-		static string[] AspectRatios = {"5:4","4:3","16:10","5:3","16:9",};
-		static string[] Resolutions = {"1024x768","1280x1024","1680,1050","1920x1080","1920x1200"};
-		static bool FullScreen;
-		static string[] Blood = {"Off","Red","Green"};
+		static string[] AspectRatios = {"5:4","4:3","16:10","5:3","16:9",}; // the avaliable aspect ratios, used for displaying to the user in the GUI
+		static string[] Resolutions = {"1024x768","1280x1024","1680,1050","1920x1080","1920x1200"};// the avaliable Resolutions, used for displaying to the user in the GUI
+		static bool FullScreen; // used to toggle fullscreen on and off
+		static string[] Blood = {"Off","Red","Green"}; // the three blood options which are used to display to the user
+
+		//gets the text label game objects 
 		static GameObject AspectRatioObject;
 		static GameObject ResolutionsObject;
 		static GameObject FullScreenObject;
 		static GameObject BloodObject;
+
+		//counters used to hold the users current selection of each option
 		static int AspectRatioCounter;
 		static int ResolutionsCounter;
 		static int BloodCounter;
+
+		//gets the camera game object
 		static Camera camera;
 		static Camera Backgroundcamera;
+
+		//used for when the player moves foward into one of the four sub menus
 		public static int SubSelection;
 		// Use this for initialization
 		void Start ()
 		{
+				//sets the default settings for the user
 				FullScreen = false;
 				AspectRatioCounter = 0;
 				ResolutionsCounter = 0;
 				BloodCounter = 0;
 
+				//finds the game objects in the scene
 				AspectRatioObject = GameObject.Find ("Aspect Ratio");
 				ResolutionsObject = GameObject.Find ("Resolution");
 				FullScreenObject = GameObject.Find ("Full Screen");
@@ -37,6 +47,7 @@ public class MenuOptionsSelectionScript : MonoBehaviour
 				FullScreenObject.GetComponent<Text> ().text = FullScreen.ToString ();
 				BloodObject.GetComponent<Text> ().text = Blood [BloodCounter];
 
+				//finds the camera game object
 				camera = GameObject.Find ("Main Camera").GetComponent<Camera> ();
 		}
 	
@@ -44,38 +55,46 @@ public class MenuOptionsSelectionScript : MonoBehaviour
 		{
 				switch (CurrentSelection) {
 				case 0://aspect ratio
+			// loop around the subsection for aspect ratio
 						if (SubSelection > 4)
 								SubSelection = 0;
 						if (SubSelection < 0)
 								SubSelection = 4;
+
 						AspectRatioCounter = SubSelection;
 						Debug.Log ("Aspect Ratio set to : " + AspectRatioCounter);
-						AspectRatioObject.GetComponent<Text> ().text = AspectRatios [AspectRatioCounter];
+			AspectRatioObject.GetComponent<Text> ().text = AspectRatios [AspectRatioCounter];// changes the text on the GUI
 						break;
 				case 1://resolution
+			// loop around the subsection for Resolutions
 						if (SubSelection > 3)
 								SubSelection = 0;
 						if (SubSelection < 0)
 								SubSelection = 3;
+
 						ResolutionsCounter = SubSelection;
 						Debug.Log ("Resolution set to : " + ResolutionsCounter);
-						ResolutionsObject.GetComponent<Text> ().text = Resolutions [ResolutionsCounter];
+			ResolutionsObject.GetComponent<Text> ().text = Resolutions [ResolutionsCounter];// changes the text on the GUI
 						break;
 				case 2://full screen
+			// loop around the subsection for full screen
 						if (SubSelection > 1)
 								SubSelection = 0;
 						if (SubSelection < 0)
 								SubSelection = 1;
-						FullScreen = !FullScreen;
-						FullScreenObject.GetComponent<Text> ().text = FullScreen.ToString ();
+
+						FullScreen = !FullScreen; // toggles full screen
+			FullScreenObject.GetComponent<Text> ().text = FullScreen.ToString ();// changes the text on the GUI
 						break;
 				case 3://Blood
+			// loop around the subsection for blood
 						if (SubSelection > 3)
 								SubSelection = 0;
 						if (SubSelection < 0)
 								SubSelection = 3;
+
 						BloodCounter = SubSelection;
-						BloodObject.GetComponent<Text> ().text = Blood [BloodCounter];
+						BloodObject.GetComponent<Text> ().text = Blood [BloodCounter]; // changes the text on the GUI
 						break;
 				case 4:
 			//change aspect ratio resolution full screen and blood here
