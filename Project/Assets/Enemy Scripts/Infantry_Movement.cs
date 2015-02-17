@@ -112,4 +112,10 @@ public class Infantry_Movement : MonoBehaviour {
 			gotoPoint = FindNextPoint (groupPoint.transform.position);
 		}
 	}
+	void OnCollisionEnter2D(Collision2D coll)
+	{
+		if (coll.transform.tag == "playerSword") {
+			Debug.Log("hurt");
+		}
+	}
 }
