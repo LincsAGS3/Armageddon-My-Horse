@@ -3,19 +3,8 @@
 --- !u!78 &1
 TagManager:
   tags:
-<<<<<<< HEAD
+  - 
   - Enemy
-<<<<<<< HEAD
-  - Wall
-=======
-=======
-  - Bridge
-  - Unpassable
-  - Land
-  - Fort
-  - Castle
->>>>>>> origin/Mapv2
->>>>>>> origin/master
   - 
   Builtin Layer 0: Default
   Builtin Layer 1: TransparentFX
