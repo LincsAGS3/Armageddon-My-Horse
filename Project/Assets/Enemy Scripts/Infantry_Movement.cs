@@ -23,6 +23,8 @@ public class Infantry_Movement : MonoBehaviour {
 	GameObject player;
 	//is there a player
 	bool playerFound = false;
+	//are we moving to the next pathfinding point
+	bool PathMoving = false;
 
 	void Start () {
 		gotoPoint = this.transform.position;
@@ -61,7 +63,24 @@ public class Infantry_Movement : MonoBehaviour {
 				//Debug.Log (gotoPoint);//output new target for bug testing
 				}
 			}else{
-
+				if(playerFound)
+				{
+				//look up the players position
+					Vector2 player_pos = new Vector2((int)player.transform.position.x,(int)player.transform.position.y);
+					//enemy position
+					Vector2 This_pos = new Vector2 ((int)this.transform.position.x,(int)this.transform.position.y);
+					gotoPoint = PathFinding.map[(int)((player_pos.y*PathFinding.gridSize) + player_pos.x), (int)((This_pos.y*PathFinding.gridSize) + This_pos.x)];
+					gotoPoint.x +=0.5f;
+					gotoPoint.y += 0.5f;
+					Debug.Log(gotoPoint + " " + player_pos+ " " + This_pos);
+					//move
+					float rotation = (float)Math.Atan2 (this.transform.position.y - gotoPoint.y, this.transform.position.x - gotoPoint.x);
+					//calculate the different components of the sprites speed
+					speed.x += -((float)Math.Cos (rotation) * 4*Time.deltaTime);
+					speed.y += -((float)Math.Sin (rotation) * 4*Time.deltaTime);
+					//apply the movement
+					this.rigidbody2D.velocity = speed*60;
+				}
 			}
 			//move the character
 			if (StateControl.State != StateControl.state.Pause) {

@@ -21,7 +21,7 @@ public class PathFinding : MonoBehaviour {
 	//level
 	public static int[,] level;
 	//grid size
-	int gridSize = 40;
+	public static int gridSize = 40;
 
 	void Start () {
 		map = new Vector2[(int)Mathf.Pow (gridSize, 2), (int)Mathf.Pow (gridSize, 2)];
