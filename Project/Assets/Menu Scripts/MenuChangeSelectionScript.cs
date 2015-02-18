@@ -19,6 +19,7 @@ public class MenuChangeSelectionScript : MonoBehaviour
 
 		static GameObject Icon;	//Options Icon
 		static GameObject MainMenu_Button;//Main menu button
+		static GameObject MainMenu_Controls_image;
 		Vector3 IconStartPosition;
 
 		//leaderboard menu stuff
@@ -41,6 +42,7 @@ public class MenuChangeSelectionScript : MonoBehaviour
 
 				Icon = GameObject.Find ("Selection icon Image");// icon used to display selection
 				MainMenu_Button = GameObject.Find ("Main Menu Button");// main menu button
+				MainMenu_Controls_image = GameObject.Find ("WheelChairControls image");
 				IconStartPosition = new Vector3 (Icon.transform.localPosition.x, Icon.transform.localPosition.y, Icon.transform.localPosition.z);//icons start position
 
 				//leaderboard pannels
@@ -167,7 +169,7 @@ public class MenuChangeSelectionScript : MonoBehaviour
 				if (CurrentSelection > 3) {
 						CurrentSelection = 0;
 				}
-		
+				MainMenu_Controls_image.SetActive (false);
 				//change which button is selected
 				switch (CurrentSelection) {
 				case 0:
