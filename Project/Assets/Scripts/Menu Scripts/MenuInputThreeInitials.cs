@@ -83,7 +83,6 @@ public class MenuInputThreeInitials : MonoBehaviour
 				//moving backwards and fowards
 				if (reset == false) {
 						if (WheelchairMovementScript.MovedFowards == true) {
-								Debug.Log ("Entred");
 								if (CurrentSelection == 3) {
 										CreateName ();
 								}
@@ -216,5 +215,6 @@ public class MenuInputThreeInitials : MonoBehaviour
 				}
 				ReadFile.LeastDamageData.Insert (DamageRank, new ReadFile.LeaderboardData (Name, score));
 				SaveFile.SaveCSV ("Assets/Data Files/Leaderboard.txt");// added purely to test the save file
-		}
+		MenuGameMenuStateScript.MenuStateChange (4);// change to leaderboard
+	}
 }
