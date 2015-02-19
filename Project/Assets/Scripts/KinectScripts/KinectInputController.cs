@@ -4,7 +4,7 @@ using System.Collections;
 using KinectNet20;
 using KinectForWheelchair;
 
-public class InputController : MonoBehaviour
+public class KinectInputController : MonoBehaviour
 {
 
 	// Variables for output

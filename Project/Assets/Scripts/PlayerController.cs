@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
+using KinectNet20;
+using KinectForWheelchair;
 
 public class PlayerController : MonoBehaviour
 {
@@ -14,7 +16,7 @@ public class PlayerController : MonoBehaviour
 	void Update ()
 	{	
 		//takes input from A,D LeftArrow AND RightArrow
-		transform.Rotate (0, 0, -Input.GetAxis ("Horizontal") * rotateSpeed * Time.deltaTime);
+		/*WheelchairMovementScript.CurrentAngle = */transform.Rotate (0, 0, -Input.GetAxis ("Horizontal") * rotateSpeed * Time.deltaTime);
 		//Takes input from W, S, UpArrow and DownArrow
 		speed += Input.GetAxis ("Vertical") * speed * Time.deltaTime;
 		//Sets minimum and maximum speed values
@@ -28,7 +30,7 @@ public class PlayerController : MonoBehaviour
 	{
 		if (collider.tag == "Enemy")
 		{
-			//Function can be changed to remove health decrementally, orm in this case, "insta-kill"
+			//Function can be changed to remove health decrementally, or in this case, "insta-kill"
 			health--;
 		}
 	}
