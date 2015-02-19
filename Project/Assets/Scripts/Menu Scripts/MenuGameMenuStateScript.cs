@@ -29,19 +29,18 @@ public class MenuGameMenuStateScript : MonoBehaviour {
 			LeaderboardMenu.SetActive(false); 
 			break;
 		case 1: 
-			VictoryMenu.SetActive (true); 
+			VictoryMenu.SetActive (true); //Displays the Victory Menu
 			break;
 		case 2: 
-			DefeatMenu.SetActive (true); 
+			DefeatMenu.SetActive (true); // Displays the Defeat Menu
 			break;
 		case 3: 
-			Debug.Log("entred");
-			VictoryMenu.SetActive (false); 
-			ThreeCharInputMenu.SetActive (true); 
+			VictoryMenu.SetActive (false); // Hides the victory menu
+			ThreeCharInputMenu.SetActive (true); //displays the three char input menu
 			break;
 		case 4: 
-			ThreeCharInputMenu.SetActive (false);
-			LeaderboardMenu.SetActive (true); 
+			ThreeCharInputMenu.SetActive (false); // hides the three char input menu
+			LeaderboardMenu.SetActive (true); //displays the Leaderboard menu
 			break;
 		}
 	}
