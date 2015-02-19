@@ -11,6 +11,8 @@ public class MenuChangeSelectionScript : MonoBehaviour
 		public GameObject Options_Button;		//2
 		public GameObject Leaderboard_Button;	//3
 
+		static GameObject Button_Bar;
+
 		private bool reset;
 		private bool MenuSwitch;
 		static GameObject MainMenu;		//0 = Main Menu
@@ -27,6 +29,10 @@ public class MenuChangeSelectionScript : MonoBehaviour
 		static GameObject EnemiesKilledPanel;
 		static GameObject LeastDamagePanel;
 		static GameObject MainMenu_Button2;//Main menu button
+
+	Vector3 StartPosition;
+	Vector3 EndPosition;
+
 		// Use this for initialization
 		void Start ()
 		{
@@ -39,7 +45,7 @@ public class MenuChangeSelectionScript : MonoBehaviour
 				MainMenu = GameObject.Find ("Main Menu"); //main menu holder
 				Options = GameObject.Find ("Options Menu");//options holder
 				Leaderboard = GameObject.Find ("Leaderboard Menu");//leaderboard holder
-
+				Button_Bar = GameObject.Find ("Button Panel");
 				Icon = GameObject.Find ("Selection icon Image");// icon used to display selection
 				MainMenu_Button = GameObject.Find ("Main Menu Button");// main menu button
 				MainMenu_Controls_image = GameObject.Find ("WheelChairControls image");
@@ -50,7 +56,10 @@ public class MenuChangeSelectionScript : MonoBehaviour
 				EnemiesKilledPanel = GameObject.Find ("Enemies Killed Panel");
 				LeastDamagePanel = GameObject.Find ("Least Damage Panel");
 				MainMenu_Button2 = GameObject.Find ("Main Menu Button2");// main menu button used on leaderboard
-				
+
+
+		StartPosition = new Vector3(Button_Bar.transform.localPosition.x,Button_Bar.transform.localPosition.y,Button_Bar.transform.localPosition.y);
+	
 		}
 	
 		// Update is called once per frame
@@ -162,6 +171,7 @@ public class MenuChangeSelectionScript : MonoBehaviour
 
 		void MainMenuSelection ()
 		{
+
 				//cycle round the buttons
 				if (CurrentSelection < 0) {
 						CurrentSelection = 3;
@@ -170,18 +180,30 @@ public class MenuChangeSelectionScript : MonoBehaviour
 						CurrentSelection = 0;
 				}
 				MainMenu_Controls_image.SetActive (false);
-				//change which button is selected
+
 				switch (CurrentSelection) {
 				case 0:
+			//Play_Button.GetComponent<Animator>().Play("Slide");
+			//
+			//Debug.Log(StartPosition);
+			//EndPosition = new Vector3(100,0,0);
+			//Debug.Log(EndPosition);
+			//Quit_Button.gameObject.transform.localPosition = new Vector3(Quit_Button.transform.localPosition.x+100,Quit_Button.transform.localPosition.y,Quit_Button.transform.localPosition.y);
+
+			Button_Bar.transform.localPosition = new Vector3(StartPosition.x+400,StartPosition.y,StartPosition.z);
 						UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject (Quit_Button);
+						
 						break;
 				case 1:
+			Button_Bar.transform.localPosition = new Vector3(StartPosition.x,StartPosition.y,StartPosition.z);
 						UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject (Play_Button);
 						break;
 				case 2:
+			Button_Bar.transform.localPosition = new Vector3(StartPosition.x-400,StartPosition.y,StartPosition.z);
 						UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject (Options_Button);
 						break;
 				case 3:
+			Button_Bar.transform.localPosition = new Vector3(StartPosition.x-800,StartPosition.y,StartPosition.z);
 						UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject (Leaderboard_Button);
 						break;
 				}
