@@ -6,9 +6,9 @@ public class door_open : MonoBehaviour {
 	public GameObject left_door;
 	public GameObject right_door;
 	float time = 0;
-	public bool closed = false;
+	public bool closed = true;
 	Vector3 move;
-	bool moving = true;
+	bool moving = false;
 	bool moved = false;
 	void Start () {
 		move = new Vector3 (0, 0, 90);

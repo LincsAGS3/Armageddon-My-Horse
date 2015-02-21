@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
+using System;
 
 public class PathFinding : MonoBehaviour {
 
@@ -26,15 +28,29 @@ public class PathFinding : MonoBehaviour {
 	void Start () {
 		map = new Vector2[(int)Mathf.Pow (gridSize, 2), (int)Mathf.Pow (gridSize, 2)];
 		level = new int[gridSize, gridSize];
+		Collider2D col = null;
 		//todo add map loading for now set all to 0
-		for (int i = 0; i < gridSize; i++)
+		for (int i = 0; i < gridSize; i+=2)
 		{
-			for (int j = 0; j < gridSize; j++)
+			for (int j = 0; j < gridSize; j+=2)
 			{
-				level[j, i] = 0;
+				 col = Physics2D.OverlapCircle(new Vector2(j,i), 1f);
+				if(col == null)
+				{
+					level[j, i] = 0;
+				}
+				else
+				{
+					level[j,i] = 1;
+				}
+				col = null;
 			}
 		}
+		Debug.Log ("map created");
 		Iterate ();
+		SavePath ();
+
+		//LoadPath ();
 	}
 	
 	// Update is called once per frame
@@ -124,14 +140,23 @@ public class PathFinding : MonoBehaviour {
 			//check nodes
 			curr.prev = curr.pos;
 			curr.cost += 1;
+			curr.pos.x += 1; //right
+			CheckSpace(curr);
+			curr.pos.x -= 2; //left
+			CheckSpace(curr); 
 			curr.pos.x += 1;
+			curr.pos.y += 1; //bottom
 			CheckSpace(curr);
-			curr.pos.x -= 2;
+			curr.pos.y -= 2; // top
 			CheckSpace(curr);
-			curr.pos.x += 1;
-			curr.pos.y += 1;
+			//diagonals
+			curr.pos.x -= 1; //top left
 			CheckSpace(curr);
-			curr.pos.y -= 2;
+			curr.pos.x += 2; //top right
+			CheckSpace(curr);
+			curr.pos.y += 2; //bottom right
+			CheckSpace(curr);
+			curr.pos.x -= 2; //bottom right
 			CheckSpace(curr);
 		}
 	}
@@ -154,7 +179,6 @@ public class PathFinding : MonoBehaviour {
 				}
 			}
 		}
-		return false;
 	}
 	void CheckSpace(node curr)
 	{
@@ -191,6 +215,35 @@ public class PathFinding : MonoBehaviour {
 		{
 			end = Carray[(int)end.prev.x, (int)end.prev.y];
 			path.Add(end.pos);
+		}
+	}
+
+	void SavePath()
+	{
+		StreamWriter output = new StreamWriter("map.txt");
+		for (int i = 0; i < (int)Mathf.Pow(gridSize, 2); i++)
+		{
+			for (int j = 0; j < (int)Mathf.Pow(gridSize, 2); j++)
+			{
+				output.Write(map[j,i].x+","+map[j,i].y + " ");
+			}
+		}
+	}
+	void LoadPath()
+	{
+		map = new Vector2[(int)Mathf.Pow(gridSize, 2), (int)Mathf.Pow(gridSize, 2)];
+		StreamReader input = new StreamReader("map.txt");
+		string raw = input.ReadToEnd();
+		string[] split = raw.Split(' ');
+		for (int i = 0; i < (int)Mathf.Pow(gridSize, 2)-1; i++)
+		{
+			for (int j = 0; j < (int)Mathf.Pow(gridSize, 2); j++)
+			{
+				string []splitAgain = split[(i * gridSize*gridSize) + j].Split(',');
+				map[j, i].x = Convert.ToInt32(splitAgain[0]);
+				map[j, i].y = Convert.ToInt32(splitAgain[1]);
+				
+			}
 		}
 	}
 }

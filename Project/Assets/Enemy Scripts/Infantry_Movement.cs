@@ -23,8 +23,6 @@ public class Infantry_Movement : MonoBehaviour {
 	GameObject player;
 	//is there a player
 	bool playerFound = false;
-	//are we moving to the next pathfinding point
-	bool PathMoving = false;
 
 	void Start () {
 		gotoPoint = this.transform.position;
@@ -72,7 +70,6 @@ public class Infantry_Movement : MonoBehaviour {
 					gotoPoint = PathFinding.map[(int)((player_pos.y*PathFinding.gridSize) + player_pos.x), (int)((This_pos.y*PathFinding.gridSize) + This_pos.x)];
 					gotoPoint.x +=0.5f;
 					gotoPoint.y += 0.5f;
-					Debug.Log(gotoPoint + " " + player_pos+ " " + This_pos);
 					//move
 					float rotation = (float)Math.Atan2 (this.transform.position.y - gotoPoint.y, this.transform.position.x - gotoPoint.x);
 					//calculate the different components of the sprites speed
@@ -125,7 +122,7 @@ public class Infantry_Movement : MonoBehaviour {
 			this.rigidbody2D.velocity = moveAway*6f;
 		}
 		//if we hit a wall
-		if (coll.gameObject.tag == "Wall") {
+		if (coll.gameObject.tag != "Player") {
 			Debug.Log ("collision");
 			//goto a new point
 			gotoPoint = FindNextPoint (groupPoint.transform.position);
