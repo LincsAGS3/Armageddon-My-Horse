@@ -14,152 +14,67 @@ public class PathFinding : MonoBehaviour {
 		public float cost;
 		public float f_score;
 	};
-	//lists
-	List<node> open = new List<node>();
-	node[,] Carray;
-	List<Vector2> path = new List<Vector2>();
-	//path map
-	public static Vector2[,] map;
-	//level
+	public int playerscent = 20;
+	public static int[,] buffer1;
+	public int[,] buffer2;
 	public static int[,] level;
+	public GameObject player;
 	//grid size
 	public static int gridSize = 40;
 
 	void Start () {
-		map = new Vector2[(int)Mathf.Pow (gridSize, 2), (int)Mathf.Pow (gridSize, 2)];
 		level = new int[gridSize, gridSize];
 		Collider2D col = null;
 		//todo add map loading for now set all to 0
-		for (int i = 0; i < gridSize; i+=2)
-		{
-			for (int j = 0; j < gridSize; j+=2)
-			{
-				 col = Physics2D.OverlapCircle(new Vector2(j,i), 1f);
-				if(col == null)
-				{
-					level[j, i] = 0;
-				}
-				else
-				{
-					level[j,i] = 1;
+		for (int i = 0; i < gridSize; i++) {
+			for (int j = 0; j < gridSize; j++) {
+				col = Physics2D.OverlapCircle (new Vector2 (j, i), 1f);
+				if (col == null) {
+					level [j, i] = 0;
+				} else if (col.tag == "Wall") {
+					level [j, i] = 1;
+				} else {
+					level [j, i] = 0;
 				}
 				col = null;
 			}
 		}
-		Debug.Log ("map created");
-		Iterate ();
-		SavePath ();
-
-		//LoadPath ();
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
-	void Iterate()
-	{
-		//point we are going from
-		for (int i = 0; i<gridSize; i++) {
-			for(int j = 0; j < gridSize; j++)
-			{
-				Expand (new Vector2(j,i));
-				//to
-				for (int ii = 0; ii < gridSize; ii++)
-				{
-					for (int jj = 0; jj < gridSize; jj++)
-					{
-						if (isValid(new Vector2(jj, ii)))
-						{
-							if (ii == i && jj == j)
-							{
-								map[(i * gridSize) + j, (ii * gridSize) + jj] = new Vector2(j, i);
-							}
-							else
-							{
-								//find the node we want to path to
-								node temp = new node();
-								temp = Carray[jj, ii];
-								CreatePath(temp);
-								map[(ii * gridSize) + jj, (i * gridSize) + j] = path[path.Count - 2];
-							}
-						}
-					}
-				}
-			}
-		}
-		Debug.Log ("finished calculating");
-	}
-
-	void Expand(Vector2 pos)
-	{
-		//reset the closed array
-		Carray= new node[gridSize,gridSize];
+		buffer1 = new int[gridSize, gridSize];
+		buffer2 = new int[gridSize, gridSize];
 		for (int i = 0; i < gridSize; i++)
 		{
 			for (int j = 0; j < gridSize; j++)
 			{
-				Carray[j, i].cost = -1;
+				buffer1[i, j] = 0;
+				buffer2[i, j] = 0;
 			}
-		}
-		//clear the lists
-		open.Clear ();
-		path.Clear ();
-		//add the start node to the open list
-		node start = new node ();
-		start.pos = pos;
-		start.prev = new Vector2 (-1, -1);
-		start.cost = 0;
-		open.Add (start);
-
-		bool found = false;
-
-		while (!found) {
-			node curr = new node(); ;
-			curr.cost = int.MaxValue;
-			int count = 0;
-			int rem = 0;
-			if (open.Count == 0)
-			{
-				//finished
-				found = true;
-				break;
-			}
-			foreach (node n in open)
-			{
-				if (n.cost < curr.cost)
-				{
-					curr = n;
-					rem = count;
-				}
-				count++;
-			}
-			//remove from open list
-			open.RemoveAt(rem);
-			Carray[(int)curr.pos.x, (int)curr.pos.y] = curr;
-			//check nodes
-			curr.prev = curr.pos;
-			curr.cost += 1;
-			curr.pos.x += 1; //right
-			CheckSpace(curr);
-			curr.pos.x -= 2; //left
-			CheckSpace(curr); 
-			curr.pos.x += 1;
-			curr.pos.y += 1; //bottom
-			CheckSpace(curr);
-			curr.pos.y -= 2; // top
-			CheckSpace(curr);
-			//diagonals
-			curr.pos.x -= 1; //top left
-			CheckSpace(curr);
-			curr.pos.x += 2; //top right
-			CheckSpace(curr);
-			curr.pos.y += 2; //bottom right
-			CheckSpace(curr);
-			curr.pos.x -= 2; //bottom right
-			CheckSpace(curr);
 		}
 	}
+	
+	// Update is called once per frame
+	void Update () {
+		//set the player pos to be the current scent
+		buffer1[(int)player.transform.position.x, (int)player.transform.position.y] = playerscent;
+		//increment the scent
+		//playerscent++;
+		for (int i = 0; i < gridSize; i++)
+		{
+			for (int j = 0; j < gridSize; j++)
+			{
+				buffer2[i,j] = buffer1[i,j];
+			}
+		}
+		//Update buffer 1 based on buffer 2
+		for (int i = 0; i < gridSize; i++)
+		{
+			for (int j = 0; j < gridSize; j++)
+			{
+				UpdateSpace(new Vector2(j, i));
+			}
+
+		}
+	}
+	
 	bool isValid(Vector2 curr)
 	{
 		if (curr.x < 0 || curr.y < 0) {
@@ -180,70 +95,66 @@ public class PathFinding : MonoBehaviour {
 			}
 		}
 	}
-	void CheckSpace(node curr)
+	private void UpdateSpace(Vector2 pos)
 	{
-		if (isValid(curr.pos))
-		{
-			//is it in the closed list already
-			if (Carray[(int)curr.pos.x, (int)curr.pos.y].cost != -1)
-			{
-				return;
-			}
-			
-			//is there a worse route in the open list
-			foreach (node n in open)
-			{
-				if (n.pos == curr.pos)
-				{
-					if (n.cost > curr.cost)
-					{
-						open.Remove(n);
-						open.Add(curr);
-						return;
-					}
-					return;
+		if (isValid (pos)) {
+			int curr = 0;
+			pos.x += 1;
+			if (isValid (pos)) {
+				if (buffer2 [(int)pos.x, (int)pos.y] > curr) {
+					curr = buffer2 [(int)pos.x, (int)pos.y];
 				}
 			}
-			open.Add(curr);
-		}
-	}
-	void CreatePath(node end)
-	{
-		path.Clear();
-		path.Add(end.pos);
-		while (end.prev != new Vector2(-1, -1))
-		{
-			end = Carray[(int)end.prev.x, (int)end.prev.y];
-			path.Add(end.pos);
-		}
-	}
-
-	void SavePath()
-	{
-		StreamWriter output = new StreamWriter("map.txt");
-		for (int i = 0; i < (int)Mathf.Pow(gridSize, 2); i++)
-		{
-			for (int j = 0; j < (int)Mathf.Pow(gridSize, 2); j++)
-			{
-				output.Write(map[j,i].x+","+map[j,i].y + " ");
+			pos.x -= 2;
+			if (isValid (pos)) {
+				if (buffer2 [(int)pos.x, (int)pos.y] > curr) {
+					curr = buffer2 [(int)pos.x, (int)pos.y];
+				}
 			}
-		}
-	}
-	void LoadPath()
-	{
-		map = new Vector2[(int)Mathf.Pow(gridSize, 2), (int)Mathf.Pow(gridSize, 2)];
-		StreamReader input = new StreamReader("map.txt");
-		string raw = input.ReadToEnd();
-		string[] split = raw.Split(' ');
-		for (int i = 0; i < (int)Mathf.Pow(gridSize, 2)-1; i++)
-		{
-			for (int j = 0; j < (int)Mathf.Pow(gridSize, 2); j++)
-			{
-				string []splitAgain = split[(i * gridSize*gridSize) + j].Split(',');
-				map[j, i].x = Convert.ToInt32(splitAgain[0]);
-				map[j, i].y = Convert.ToInt32(splitAgain[1]);
-				
+			pos.x += 1;
+			pos.y += 1;
+			if (isValid (pos)) {
+				if (buffer2 [(int)pos.x, (int)pos.y] > curr) {
+					curr = buffer2 [(int)pos.x, (int)pos.y];
+				}
 			}
+			pos.y -= 2;
+			if (isValid (pos)) {
+				if (buffer2 [(int)pos.x, (int)pos.y] > curr) {
+					curr = buffer2 [(int)pos.x, (int)pos.y];
+				}
+			}
+			
+			pos.x += 1;
+			if (isValid (pos)) {
+				if (buffer2 [(int)pos.x, (int)pos.y] > curr) {
+					curr = buffer2 [(int)pos.x, (int)pos.y];
+				}
+			}
+			pos.x -= 2;
+			if (isValid (pos)) {
+				if (buffer2 [(int)pos.x, (int)pos.y] > curr) {
+					curr = buffer2 [(int)pos.x, (int)pos.y];
+				}
+			}
+			pos.y += 2;
+			
+			if (isValid (pos)) {
+				if (buffer2 [(int)pos.x, (int)pos.y] > curr) {
+					curr = buffer2 [(int)pos.x, (int)pos.y];
+				}
+			}
+			pos.x += 2;
+			if (isValid (pos)) {
+				if (buffer2 [(int)pos.x, (int)pos.y] > curr) {
+					curr = buffer2 [(int)pos.x, (int)pos.y];
+				}
+			}
+			pos.x -= 1;
+			pos.y -= 1;
+			buffer1 [(int)pos.x, (int)pos.y] = curr - 1;
+		} else {
+			buffer1 [(int)pos.x, (int)pos.y] = - 1;
 		}
 	}
 }
