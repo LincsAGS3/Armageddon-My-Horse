@@ -23,8 +23,9 @@ public class Infantry_Movement : MonoBehaviour {
 	GameObject player;
 	//is there a player
 	bool playerFound = false;
-
-
+	//is it dead
+	public bool dead = false;
+	bool hit = false;
 
 	void Start () {
 
@@ -64,6 +65,14 @@ public class Infantry_Movement : MonoBehaviour {
 				//Debug.Log (gotoPoint);//output new target for bug testing
 				}
 			}else{
+				if(dead)
+				{
+					this.collider2D.enabled = false;
+					playerFound = false;
+					this.GetComponent<SpriteRenderer>().color = Color.red;
+					this.rigidbody2D.velocity = new Vector2 (0, 0);
+
+				}
 				if(playerFound)
 				{
 					//enemy position
@@ -120,6 +129,7 @@ public class Infantry_Movement : MonoBehaviour {
 			}
 			//move the character
 			if (StateControl.State != StateControl.state.Pause) {
+				if(!dead)
 				move ();
 			} else {
 				this.rigidbody2D.velocity = new Vector2 (0, 0);
@@ -170,7 +180,15 @@ public class Infantry_Movement : MonoBehaviour {
 	void OnCollisionEnter2D(Collision2D coll)
 	{
 		if (coll.transform.tag == "playerSword") {
-			Debug.Log("hurt");
+			if(hit)
+			{
+			Debug.Log("killed");
+			dead = true;
+			}
+			else
+			{
+				hit = true;
+			}
 		}
 	}
 }
