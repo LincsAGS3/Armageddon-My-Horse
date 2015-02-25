@@ -178,23 +178,19 @@ public class Infantry_Movement : MonoBehaviour {
 			gotoPoint = FindNextPoint (groupPoint.transform.position);
 		}
 	}
-	void OnCollisionEnter2D(Collision2D coll)
+	void damaged()
 	{
-		Debug.Log(coll.transform.tag);
-		if (coll.transform.tag == "playerSword") 
-		{
-
-			if(hit)
+		if(hit)
 			{
-			Debug.Log("killed");
-			dead = true;
+				Debug.Log("killed");
+				dead = true;
 			}
-
+			
 			else
 			{
 				Debug.Log("hit");
 				hit = true;
 			}
-		}
 	}
+
 }

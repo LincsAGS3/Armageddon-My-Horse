@@ -119,8 +119,7 @@ public class Cavalry_movement : MonoBehaviour {
 					{
 						this.rigidbody2D.velocity = new Vector2(0,0);
 						//behind
-						GotoPos = player.transform.position;
-						Debug.Log("Back");
+						GotoPos = player.transform.position - player.transform.up*2;
 					}
 					else
 					{
@@ -138,7 +137,6 @@ public class Cavalry_movement : MonoBehaviour {
 							//on the left
 							GotoPos = left;
 						}
-						Debug.Log("Front");
 					}
 					move ();
 					//move around the player
@@ -178,7 +176,6 @@ public class Cavalry_movement : MonoBehaviour {
 									RotAngle = Mathf.Acos((left.x-player.transform.position.x)/3);
 								}
 							}
-							Debug.Log("Back");
 						}
 						else
 						{
@@ -208,7 +205,6 @@ public class Cavalry_movement : MonoBehaviour {
 									RotAngle = Mathf.Acos((left.x-player.transform.position.x)/3);
 								}
 							}
-							Debug.Log("Front");
 						}
 						move ();
 					}
@@ -283,15 +279,13 @@ public class Cavalry_movement : MonoBehaviour {
 		}
 		//if we hit a wall
 		if (coll.gameObject.tag !="Player") {
-			Debug.Log ("collision");
 			//goto a new point
 			GotoPos = FindNextPoint (CurrentIdlePos);
 		}
 	}
 	void OnCollisionEnter2D(Collision2D coll) {
-		if (coll.transform.tag == "playerSword") {
+		if (coll.transform.tag == "Player") {
 			AttackCool = 2;
-			Debug.Log("attacked");
 			attacking = false;
 		}
 	}

@@ -22,38 +22,26 @@ public class Sword_Swing : MonoBehaviour {
 		} else {
 			swordSprite.collider2D.enabled = false;
 		}
-			if(top)
-			{
-				if(time > 1)
-				{
-					if(swing)
-					{
-						time = 0;
-						top = false;
-					}
+		if (top) {
+			if (time > 1) {
+				if (swing) {
+					time = 0;
+					top = false;
 				}
-				else
-				{
-					this.transform.Rotate (new Vector3 (0, 0, (180*Time.deltaTime)));
-					time += Time.deltaTime;
-				}
+			} else {
+				this.transform.Rotate (new Vector3 (0, 0, (180 * Time.deltaTime)));
+				time += Time.deltaTime;
 			}
-			else
-			{
-				if(time > 1)
-				{
-					if(swing)
-					{
-						time = 0;
-						top = true;
-					}
+		} else {
+			if (time > 1) {
+				if (swing) {
+					time = 0;
+					top = true;
 				}
-				else
-				{
-					this.transform.Rotate (new Vector3 (0, 0, -(180*Time.deltaTime)));
-					time += Time.deltaTime;
-				}
+			} else {
+				this.transform.Rotate (new Vector3 (0, 0, -(180 * Time.deltaTime)));
+				time += Time.deltaTime;
 			}
 		}
-
+	}
 }
