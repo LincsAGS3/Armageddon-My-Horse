@@ -1,12 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
-
 using KinectNet20;
 using KinectForWheelchair;
 
 public class KinectInputController : MonoBehaviour
 {
-
 	// Variables for output
 	public KinectForWheelchair.SeatedInfo InputInfo;
 
@@ -16,7 +14,6 @@ public class KinectInputController : MonoBehaviour
 
 	// Input processor
 	SeatedInfoProcessor inputProcessor;
-
 
 	// Use this for initialization
 	void Start ()
@@ -33,8 +30,9 @@ public class KinectInputController : MonoBehaviour
 		this.sensor = kinectSensors[0];
 		this.sensor.SkeletonStream.Enable();
 		if(!this.sensor.SkeletonStream.IsEnabled)
-            throw new UnityException("Sensor could not be enabled.");
-
+		{
+			throw new UnityException("Sensor could not be enabled.");
+		}
 		// Create the input processor
 		this.inputProcessor = new SeatedInfoProcessor();
 		//inputProcessor = new InputProcessor(this.sensor.CoordinateMapper, DepthImageFormat.Resolution320x240Fps30);
@@ -58,44 +56,45 @@ public class KinectInputController : MonoBehaviour
     }
 
 	// Update is called once per frame
-	void Update ()
+	void Update()
 	{
-
 		// Retrieve skeleton data
-		using(SkeletonFrame frame = this.sensor.SkeletonStream.OpenNextFrame(0))
+		using (SkeletonFrame frame = this.sensor.SkeletonStream.OpenNextFrame(0))
 		{
-			if(frame != null)
+			if (frame != null)
 			{
 				// Allocate memory if needed
-				if(skeletonData == null || skeletonData.Length != frame.SkeletonArrayLength)
+				if (skeletonData == null || skeletonData.Length != frame.SkeletonArrayLength)
 				{
 					skeletonData = new Skeleton[frame.SkeletonArrayLength];
-                }
-                
-                frame.CopySkeletonDataTo(skeletonData);
-            }
+				}
+
+				frame.CopySkeletonDataTo(skeletonData);
+			}
 		}
 
 
 		if (skeletonData == null)
+		{
 			return;
-
+		}
 		// Compute seated infos
-		SeatedInfo[] seatedInfos = this.inputProcessor.ComputeSeatedInfos (skeletonData);
+		SeatedInfo[] seatedInfos = this.inputProcessor.ComputeSeatedInfos(skeletonData);
 
 		// Get seated skeleton
 		int skeletonIndex = -1;
-		for (int i=0; i<skeletonData.Length; i++)
+		for (int i = 0; i < skeletonData.Length; i++)
 		{
-			if(seatedInfos[i].Posture == Posture.Seated)
+			if (seatedInfos[i].Posture == Posture.Seated)
+			{
 				skeletonIndex = i;
+			}
 		}
-
 		// Compute seated info
 		if (skeletonIndex != -1)
 		{
 			this.InputInfo = seatedInfos[skeletonIndex];
-			Debug.Log ("Tracking skeleton.");
+			Debug.Log("Tracking skeleton.");
 		}
 
 		/*
@@ -107,5 +106,4 @@ public class KinectInputController : MonoBehaviour
 		*/
 		return;
 	}
-
 }

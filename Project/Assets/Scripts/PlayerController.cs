@@ -14,9 +14,9 @@ public class PlayerController : MonoBehaviour
 	public float health = 10;
 	//player movement
 	void Update ()
-	{	
+	{
 		//takes input from A,D LeftArrow AND RightArrow
-		/*WheelchairMovementScript.CurrentAngle = */transform.Rotate (0, 0, -Input.GetAxis ("Horizontal") * rotateSpeed * Time.deltaTime);
+		transform.Rotate (0, 0, -Input.GetAxis ("Horizontal") * rotateSpeed * Time.deltaTime);
 		//Takes input from W, S, UpArrow and DownArrow
 		speed += Input.GetAxis ("Vertical") * speed * Time.deltaTime;
 		//Sets minimum and maximum speed values
@@ -24,14 +24,19 @@ public class PlayerController : MonoBehaviour
 	}
 	void FixedUpdate()
 	{
-		rigidbody.velocity = transform.up * speed;
+		rigidbody2D.velocity = transform.up * speed;
 	}
 	void OnTriggerEnter(Collider collider)
 	{
 		if (collider.tag == "Enemy")
+		//if (collider.tag == "Boss){ health-- --;} and so-on
 		{
-			//Function can be changed to remove health decrementally, or in this case, "insta-kill"
+			//Function can be changed to remove health decrementally or provide insta kill
 			health--;
+		}
+		if (health == 0)
+		{
+			//Game Over...
 		}
 	}
 }

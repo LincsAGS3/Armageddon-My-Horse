@@ -1188,9 +1188,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 179621877}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c47fc24941420f4f803aca36a90d490, type: 3}
+  m_Script: {fileID: 11500000, guid: 46fd7e9b96fb681498640b99f8d3b933, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  kinectInputController: {fileID: 498902739}
   speed: 5
   rotateSpeed: 50
   health: 10
@@ -1977,7 +1978,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: .300000012
-  far clip plane: 1000
+  far clip plane: 100
   field of view: 60
   orthographic: 1
   orthographic size: 15
