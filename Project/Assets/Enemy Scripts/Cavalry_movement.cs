@@ -87,7 +87,7 @@ public class Cavalry_movement : MonoBehaviour {
 				{
 				case AiType.Intercept:
 					//player speed and our speed
-					Vector2 pSpeed = player.rigidbody.velocity;
+					Vector2 pSpeed = player.rigidbody2D.velocity;
 					Vector2 eSpeed = this.rigidbody2D.velocity;
 					//player pos in x seconds
 					GotoPos = (Vector2)player.transform.position + pSpeed*Itime;

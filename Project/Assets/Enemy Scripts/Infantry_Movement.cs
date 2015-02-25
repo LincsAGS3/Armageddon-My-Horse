@@ -171,6 +171,7 @@ public class Infantry_Movement : MonoBehaviour {
 
 
 		//if we hit a wall
+		if(coll != null)
 		if (coll.gameObject.tag !="Player") {
 			Debug.Log ("collision");
 			//goto a new point
@@ -179,14 +180,19 @@ public class Infantry_Movement : MonoBehaviour {
 	}
 	void OnCollisionEnter2D(Collision2D coll)
 	{
-		if (coll.transform.tag == "playerSword") {
+		Debug.Log(coll.transform.tag);
+		if (coll.transform.tag == "playerSword") 
+		{
+
 			if(hit)
 			{
 			Debug.Log("killed");
 			dead = true;
 			}
+
 			else
 			{
+				Debug.Log("hit");
 				hit = true;
 			}
 		}
