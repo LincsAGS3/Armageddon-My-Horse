@@ -20,7 +20,7 @@ public class PathFinding : MonoBehaviour {
 	public static int[,] level;
 	public GameObject player;
 	//grid size
-	public static int gridSize = 200;
+	public static int gridSize = 250;
 
 	void Start () {
 		level = new int[gridSize, gridSize];

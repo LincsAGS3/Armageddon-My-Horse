@@ -159,12 +159,17 @@ public class Infantry_Movement : MonoBehaviour {
 	//check for continuous collisions
 	void OnCollisionStay2D(Collision2D coll) {
 		//if we hit another enemy
-		if (coll.gameObject.tag == this.tag) {
-			//move away from the enemy
-			float rotation = (float)Math.Atan2 (this.transform.position.y - coll.transform.position.y,this.transform.position.x - coll.transform.position.x);
-			Vector2 moveAway = new Vector2((-(float)Math.Cos(rotation)),(-(float)Math.Sin(rotation)));
-			this.rigidbody2D.velocity = moveAway*6f;
-		}
+
+		//commented out due to lag
+
+		//if (coll.gameObject.tag == this.tag) {
+		//	//move away from the enemy
+		//	float rotation = (float)Math.Atan2 (this.transform.position.y - coll.transform.position.y,this.transform.position.x - coll.transform.position.x);
+		//	Vector2 moveAway = new Vector2((-(float)Math.Cos(rotation)),(-(float)Math.Sin(rotation)));
+		//	this.rigidbody2D.velocity = moveAway*6f;
+		//}
+
+
 		//if we hit a wall
 		if (coll.gameObject.tag !="Player") {
 			Debug.Log ("collision");
