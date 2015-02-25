@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
+using KinectNet20;
+using KinectForWheelchair;
 
 public class PlayerController : MonoBehaviour
 {
@@ -12,7 +14,7 @@ public class PlayerController : MonoBehaviour
 	public float health = 10;
 	//player movement
 	void Update ()
-	{	
+	{
 		//takes input from A,D LeftArrow AND RightArrow
 		transform.Rotate (0, 0, -Input.GetAxis ("Horizontal") * rotateSpeed * Time.deltaTime);
 		//Takes input from W, S, UpArrow and DownArrow
@@ -22,14 +24,19 @@ public class PlayerController : MonoBehaviour
 	}
 	void FixedUpdate()
 	{
-		rigidbody.velocity = transform.up * speed;
+		rigidbody2D.velocity = transform.up * speed;
 	}
 	void OnTriggerEnter(Collider collider)
 	{
 		if (collider.tag == "Enemy")
+		//if (collider.tag == "Boss){ health-- --;} and so-on
 		{
-			//Function can be changed to remove health decrementally, orm in this case, "insta-kill"
+			//Function can be changed to remove health decrementally or provide insta kill
 			health--;
+		}
+		if (health == 0)
+		{
+			//Game Over...
 		}
 	}
 }

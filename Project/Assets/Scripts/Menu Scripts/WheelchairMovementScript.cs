@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
+using KinectNet20;
+using KinectForWheelchair;
 
 public class WheelchairMovementScript : MonoBehaviour
 {
