@@ -26,10 +26,10 @@ public class PlayerController : MonoBehaviour
 	{
 		rigidbody2D.velocity = transform.up * speed;
 	}
-	void OnTriggerEnter(Collider collider)
+	void OnCollisionEnter2D(Collision2D coll)
 	{
-		if (collider.tag == "Enemy")
-		//if (collider.tag == "Boss){ health-- --;} and so-on
+		if (coll.collider.tag == "Enemy")
+			//if (collider.tag == "Boss){ lose more health--;} and so-on
 		{
 			//Function can be changed to remove health decrementally or provide insta kill
 			health--;
@@ -37,6 +37,7 @@ public class PlayerController : MonoBehaviour
 		if (health == 0)
 		{
 			//Game Over...
+			MenuGameMenuStateScript.MenuStateChange(2);
 		}
 	}
 }

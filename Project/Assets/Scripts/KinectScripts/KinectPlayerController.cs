@@ -48,9 +48,9 @@ public class KinectPlayerController : MonoBehaviour
 	{
 		rigidbody2D.velocity = transform.up * speed;
 	}
-	void OnTriggerEnter(Collider collider)
+	void OnCollisionEnter2D(Collision2D coll)
 	{
-		if (collider.tag == "Enemy")
+		if (coll.collider.tag == "Enemy")
 		//if (collider.tag == "Boss){ lose more health--;} and so-on
 		{
 			//Function can be changed to remove health decrementally or provide insta kill
@@ -59,6 +59,7 @@ public class KinectPlayerController : MonoBehaviour
 		if (health == 0)
 		{
 			//Game Over...
+			MenuGameMenuStateScript.MenuStateChange(2);
 		}
 	}
 }
