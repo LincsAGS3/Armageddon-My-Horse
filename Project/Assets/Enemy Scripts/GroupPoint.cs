@@ -16,6 +16,14 @@ public class GroupPoint : MonoBehaviour {
 	void Update () {
 		//Set the size
 		size = enemies.Count;
+		for (int i = 0; i < size; i++) {
+			if(enemies[i].GetComponent<Infantry_Movement>().dead)
+			{
+				enemies.RemoveAt(i);
+				break;
+				size -=1;
+			}
+		}
 		//set the vacancy flag
 		if (size < maxSize) {
 			vacancy = true;
