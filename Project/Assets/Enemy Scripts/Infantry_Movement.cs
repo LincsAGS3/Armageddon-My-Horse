@@ -88,7 +88,6 @@ public class Infantry_Movement : MonoBehaviour {
 							gotoPoint = This_pos;
 							current = PathFinding.buffer1[(int)This_pos.x,(int)This_pos.y]+1;
 						}
-						Debug.Log("R "+This_pos + " : "+PathFinding.buffer1[(int)This_pos.x,(int)This_pos.y]);
 						This_pos.x -= 2;
 						if(current < PathFinding.buffer1[(int)This_pos.x,(int)This_pos.y])
 						{
@@ -96,7 +95,6 @@ public class Infantry_Movement : MonoBehaviour {
 							gotoPoint.x -=1;
 							current = PathFinding.buffer1[(int)This_pos.x,(int)This_pos.y];
 						}
-						Debug.Log("L "+This_pos + " : "+PathFinding.buffer1[(int)This_pos.x,(int)This_pos.y]);
 						This_pos.x += 1;
 						This_pos.y -= 1;
 						if(current < PathFinding.buffer1[(int)This_pos.x,(int)This_pos.y])
@@ -104,7 +102,6 @@ public class Infantry_Movement : MonoBehaviour {
 							gotoPoint = This_pos;
 							current = PathFinding.buffer1[(int)This_pos.x,(int)This_pos.y];
 						}
-						Debug.Log("B "+This_pos + " : "+PathFinding.buffer1[(int)This_pos.x,(int)This_pos.y]);
 						This_pos.y += 2;
 						if(current-1 < PathFinding.buffer1[(int)This_pos.x,(int)This_pos.y])
 						{
@@ -112,8 +109,6 @@ public class Infantry_Movement : MonoBehaviour {
 							gotoPoint.y +=1;
 							current = PathFinding.buffer1[(int)This_pos.x,(int)This_pos.y];
 						}
-						Debug.Log("T "+This_pos + " : "+PathFinding.buffer1[(int)This_pos.x,(int)This_pos.y]);
-						Debug.Log(current+ " : " + gotoPoint);
 					}
 
 					//move
