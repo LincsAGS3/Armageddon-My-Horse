@@ -23,7 +23,7 @@ public class WheelchairMovementScript : MonoBehaviour
 
 		void OnGUI ()
 		{
-				GUI.Label (new Rect (10, 10, 200, 20), "CurrentAngle: " + CurrentAngle);  //  Display the CurrentAngle on a label in the top left
-				GUI.Label (new Rect (10, 70, 200, 20), "Player MovedFowards: " + MovedFowards);  //  Display the MovedFowards on a label in the top left
+				GUI.Label (new Rect (600, 10, 200, 20), "CurrentAngle: " + CurrentAngle);  //  Display the CurrentAngle on a label in the top left
+				GUI.Label (new Rect (600, 25, 200, 20), "Player MovedFowards: " + MovedFowards);  //  Display the MovedFowards on a label in the top left
 		}
 }

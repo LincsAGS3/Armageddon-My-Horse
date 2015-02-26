@@ -184,8 +184,9 @@ public class Infantry_Movement : MonoBehaviour {
 			{
 				Debug.Log("killed");
 				dead = true;
+			Player.TotalEnemiesKilled += 1; // added for GUI to add to total of enemies killed
 			}
-			
+	
 			else
 			{
 				Debug.Log("hit");

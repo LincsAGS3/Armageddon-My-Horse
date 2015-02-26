@@ -4925,6 +4925,10 @@ Prefab:
       propertyPath: m_Transition
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 100028, guid: 5ce1afce10f31c4458d66e5d22f55643, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5ce1afce10f31c4458d66e5d22f55643, type: 2}
   m_RootGameObject: {fileID: 1437696660}
