@@ -1,0 +1,7 @@
+The new artifacts* are "Ready to Ship" (with regards to the goal of the current sprint)
+All acceptance criteria are passed (the work done is appropriate)
+All regression tests are passed (nothing has been broken)
+The new artifacts have been committed to the repositiory
+New regression tests have been included for the new artifacts and these have been added to the list
+
+(*artifacts in this sense are the result of work, e.g. code or art assets)
