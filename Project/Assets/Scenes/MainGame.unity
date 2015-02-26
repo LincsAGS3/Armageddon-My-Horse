@@ -5500,7 +5500,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 61cabd005d1e396488d9bcb7900ee951, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -22553,7 +22553,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 61cabd005d1e396488d9bcb7900ee951, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -23398,7 +23398,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 61cabd005d1e396488d9bcb7900ee951, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -26735,7 +26735,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 45e39489c7b4e5045a3b71efbe2640f7, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -35064,7 +35064,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 45e39489c7b4e5045a3b71efbe2640f7, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -37601,7 +37601,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 45e39489c7b4e5045a3b71efbe2640f7, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -39140,6 +39140,57 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: ca9811a61694a5b4e9af62c4868cdfe5, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: ca9811a61694a5b4e9af62c4868cdfe5, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11440516, guid: ca9811a61694a5b4e9af62c4868cdfe5, type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 45e39489c7b4e5045a3b71efbe2640f7,
+        type: 3}
+    - target: {fileID: 11440506, guid: ca9811a61694a5b4e9af62c4868cdfe5, type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 61cabd005d1e396488d9bcb7900ee951,
+        type: 3}
+    - target: {fileID: 11440522, guid: ca9811a61694a5b4e9af62c4868cdfe5, type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 61cabd005d1e396488d9bcb7900ee951,
+        type: 3}
+    - target: {fileID: 11440524, guid: ca9811a61694a5b4e9af62c4868cdfe5, type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 45e39489c7b4e5045a3b71efbe2640f7,
+        type: 3}
+    - target: {fileID: 11440538, guid: ca9811a61694a5b4e9af62c4868cdfe5, type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 45e39489c7b4e5045a3b71efbe2640f7,
+        type: 3}
+    - target: {fileID: 11440530, guid: ca9811a61694a5b4e9af62c4868cdfe5, type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 61cabd005d1e396488d9bcb7900ee951,
+        type: 3}
+    - target: {fileID: 11440536, guid: ca9811a61694a5b4e9af62c4868cdfe5, type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 096cd09a8146212458fc7d36831a0cf6,
+        type: 3}
+    - target: {fileID: 22440542, guid: ca9811a61694a5b4e9af62c4868cdfe5, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22440542, guid: ca9811a61694a5b4e9af62c4868cdfe5, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 11400024, guid: ca9811a61694a5b4e9af62c4868cdfe5, type: 2}
     - {fileID: 11400020, guid: ca9811a61694a5b4e9af62c4868cdfe5, type: 2}
@@ -39839,7 +39890,7 @@ RectTransform:
     type: 2}
   m_PrefabInternal: {fileID: 1697075532}
   m_GameObject: {fileID: 1721584364}
-  m_LocalRotation: {x: 0, y: 0, z: .382683486, w: .923879564}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 0}
   m_Children: []
@@ -39864,7 +39915,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 096cd09a8146212458fc7d36831a0cf6, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
