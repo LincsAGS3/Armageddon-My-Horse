@@ -31,12 +31,9 @@ public class KinectPlayerController : MonoBehaviour
 			return;
 
 		//Debug.Log (inputInfo.Features.Position);
-		//this.transform.position = new Vector2(0, -(inputInfo.Features.Position.y)) * 5;
-		//this.transform.forward = new Vector2(0, -(inputInfo.Features.Direction.y)) * 5;
-		
-		//this.transform.rotation = new Quaternion(0, 0, -1*(inputInfo.Features.Angle/(90)) * rotateSpeed * Time.deltaTime, 1);
 
-		transform.Rotate(0, 0, -1 * (inputInfo.Features.Angle / (90)) * rotateSpeed * Time.deltaTime);
+		//transform.Rotate(0, 0, -1 * (inputInfo.Features.Angle / (90)) * rotateSpeed * Time.deltaTime);
+		transform.Rotate(0, 0, -(inputInfo.Features.Angle) * Time.deltaTime);
 
 		speed += inputInfo.Features.Position.y * speed * Time.deltaTime;
 
