@@ -6,26 +6,28 @@ using KinectForWheelchair;
 public class PlayerController : MonoBehaviour
 {
 	//player controller
+	/*Moved to Player.cs script as it was duplicated in two scripts
 	//player speed
 	public float speed = 5;
 	//player rotate speed
 	public float rotateSpeed = 50;
 	//Player Health
 	public float health = 10;
-	//player movement
+	*/
 	void Update ()
 	{
 		//takes input from A,D LeftArrow AND RightArrow
-		transform.Rotate (0, 0, -Input.GetAxis ("Horizontal") * rotateSpeed * Time.deltaTime);
+		transform.Rotate (0, 0, -Input.GetAxis ("Horizontal") * Player.rotateSpeed * Time.deltaTime);
 		//Takes input from W, S, UpArrow and DownArrow
-		speed += Input.GetAxis ("Vertical") * speed * Time.deltaTime;
+		Player.speed += Input.GetAxis ("Vertical") * Player.speed * Time.deltaTime;
 		//Sets minimum and maximum speed values
-		speed = Mathf.Clamp (speed, 1, 10);
+		Player.speed = Mathf.Clamp (Player.speed, 1, 10);
 	}
 	void FixedUpdate()
 	{
-		rigidbody2D.velocity = transform.up * speed;
+		rigidbody2D.velocity = transform.up * Player.speed;
 	}
+	/*  Moved to Player.cs script as it was duplicated in two scripts
 	void OnCollisionEnter2D(Collision2D coll)
 	{
 		if (coll.collider.tag == "Enemy")
@@ -40,4 +42,5 @@ public class PlayerController : MonoBehaviour
 			MenuGameMenuStateScript.MenuStateChange(2);
 		}
 	}
+	*/
 }
