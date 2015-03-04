@@ -3,7 +3,7 @@
 --- !u!78 &1
 TagManager:
   tags:
-  - 
+  - Cavalry
   - Enemy
   - playerSword
   - Wall
@@ -15,6 +15,7 @@ TagManager:
   - Land
   - Castle
   - Wall
+  - 
   - 
   Builtin Layer 0: Default
   Builtin Layer 1: TransparentFX
