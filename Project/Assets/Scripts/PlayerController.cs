@@ -14,10 +14,12 @@ public class PlayerController : MonoBehaviour
 	//Player Health
 	public float health = 10;
 	*/
+	public static float rotAngle = 0; 
 	void Update ()
 	{
+		rotAngle = -Input.GetAxis ("Horizontal");
 		//takes input from A,D LeftArrow AND RightArrow
-		transform.Rotate (0, 0, -Input.GetAxis ("Horizontal") * Player.rotateSpeed * Time.deltaTime);
+		transform.Rotate (0, 0, rotAngle * Player.rotateSpeed * Time.deltaTime);
 		//Takes input from W, S, UpArrow and DownArrow
 		Player.speed += Input.GetAxis ("Vertical") * Player.speed * Time.deltaTime;
 		//Sets minimum and maximum speed values

@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Cavalry_movement : MonoBehaviour {
 
-	public int health = 5;
+	public int health = 20;
 
 	float maxSpeed = 11;
 	float MaxTurningSpeed = 4;
@@ -59,6 +59,11 @@ public class Cavalry_movement : MonoBehaviour {
 			break;
 		}
 		Debug.Log (Ai);
+	}
+	void takeDamage(int damage)
+	{
+		health -= damage;
+		Debug.Log("hurt");
 	}
 	
 	// Update is called once per frame
@@ -233,7 +238,6 @@ public class Cavalry_movement : MonoBehaviour {
 							}
 						}
 						attackTimer -= Time.deltaTime;
-						Debug.Log(attackTimer);
 						}
 						else
 						{

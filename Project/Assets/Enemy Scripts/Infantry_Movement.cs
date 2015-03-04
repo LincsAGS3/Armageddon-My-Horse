@@ -25,6 +25,8 @@ public class Infantry_Movement : MonoBehaviour {
 	bool playerFound = false;
 	//is it dead
 	public bool dead = false;
+	//reached first point
+	bool donefirst = false;
 	bool hit = false;
 
 	void Start () {
@@ -61,6 +63,10 @@ public class Infantry_Movement : MonoBehaviour {
 			if(!alert)
 			{
 				if (Vector2.Distance (gotoPoint, this.transform.position) < 1) {
+					if(gotoPoint != (Vector2)transform.position)
+					{
+						donefirst = true;
+					}
 					gotoPoint = FindNextPoint (groupPoint.transform.position);
 				//Debug.Log (gotoPoint);//output new target for bug testing
 				}
@@ -144,8 +150,14 @@ public class Infantry_Movement : MonoBehaviour {
 	void move()//smoothly move towards gotoPoint
 	{
 		//if speed isnt at the max then increase the speed
-		if (currentSpeed < maxSpeed) {
-			currentSpeed += (maxSpeed - currentSpeed)/10;
+		if (!donefirst) {
+			if (currentSpeed < maxSpeed*2) {
+				currentSpeed += (maxSpeed - currentSpeed) / 10;
+			}
+		} else {
+			if (currentSpeed < maxSpeed) {
+				currentSpeed += (maxSpeed - currentSpeed) / 10;
+			}
 		}
 		//find the angle between the current position and the goal
 		float rotation = (float)Math.Atan2 (this.transform.position.y - gotoPoint.y, this.transform.position.x - gotoPoint.x);
@@ -169,13 +181,14 @@ public class Infantry_Movement : MonoBehaviour {
 		//	this.rigidbody2D.velocity = moveAway*6f;
 		//}
 
-
+		Debug.Log(donefirst);
 		//if we hit a wall
 		if(coll != null)
 		if (coll.gameObject.tag !="Player") {
-			Debug.Log ("collision");
-			//goto a new point
-			gotoPoint = FindNextPoint (groupPoint.transform.position);
+
+				//goto a new point
+				gotoPoint = FindNextPoint (groupPoint.transform.position);
+
 		}
 	}
 	void damaged()

@@ -17,6 +17,7 @@ public class GroupPoint : MonoBehaviour {
 		//Set the size
 		size = enemies.Count;
 		for (int i = 0; i < size; i++) {
+			enemies[i].GetComponent<Infantry_Movement>().groupPoint = gameObject;
 			if(enemies[i].GetComponent<Infantry_Movement>().dead)
 			{
 				enemies.RemoveAt(i);
