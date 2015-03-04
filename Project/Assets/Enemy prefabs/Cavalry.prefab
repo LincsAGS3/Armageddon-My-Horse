@@ -14,7 +14,7 @@ GameObject:
   - 114: {fileID: 11429674}
   m_Layer: 0
   m_Name: Cavalry
-  m_TagString: Untagged
+  m_TagString: Cavalry
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
