@@ -14,7 +14,7 @@ public class Player : MonoBehaviour {
 	void Start () {
 		//these are here so that if you restart the game there values are reset
 		TotalEnemiesKilled = 0;
-		PlayerHealth = 100;
+		PlayerHealth = 1;
 		speed = 5;
 		rotateSpeed = 50;
 	}
