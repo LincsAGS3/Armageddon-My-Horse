@@ -53,3 +53,11 @@ TagManager:
     userID: 0
     uniqueID: 0
     locked: 0
+  - name: Canvas
+    userID: 1
+    uniqueID: 365552809
+    locked: 0
+  - name: Particles
+    userID: 2
+    uniqueID: 1677207561
+    locked: 0
