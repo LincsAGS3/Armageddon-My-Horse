@@ -59,6 +59,7 @@ public class KinectInputController : MonoBehaviour
 	void Update()
 	{
 		// Retrieve skeleton data
+		if (false)
 		using (SkeletonFrame frame = this.sensor.SkeletonStream.OpenNextFrame(0))
 		{
 			if (frame != null)

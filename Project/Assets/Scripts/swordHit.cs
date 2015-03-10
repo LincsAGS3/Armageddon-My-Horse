@@ -16,8 +16,8 @@ public class swordHit : MonoBehaviour {
 	{
 		Debug.Log ("sword hit");
 			
-		if (coll.transform.tag == "Enemy") {
-				
+		if (coll.transform.tag == "Enemy" ||coll.transform.tag == "Rider") {
+			Debug.Log("sending message");
 			coll.gameObject.SendMessage ("damaged");
 		}
 

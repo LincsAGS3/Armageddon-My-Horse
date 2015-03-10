@@ -32,11 +32,10 @@ public class door_open : MonoBehaviour {
 		} else {
 			open = false;
 		}
-		Debug.Log (enemies);
 		if (prev != open) {
 			changeDoorState();
 		}
-		if (enemies < 128) {
+		if (enemies < 0) {
 			timer -= Time.deltaTime;
 			if (timer < 0) {
 				timer = 0.625f;

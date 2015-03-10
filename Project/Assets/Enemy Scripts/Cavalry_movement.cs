@@ -5,7 +5,7 @@ public class Cavalry_movement : MonoBehaviour {
 
 	public int health = 20;
 
-	float maxSpeed = 11;
+	float maxSpeed = 8;
 	float MaxTurningSpeed = 4;
 	float Acceleration = 11;
 	float MaxRotationSpeed = 30;
@@ -31,10 +31,14 @@ public class Cavalry_movement : MonoBehaviour {
 	float RotAngle = 0;
 	float attackTimer = 0;
 	bool attacking = false;
+	public bool mounted = true;
+
+	GameObject rider;
 
 	float Itime = 5;
 
 	void Start () {
+		rider = this.transform.GetChild (0).gameObject;
 		//find a group point
 		CurrentIdlePos = GameObject.FindGameObjectWithTag ("Group").transform.position;
 		GotoPos = FindNextPoint (CurrentIdlePos);
@@ -64,6 +68,8 @@ public class Cavalry_movement : MonoBehaviour {
 	{
 		health -= damage;
 		Debug.Log("hurt");
+		rider.GetComponent<RiderMovement> ().Mounted = false;
+		mounted = false;
 	}
 	
 	// Update is called once per frame
@@ -255,12 +261,16 @@ public class Cavalry_movement : MonoBehaviour {
 
 	void move()
 	{
-		transform.rigidbody2D.velocity = transform.up * CurrentSpeed;
-		Vector3 vectorToTarget = GotoPos - (Vector2)transform.position;
-		float angle = Mathf.Atan2(vectorToTarget.y, vectorToTarget.x) * Mathf.Rad2Deg;
-		angle -= 90;
-		Quaternion q = Quaternion.AngleAxis(angle, Vector3.forward);
-		transform.rotation = Quaternion.Slerp(transform.rotation, q, Time.deltaTime * 3);
+		if (mounted) {
+			transform.rigidbody2D.velocity = transform.up * CurrentSpeed;
+			Vector3 vectorToTarget = GotoPos - (Vector2)transform.position;
+			float angle = Mathf.Atan2 (vectorToTarget.y, vectorToTarget.x) * Mathf.Rad2Deg;
+			angle -= 90;
+			Quaternion q = Quaternion.AngleAxis (angle, Vector3.forward);
+			transform.rotation = Quaternion.Slerp (transform.rotation, q, Time.deltaTime * 1);
+		} else {
+			transform.rigidbody2D.velocity = new Vector2(0,0);
+		}
 	}
 
 	Vector2 FindNextPoint(Vector2 centre)//calculate a point around the centre within a 15 unit radius
