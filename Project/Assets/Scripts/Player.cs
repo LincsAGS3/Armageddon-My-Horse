@@ -38,4 +38,8 @@ public class Player : MonoBehaviour {
 			MenuGameMenuStateScript.MenuStateChange(2);
 		}
 	}
+	public static void hit(int damage)
+	{
+		PlayerHealth -= damage;
+	}
 }

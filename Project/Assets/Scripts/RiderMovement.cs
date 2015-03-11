@@ -30,17 +30,16 @@ public class RiderMovement : MonoBehaviour {
 			direction.Normalize();
 			transform.position = Vector2.MoveTowards(transform.position,Horse.transform.position,
 			                                         2*Time.deltaTime);
-			if(Vector2.Distance(this.transform.position, Horse.transform.position)<1)
+			if(Vector2.Distance(this.transform.position, Horse.transform.position)<2)
 			{
 				Mounted = true;
 				this.transform.parent = Horse.transform;
 				fallen = false;
 				speed = 5;
 				timer = 5;
-				this.transform.localPosition = new Vector2(0,0);
+				this.transform.localPosition = new Vector3(0,0,-1);
+				Horse.GetComponent<FamineBehavior>().mounted = true;
 				Destroy(rigidbody2D);
-				Horse.GetComponent<Cavalry_movement>().mounted = true;
-
 			}
 		}
 		else if (!Mounted) {
@@ -60,13 +59,18 @@ public class RiderMovement : MonoBehaviour {
 		if (other.tag == "Player") {
 			if (Player.speed > 8) {
 				Debug.Log ("trample");
-				Horse.GetComponent<Cavalry_movement> ().health -= 5;
+				Horse.GetComponent<Cavalry_movement> ().health -= 1;
 			}
 		}
 	}
 	void damaged()
 	{
 		Debug.Log("sword");
-		Horse.GetComponent<Cavalry_movement> ().health -= 5;
+		if (Horse.tag == "Cavalry") {
+			Horse.GetComponent<Cavalry_movement> ().health -= 1;
+		}
+		if (Horse.tag == "Famine") {
+			Horse.GetComponent<FamineBehavior> ().health -= 1;
+		}
 	}
 }

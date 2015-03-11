@@ -13,8 +13,8 @@ public class LanceTrigger : MonoBehaviour {
 	
 	}
 	void OnTriggerEnter2D(Collider2D other) {
-		if (other.tag == "Cavalry") {
-			other.SendMessage("takeDamage",5);
+		if (other.tag == "Cavalry"||other.tag == "Famine") {
+			other.SendMessage("takeDamage",1);
 		}
 	}
 }

@@ -1,31 +1,30 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Cavalry_movement : MonoBehaviour {
-
-	public int health = 20;
-
+public class FamineBehavior : MonoBehaviour {
+	public int health = 30;
+	
 	float maxSpeed = 8;
 	float MaxTurningSpeed = 4;
 	float Acceleration = 11;
 	float MaxRotationSpeed = 30;
-
+	
 	float CurrentSpeed = 11;
-
+	
 	Vector2 CurrentIdlePos = new Vector2(-1,-1);
 	Vector2 GotoPos = new Vector2(0,0);
-
+	
 	bool Alert = false;
-
+	
 	enum AiType {Intercept, Follow, Circle};
 	AiType Ai = AiType.Circle;
 	float AttackCool = 0;
-
+	
 	//player game object reference
 	GameObject player;
 	//is there a player
 	bool playerFound = false;
-
+	
 	bool clockWise = false;
 	bool rotateNow = false;
 	float RotAngle = 0;
@@ -34,11 +33,11 @@ public class Cavalry_movement : MonoBehaviour {
 	public bool mounted = true;
 
 	public float damage = 5;
-
+	
 	GameObject rider;
-
+	
 	float Itime = 5;
-
+	
 	void Start () {
 		rider = this.transform.GetChild (0).gameObject;
 		//find a group point
@@ -53,18 +52,7 @@ public class Cavalry_movement : MonoBehaviour {
 			playerFound = true;
 		}
 		//random AI
-		switch (Random.Range ((int)0, (int)3)) {
-		case 0:
-			Ai = AiType.Circle;
-			break;
-		case 1:
-			Ai = AiType.Follow;
-			break;
-		case 2:
-			Ai = AiType.Intercept;
-			break;
-		}
-		Debug.Log (Ai);
+		Ai = AiType.Intercept;
 	}
 	void takeDamage(int damage)
 	{
@@ -76,6 +64,8 @@ public class Cavalry_movement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		damage = 5*(1f-((float)health / 30f) +0.5f);
+		Debug.Log ("d: "+damage);
 		//move forwards
 		if (Vector2.Distance (this.transform.position, player.transform.position) < 15) {
 			Alert = true;
@@ -84,6 +74,9 @@ public class Cavalry_movement : MonoBehaviour {
 			Itime = 5;
 			rotateNow = false;
 			attackTimer = 0;
+		}
+		if (health < 15) {
+			Ai = AiType.Follow;
 		}
 		if(playerFound) 
 		{
@@ -103,7 +96,7 @@ public class Cavalry_movement : MonoBehaviour {
 					Vector2 pSpeed = player.rigidbody2D.velocity;
 					Vector2 eSpeed = this.rigidbody2D.velocity;
 					//player pos in x seconds
-					GotoPos = (Vector2)player.transform.position + pSpeed*Itime;
+					GotoPos = (Vector2)player.transform.position -pSpeed.normalized+ pSpeed*Itime;
 					float dist = Vector2.Distance(GotoPos, this.transform.position);
 					float TimeToIntercept = dist/eSpeed.magnitude;
 					if(TimeToIntercept <Itime)
@@ -124,7 +117,7 @@ public class Cavalry_movement : MonoBehaviour {
 					}
 					break;
 				case AiType.Follow:
-
+					
 					//are we infront of the player?
 					DircetTowards = this.transform.position- player.transform.position;
 					angle = Vector2.Angle(player.transform.up, DircetTowards );
@@ -132,7 +125,7 @@ public class Cavalry_movement : MonoBehaviour {
 					{
 						this.rigidbody2D.velocity = new Vector2(0,0);
 						//behind
-						GotoPos = player.transform.position - player.transform.up*2;
+						GotoPos = player.transform.position - player.transform.up*3;
 					}
 					else
 					{
@@ -152,115 +145,13 @@ public class Cavalry_movement : MonoBehaviour {
 						}
 					}
 					move ();
-					//move around the player
-
-					//attack in the rear
-					break;
-				case AiType.Circle:
-					//are we infront of the player?
-					DircetTowards = this.transform.position- player.transform.position;
-					angle = Vector2.Angle(player.transform.up, DircetTowards );
-					if(!rotateNow)
-					{
-						attacking = false;
-						if(angle > 90)
-						{
-							Vector2 left = player.transform.position -(player.transform.right*3);
-							Vector2 right = player.transform.position +(player.transform.right*3);
-							if(Vector2.Distance(this.transform.position,left)> Vector2.Distance(this.transform.position, right))
-							{
-								//on the right
-								clockWise = false;
-								GotoPos = right;
-								if(Vector2.Distance(this.transform.position,right)<4)
-								{
-									rotateNow = true;
-									RotAngle = Mathf.Acos((right.x-player.transform.position.x)/3);
-								}
-							}
-							else
-							{
-								//on the left
-								clockWise = true;
-								GotoPos = left;
-								if(Vector2.Distance(this.transform.position,left)<4)
-								{
-									rotateNow = true;
-									RotAngle = Mathf.Acos((left.x-player.transform.position.x)/3);
-								}
-							}
-						}
-						else
-						{
-							//infront
-							//create points at either side of and behind the player
-							Vector2 left = player.transform.position -(player.transform.right*3);
-							Vector2 right = player.transform.position +(player.transform.right*3);
-							if(Vector2.Distance(this.transform.position,left)> Vector2.Distance(this.transform.position, right))
-							{
-								//on the right
-								clockWise = true;
-								GotoPos = right;
-								if(Vector2.Distance(this.transform.position,right)<4)
-								{
-									rotateNow = true;
-									RotAngle = Mathf.Acos((right.x-player.transform.position.x)/3);
-								}
-							}
-							else
-							{
-								//on the left
-								clockWise = false;
-								GotoPos = left;
-								if(Vector2.Distance(this.transform.position,left)<4)
-								{
-									rotateNow = true;
-									RotAngle = Mathf.Acos((left.x-player.transform.position.x)/3);
-								}
-							}
-						}
-						move ();
-					}
-					else
-					{
-						if(attackTimer <= 0)
-						{
-							attackTimer = Random.Range(10,15);
-							GotoPos = player.transform.position;
-							Debug.Log("Attack!");
-							attacking = true;
-						}
-						if(!attacking)
-						{
-						GotoPos.x = player.transform.position.x +7*Mathf.Cos(RotAngle);
-						GotoPos.y = player.transform.position.y +7*Mathf.Sin(RotAngle);
-						if(Vector2.Distance(this.transform.position, GotoPos)<2)
-						{
-							if(clockWise)
-							{
-								RotAngle+= 20;
-							}
-							else
-							{
-								RotAngle-=20;
-							}
-						}
-						attackTimer -= Time.deltaTime;
-						}
-						else
-						{
-							GotoPos = player.transform.position;
-						}
-						move();
-					}
-
 					break;
 				}
 			}
 		}
-
+		
 	}
-
+	
 	void move()
 	{
 		if (mounted) {
@@ -269,12 +160,12 @@ public class Cavalry_movement : MonoBehaviour {
 			float angle = Mathf.Atan2 (vectorToTarget.y, vectorToTarget.x) * Mathf.Rad2Deg;
 			angle -= 90;
 			Quaternion q = Quaternion.AngleAxis (angle, Vector3.forward);
-			transform.rotation = Quaternion.Slerp (transform.rotation, q, Time.deltaTime * 1);
+			transform.rotation = Quaternion.Slerp (transform.rotation, q, Time.deltaTime * 3);
 		} else {
 			transform.rigidbody2D.velocity = new Vector2(0,0);
 		}
 	}
-
+	
 	Vector2 FindNextPoint(Vector2 centre)//calculate a point around the centre within a 15 unit radius
 	{
 		//create a random vector 2 with a magnitude of 1
@@ -284,7 +175,7 @@ public class Cavalry_movement : MonoBehaviour {
 		//return new value
 		return centre+rnd;
 	}
-
+	
 	void OnCollisionStay2D(Collision2D coll) {
 		//if we hit another enemy
 		if (coll.gameObject.tag == this.tag) {
@@ -301,8 +192,6 @@ public class Cavalry_movement : MonoBehaviour {
 	}
 	void OnCollisionEnter2D(Collision2D coll) {
 		if (coll.transform.tag == "Player") {
-			AttackCool = 2;
-			attacking = false;
 		}
 	}
 	public void attacked()
