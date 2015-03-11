@@ -16,8 +16,11 @@ public class door_open : MonoBehaviour {
 	int halfEnemies = 64;
 	float timer = 0;
 	int spawned = 0;
+
+	public bool inTheFort;
 	void Start () {
 		move = new Vector3 (0, 0, 90);
+		inTheFort = EnterFort.inFort;
 	}
 	
 	// Update is called once per frame
@@ -40,8 +43,11 @@ public class door_open : MonoBehaviour {
 			timer -= Time.deltaTime;
 			if (timer < 0) {
 				timer = 0.625f;
-			Instantiate(enemySpawn,transform.position+transform.up*5,transform.rotation);
+				if (inTheFort == false)
+				{
+				Instantiate(enemySpawn,transform.position+transform.up*5,transform.rotation);
 				spawned ++;
+				}
 				if(spawned >= 16)
 				{
 					timer =10;
@@ -55,9 +61,11 @@ public class door_open : MonoBehaviour {
 				left_door.transform.Rotate (move*-1*Time.deltaTime);
 				right_door.transform.Rotate (move * Time.deltaTime);
 			}
-			else{
+			else 
+			{
 			left_door.transform.Rotate (move*Time.deltaTime);
 			right_door.transform.Rotate (move*-1 * Time.deltaTime);
+			inTheFort = true;
 			}
 			time += Time.deltaTime;
 			if(time >= 1)
@@ -69,7 +77,7 @@ public class door_open : MonoBehaviour {
 			}
 
 		}
-		if(Input.GetKeyDown(KeyCode.L))
+		if(Input.GetKeyDown(KeyCode.L) || Player.TotalEnemiesKilled >= 64)
 		{
 			changeDoorState();
 		}
