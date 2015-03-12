@@ -34,9 +34,9 @@ public class EnterFort : MonoBehaviour {
 
 		if (c.gameObject.tag == "Player") 
 		{
-			fort.GetComponent<CircleCollider2D>().enabled = true;
+			//fort.GetComponent<CircleCollider2D>().enabled = true;
 			print ("Player out box");
-			fortRoof.GetComponent<SpriteRenderer>().color = new Color (1f,1f,1f,1f);
+			//fortRoof.GetComponent<SpriteRenderer>().color = new Color (1f,1f,1f,1f);
 			inFort = true;
 		}
 	}

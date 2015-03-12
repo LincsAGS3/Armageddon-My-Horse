@@ -26,7 +26,7 @@ public class Player : MonoBehaviour {
 
 	void OnCollisionEnter2D(Collision2D coll)
 	{
-		if (coll.collider.tag == "Enemy")
+		if (coll.collider.tag == "Enemy" || coll.collider.tag == "Death")
 			//if (collider.tag == "Boss){ lose more health--;} and so-on
 		{
 			//Function can be changed to remove health decrementally or provide insta kill
