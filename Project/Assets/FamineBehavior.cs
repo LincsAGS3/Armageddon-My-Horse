@@ -65,7 +65,6 @@ public class FamineBehavior : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		damage = 5*(1f-((float)health / 30f) +0.5f);
-		Debug.Log ("d: "+damage);
 		//move forwards
 		if (Vector2.Distance (this.transform.position, player.transform.position) < 15) {
 			Alert = true;

@@ -14,7 +14,7 @@ GameObject:
   - 114: {fileID: 11474900}
   m_Layer: 0
   m_Name: Cavalry
-  m_TagString: Famine
+  m_TagString: Cavalry
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -311,10 +311,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 129674}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66f50a9c8d1165043927efa95e1adea9, type: 3}
+  m_Script: {fileID: 11500000, guid: 8da0c38804dd53d43bb4e2ffcd7c5baa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 30
+  health: 20
   mounted: 1
   damage: 5
 --- !u!114 &11474902

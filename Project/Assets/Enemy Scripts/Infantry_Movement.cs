@@ -180,8 +180,7 @@ public class Infantry_Movement : MonoBehaviour {
 		//	Vector2 moveAway = new Vector2((-(float)Math.Cos(rotation)),(-(float)Math.Sin(rotation)));
 		//	this.rigidbody2D.velocity = moveAway*6f;
 		//}
-
-		Debug.Log(donefirst);
+		
 		//if we hit a wall
 		if(coll != null)
 		if (coll.gameObject.tag !="Player") {
