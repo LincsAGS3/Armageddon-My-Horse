@@ -77,76 +77,79 @@ public class FamineBehavior : MonoBehaviour {
 		if (health < 15) {
 			Ai = AiType.Follow;
 		}
-		if(playerFound) 
-		{
-			if (!Alert) 
-			{
-				if (Vector2.Distance (transform.position, GotoPos) < 4) {
-					GotoPos = FindNextPoint (CurrentIdlePos);
-				}
-				move ();
-			} else {
-				Vector2 DircetTowards;
-				float angle;
-				switch(Ai)
-				{
-				case AiType.Intercept:
-					//player speed and our speed
-					Vector2 pSpeed = player.rigidbody2D.velocity;
-					Vector2 eSpeed = this.rigidbody2D.velocity;
-					//player pos in x seconds
-					GotoPos = (Vector2)player.transform.position -pSpeed.normalized+ pSpeed*Itime;
-					float dist = Vector2.Distance(GotoPos, this.transform.position);
-					float TimeToIntercept = dist/eSpeed.magnitude;
-					if(TimeToIntercept <Itime)
-					{
-						Itime -=0.1f;
-					}
-					if(TimeToIntercept >Itime)
-					{
-						Itime +=0.1f;
-					}
-					if(AttackCool> 0)
-					{
-						AttackCool -= Time.deltaTime;
-					}
-					else
-					{
-						move ();
-					}
-					break;
-				case AiType.Follow:
-					
-					//are we infront of the player?
-					DircetTowards = this.transform.position- player.transform.position;
-					angle = Vector2.Angle(player.transform.up, DircetTowards );
-					if(angle > 90)
-					{
-						this.rigidbody2D.velocity = new Vector2(0,0);
-						//behind
-						GotoPos = player.transform.position - player.transform.up*3;
-					}
-					else
-					{
-						//infront
-						//create points at either side of and behind the player
-						Vector2 left = player.transform.position -(player.transform.right*3) - player.transform.up;
-						Vector2 right = player.transform.position +(player.transform.right*3) - player.transform.up;
-						if(Vector2.Distance(this.transform.position,left)> Vector2.Distance(this.transform.position, right))
-						{
-							//on the right
-							GotoPos = right;
-						}
-						else
-						{
-							//on the left
-							GotoPos = left;
-						}
+		if (health > 0 ||(StateControl.State != StateControl.state.Pause)) {
+			if (playerFound) {
+				if (!Alert) {
+					if (Vector2.Distance (transform.position, GotoPos) < 4) {
+						GotoPos = FindNextPoint (CurrentIdlePos);
 					}
 					move ();
-					break;
+				} else {
+					Vector2 DircetTowards;
+					float angle;
+					switch (Ai) {
+					case AiType.Intercept:
+					//player speed and our speed
+						Vector2 pSpeed = player.rigidbody2D.velocity;
+						Vector2 eSpeed = this.rigidbody2D.velocity;
+					//player pos in x seconds
+						GotoPos = (Vector2)player.transform.position - pSpeed.normalized + pSpeed * Itime;
+						float dist = Vector2.Distance (GotoPos, this.transform.position);
+						float TimeToIntercept = dist / eSpeed.magnitude;
+						if (TimeToIntercept < Itime) {
+							Itime -= 0.1f;
+						}
+						if (TimeToIntercept > Itime) {
+							Itime += 0.1f;
+						}
+						if (AttackCool > 0) {
+							AttackCool -= Time.deltaTime;
+						} else {
+							move ();
+						}
+						break;
+					case AiType.Follow:
+					
+					//are we infront of the player?
+						DircetTowards = this.transform.position - player.transform.position;
+						angle = Vector2.Angle (player.transform.up, DircetTowards);
+						if (angle > 90) {
+							this.rigidbody2D.velocity = new Vector2 (0, 0);
+							//behind
+							GotoPos = player.transform.position - player.transform.up * 3;
+						} else {
+							//infront
+							//create points at either side of and behind the player
+							Vector2 left = player.transform.position - (player.transform.right * 3) - player.transform.up;
+							Vector2 right = player.transform.position + (player.transform.right * 3) - player.transform.up;
+							if (Vector2.Distance (this.transform.position, left) > Vector2.Distance (this.transform.position, right)) {
+								//on the right
+								GotoPos = right;
+							} else {
+								//on the left
+								GotoPos = left;
+							}
+						}
+						move ();
+						break;
+					}
 				}
 			}
+		} else {
+			//tell player death is dead
+			GameObject[] forts = GameObject.FindGameObjectsWithTag("Fort");
+			GameObject fort = forts[0];
+			float dist = float.MaxValue;
+			foreach(GameObject g in forts)
+			{
+				if(dist> Vector2.Distance(transform.position,g.transform.position))
+				{
+					fort = g;
+					dist = Vector2.Distance(transform.position,g.transform.position);
+				}
+			}
+			fort.SendMessage("BossDefeated");
+			GUIScript.FamineKilled = true;
 		}
 		
 	}

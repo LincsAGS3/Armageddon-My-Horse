@@ -263,15 +263,17 @@ public class Cavalry_movement : MonoBehaviour {
 
 	void move()
 	{
-		if (mounted) {
-			transform.rigidbody2D.velocity = transform.up * CurrentSpeed;
-			Vector3 vectorToTarget = GotoPos - (Vector2)transform.position;
-			float angle = Mathf.Atan2 (vectorToTarget.y, vectorToTarget.x) * Mathf.Rad2Deg;
-			angle -= 90;
-			Quaternion q = Quaternion.AngleAxis (angle, Vector3.forward);
-			transform.rotation = Quaternion.Slerp (transform.rotation, q, Time.deltaTime * 1);
-		} else {
-			transform.rigidbody2D.velocity = new Vector2(0,0);
+		if (StateControl.State != StateControl.state.Pause) {
+			if (mounted) {
+				transform.rigidbody2D.velocity = transform.up * CurrentSpeed;
+				Vector3 vectorToTarget = GotoPos - (Vector2)transform.position;
+				float angle = Mathf.Atan2 (vectorToTarget.y, vectorToTarget.x) * Mathf.Rad2Deg;
+				angle -= 90;
+				Quaternion q = Quaternion.AngleAxis (angle, Vector3.forward);
+				transform.rotation = Quaternion.Slerp (transform.rotation, q, Time.deltaTime * 1);
+			} else {
+				transform.rigidbody2D.velocity = new Vector2 (0, 0);
+			}
 		}
 	}
 

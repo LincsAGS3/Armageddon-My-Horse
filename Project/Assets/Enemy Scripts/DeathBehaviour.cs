@@ -1,0 +1,168 @@
+﻿using UnityEngine;
+using System.Collections;
+
+public class DeathBehaviour : MonoBehaviour {
+
+	public int health = 20;
+	
+	float maxSpeed = 8;
+	float MaxTurningSpeed = 4;
+	float Acceleration = 11;
+	float MaxRotationSpeed = 30;
+	
+	float CurrentSpeed = 11;
+	
+	Vector2 CurrentIdlePos = new Vector2(-1,-1);
+	Vector2 GotoPos = new Vector2(0,0);
+	
+	bool Alert = false;
+	
+	enum AiType {Intercept, Follow, Circle};
+	AiType Ai = AiType.Circle;
+	float AttackCool = 0;
+	
+	//player game object reference
+	GameObject player;
+	//is there a player
+	bool playerFound = false;
+	
+	bool clockWise = false;
+	bool rotateNow = false;
+	float RotAngle = 0;
+	float attackTimer = 0;
+	bool attacking = false;
+	public bool mounted = true;
+	
+	public float damage = 5;
+	
+	GameObject rider;
+	
+	float Itime = 5;
+	
+	void Start () {
+		rider = this.transform.GetChild (0).gameObject;
+		//find a group point
+		CurrentIdlePos = GameObject.FindGameObjectWithTag ("Group").transform.position;
+		//find the player
+		player = GameObject.FindGameObjectWithTag("Player");
+		//if there isnt a player then still move 
+		if (player == null) {
+			playerFound = false;
+		} else {
+			playerFound = true;
+		}
+		Ai = AiType.Circle;;
+	}
+	void takeDamage(int damage)
+	{
+		health -= damage;
+		Debug.Log("hurt");
+		rider.GetComponent<RiderMovement> ().Mounted = false;
+		mounted = false;
+	}
+	
+	// Update is called once per frame
+	void Update () {
+		Debug.Log ("death health = " + health);
+		//move forwards
+		if (health > 0) {
+			if (Vector2.Distance (this.transform.position, player.transform.position) < 15) {
+				Alert = true;
+			} else {
+				Alert = false;
+				Itime = 5;
+				rotateNow = false;
+				attackTimer = 0;
+			}
+			if (playerFound) {
+
+				Vector2 DircetTowards;
+				float angle;
+				switch (Ai) {
+				case AiType.Circle:
+					//are we infront of the player?
+					DircetTowards = this.transform.position - player.transform.position;
+					angle = Vector2.Angle (player.transform.up, DircetTowards);
+					if (!rotateNow) {
+						attacking = false;
+						if (angle > 90) {
+							Vector2 left = player.transform.position - (player.transform.right * 3);
+							Vector2 right = player.transform.position + (player.transform.right * 3);
+
+							//on the left
+							clockWise = true;
+							GotoPos = left;
+							if (Vector2.Distance (this.transform.position, left) < 4) {
+								rotateNow = true;
+								RotAngle = Mathf.Acos ((left.x - player.transform.position.x) / 3);
+
+							}
+						} else {
+							//infront
+							//create points at either side of and behind the player
+							Vector2 left = player.transform.position - (player.transform.right * 3);
+							Vector2 right = player.transform.position + (player.transform.right * 3);
+
+							//on the left
+							clockWise = false;
+							GotoPos = left;
+							if (Vector2.Distance (this.transform.position, left) < 4) {
+								rotateNow = true;
+								RotAngle = Mathf.Acos ((left.x - player.transform.position.x) / 3);
+							}
+
+						}
+						move ();
+					}
+					
+					break;
+				}
+			}
+		} else {
+			//tell player death is dead
+			GameObject[] forts = GameObject.FindGameObjectsWithTag("Fort");
+			GameObject fort = forts[0];
+			float dist = float.MaxValue;
+			foreach(GameObject g in forts)
+			{
+				if(dist> Vector2.Distance(transform.position,g.transform.position))
+				{
+					fort = g;
+					dist = Vector2.Distance(transform.position,g.transform.position);
+				}
+			}
+			fort.SendMessage("BossDefeated");
+			GUIScript.DeathKilled = true;
+		}
+
+	}
+	
+	void move()
+	{
+		if (StateControl.State != StateControl.state.Pause) {
+			if (mounted) {
+				transform.rigidbody2D.velocity = transform.up * CurrentSpeed;
+				Vector3 vectorToTarget = GotoPos - (Vector2)transform.position;
+				float angle = Mathf.Atan2 (vectorToTarget.y, vectorToTarget.x) * Mathf.Rad2Deg;
+				angle -= 90;
+				Quaternion q = Quaternion.AngleAxis (angle, Vector3.forward);
+				transform.rotation = Quaternion.Slerp (transform.rotation, q, Time.deltaTime * 1);
+			} else {
+				transform.rigidbody2D.velocity = new Vector2 (0, 0);
+			}
+		} else {
+			transform.rigidbody2D.velocity = new Vector2(0,0);
+		}
+	}
+	void OnCollisionEnter2D(Collision2D coll) {
+		if (coll.transform.tag == "Player") {
+			AttackCool = 2;
+			attacking = false;
+		}
+	}
+	public void attacked()
+	{
+		AttackCool = 2;
+		attacking = false;
+	}
+}

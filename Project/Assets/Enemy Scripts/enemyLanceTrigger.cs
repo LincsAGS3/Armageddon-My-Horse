@@ -19,6 +19,10 @@ public class enemyLanceTrigger : MonoBehaviour {
 			{
 				Player.hit((int)this.transform.parent.parent.GetComponent<FamineBehavior>().damage);
 			}
+			else if(this.transform.parent.parent.tag == "Death")
+			{
+				Player.hit((int)this.transform.parent.parent.GetComponent<DeathBehaviour>().damage);
+			}
 			else
 			{
 				Player.hit((int)this.transform.parent.parent.GetComponent<Cavalry_movement>().damage);

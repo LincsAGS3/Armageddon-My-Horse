@@ -42,6 +42,10 @@ public class RiderMovement : MonoBehaviour {
 				{
 					Horse.GetComponent<FamineBehavior>().mounted = true;
 				}
+				if(Horse.tag == "Death")
+				{
+					Horse.GetComponent<DeathBehaviour>().mounted = true;
+				}
 				if(Horse.tag == "Cavalry")
 				{
 					Horse.GetComponent<Cavalry_movement>().mounted = true;
@@ -70,6 +74,10 @@ public class RiderMovement : MonoBehaviour {
 				{
 					Horse.GetComponent<FamineBehavior>().health -= 1;
 				}
+				if(Horse.tag == "Death")
+				{
+					Horse.GetComponent<DeathBehaviour>().health -= 1;
+				}
 				if(Horse.tag == "Cavalry")
 				{
 					Horse.GetComponent<Cavalry_movement>().health -= 1;
@@ -82,6 +90,10 @@ public class RiderMovement : MonoBehaviour {
 		Debug.Log("sword");
 		if (Horse.tag == "Cavalry") {
 			Horse.GetComponent<Cavalry_movement> ().health -= 1;
+		}
+		if(Horse.tag == "Death")
+		{
+			Horse.GetComponent<DeathBehaviour>().health -= 1;
 		}
 		if (Horse.tag == "Famine") {
 			Horse.GetComponent<FamineBehavior> ().health -= 1;

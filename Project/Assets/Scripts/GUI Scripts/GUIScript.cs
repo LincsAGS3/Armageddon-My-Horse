@@ -18,6 +18,9 @@ public class GUIScript : MonoBehaviour {
 	static GameObject Conquest;
 	static GameObject HealthImage;
 
+	 public GameObject Ltorch;
+	 public GameObject Rtorch;
+	public GameObject Gate;
 	//sprites
 	public Sprite DeathAlive;
 	public Sprite DeathDead;
@@ -28,8 +31,11 @@ public class GUIScript : MonoBehaviour {
 	public Sprite ConquestAlive;
 	public Sprite ConquestDead;
 
-	public static bool DeathKilled = false;
-	public static bool FamineKilled = false;
+	public Sprite torchOff;
+	public Sprite torchOn;
+
+	public static bool DeathKilled = true;
+	public static bool FamineKilled = true;
 	public static bool ConquestKilled = false;
 
 	float startTime;
@@ -63,16 +69,21 @@ public class GUIScript : MonoBehaviour {
 		if (DeathKilled == true)
 		{
 			Death.GetComponent<Image>().sprite = DeathDead;
+			Rtorch.GetComponent<SpriteRenderer>().sprite = torchOn;
 				}
 		if (FamineKilled == true) 
 		{
 			Famine.GetComponent<Image>().sprite = FamineDead;
+			Ltorch.GetComponent<SpriteRenderer>().sprite = torchOn;
 				}
 		if (ConquestKilled == true) 
 		{
 			Conquest.GetComponent<Image>().sprite = ConquestDead;
 				}
-
+		if (DeathKilled && FamineKilled) {
+			Gate.collider2D.enabled = false;
+			Gate.renderer.enabled = false;
+		}
 
 	}
 }
