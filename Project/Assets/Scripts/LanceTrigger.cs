@@ -14,7 +14,16 @@ public class LanceTrigger : MonoBehaviour {
 	}
 	void OnTriggerEnter2D(Collider2D other) {
 		if (other.tag == "Cavalry"||other.tag == "Famine"||other.tag == "Death") {
-			other.SendMessage("takeDamage",1);
+			if(GUIScript.FamineKilled)
+			{
+				int dam =(int)( 5f*(1f-((float)Player.PlayerHealth / 30f) +0.5f));
+				Debug.Log("damage"+dam);
+			other.SendMessage("takeDamage",dam);
+			}
+			else
+			{
+				other.SendMessage("takeDamage",5);
+			}
 		}
 	}
 }

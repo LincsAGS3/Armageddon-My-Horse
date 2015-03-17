@@ -190,20 +190,22 @@ public class Infantry_Movement : MonoBehaviour {
 
 		}
 	}
-	void damaged()
+	void damaged(int dam)
 	{
-		if(hit)
-			{
-				Debug.Log("killed");
-				dead = true;
+		if (dam > 1) {
+			dead = true;
 			Player.TotalEnemiesKilled += 1; // added for GUI to add to total of enemies killed
-			}
-	
-			else
-			{
-				Debug.Log("hit");
+			hit = true;
+		} else {
+			if (hit) {
+				Debug.Log ("killed");
+				dead = true;
+				Player.TotalEnemiesKilled += 1; // added for GUI to add to total of enemies killed
+			} else {
+				Debug.Log ("hit");
 				hit = true;
 			}
+		}
 	}
 
 }

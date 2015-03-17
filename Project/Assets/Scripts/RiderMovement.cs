@@ -85,18 +85,17 @@ public class RiderMovement : MonoBehaviour {
 			}
 		}
 	}
-	void damaged()
+	void damaged(int dam)
 	{
-		Debug.Log("sword");
 		if (Horse.tag == "Cavalry") {
-			Horse.GetComponent<Cavalry_movement> ().health -= 1;
+			Horse.GetComponent<Cavalry_movement> ().health -= dam;
 		}
 		if(Horse.tag == "Death")
 		{
-			Horse.GetComponent<DeathBehaviour>().health -= 1;
+			Horse.GetComponent<DeathBehaviour>().health -= dam;
 		}
 		if (Horse.tag == "Famine") {
-			Horse.GetComponent<FamineBehavior> ().health -= 1;
+			Horse.GetComponent<FamineBehavior> ().health -= dam;
 		}
 	}
 }
