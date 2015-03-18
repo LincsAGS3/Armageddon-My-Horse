@@ -12,6 +12,7 @@ GameObject:
   - 50: {fileID: 5029674}
   - 61: {fileID: 6129674}
   - 114: {fileID: 11474900}
+  - 82: {fileID: 8292590}
   m_Layer: 0
   m_Name: Cavalry
   m_TagString: Famine
@@ -269,6 +270,64 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_Size: {x: .600000024, y: .610000014}
   m_Center: {x: 0, y: 0}
+--- !u!82 &8292590
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 129674}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
 --- !u!114 &11439032
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -311,12 +370,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 129674}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66f50a9c8d1165043927efa95e1adea9, type: 3}
+  m_Script: {fileID: 11500000, guid: 8da0c38804dd53d43bb4e2ffcd7c5baa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   health: 30
   mounted: 1
   damage: 5
+  audioClip:
+  - {fileID: 8300000, guid: 5890187b81ef8e54f9371e04feaf216e, type: 3}
 --- !u!114 &11474902
 MonoBehaviour:
   m_ObjectHideFlags: 1

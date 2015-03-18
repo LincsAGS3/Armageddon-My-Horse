@@ -29,6 +29,8 @@ public class Infantry_Movement : MonoBehaviour {
 	bool donefirst = false;
 	bool hit = false;
 
+	public AudioClip[] audioClip;
+
 	void Start () {
 
 		gotoPoint = this.transform.position;
@@ -205,6 +207,13 @@ public class Infantry_Movement : MonoBehaviour {
 				Debug.Log("hit");
 				hit = true;
 			}
+	}
+
+	void PlaySound(int clip)
+	{
+		audio.clip = audioClip [clip];
+		audio.panLevel = 0;
+		audio.Play ();
 	}
 
 }
