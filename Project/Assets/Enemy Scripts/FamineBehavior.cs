@@ -56,15 +56,21 @@ public class FamineBehavior : MonoBehaviour {
 	}
 	void takeDamage(int damage)
 	{
-		health -= damage;
-		Debug.Log("hurt");
-		rider.GetComponent<RiderMovement> ().Mounted = false;
-		mounted = false;
+		if (mounted) {
+			health -= damage;
+			rider.GetComponent<RiderMovement> ().Mounted = false;
+			mounted = false;
+		}
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		damage = 5*(1f-((float)health / 30f) +0.5f);
+		Debug.Log ("Health " + health);
+		if (mounted) {
+			damage = 5*(1f-((float)health / 30f) +0.5f);
+		} else {
+			damage = 0;
+		}
 		//move forwards
 		if (Vector2.Distance (this.transform.position, player.transform.position) < 15) {
 			Alert = true;
@@ -77,7 +83,9 @@ public class FamineBehavior : MonoBehaviour {
 		if (health < 15) {
 			Ai = AiType.Follow;
 		}
-		if (health > 0 ||(StateControl.State != StateControl.state.Pause)) {
+		if (health > 0 ) {
+			if((StateControl.State != StateControl.state.Pause))
+			{
 			if (playerFound) {
 				if (!Alert) {
 					if (Vector2.Distance (transform.position, GotoPos) < 4) {
@@ -132,6 +140,7 @@ public class FamineBehavior : MonoBehaviour {
 						}
 						move ();
 						break;
+						}
 					}
 				}
 			}

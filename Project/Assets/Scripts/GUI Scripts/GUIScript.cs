@@ -34,8 +34,8 @@ public class GUIScript : MonoBehaviour {
 	public Sprite torchOff;
 	public Sprite torchOn;
 
-	public static bool DeathKilled = true;
-	public static bool FamineKilled = true;
+	public static bool DeathKilled = false;
+	public static bool FamineKilled = false;
 	public static bool ConquestKilled = false;
 
 	float startTime;
@@ -74,9 +74,7 @@ public class GUIScript : MonoBehaviour {
 			Famine.GetComponent<Image> ().sprite = FamineDead;
 			Ltorch.GetComponent<SpriteRenderer> ().sprite = torchOn;
 		}
-		if (ConquestKilled == true) {
-			Conquest.GetComponent<Image> ().sprite = ConquestDead;
-		}
+
 		if (DeathKilled && FamineKilled) {
 			Gate.collider2D.enabled = false;
 			Gate.renderer.enabled = false;
@@ -87,6 +85,5 @@ public class GUIScript : MonoBehaviour {
 		if (ConquestKilled) {
 			Application.LoadLevel(3);
 		}
-	}
 	}
 }

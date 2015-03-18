@@ -78,6 +78,10 @@ public class FortScript : MonoBehaviour {
 	void BossDefeated()
 	{
 		if (!opened) {
+			foreach(GroupPoint g in groups)
+			{
+				g.active = false;
+			}
 			opened = true;
 			foreach (GameObject d in doors) {
 				d.SendMessage ("changeDoorState");

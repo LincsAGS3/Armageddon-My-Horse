@@ -104,7 +104,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 159630}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 125, y: 116.300003, z: 0}
+  m_LocalPosition: {x: 235.74736, y: 52.9664345, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 459626}
@@ -117,8 +117,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 159632}
-  m_LocalRotation: {x: 0, y: 0, z: .707106829, w: .707106829}
-  m_LocalPosition: {x: -1.16199994, y: .00800000038, z: 1.35800004}
+  m_LocalRotation: {x: 0, y: 0, z: -.0218530055, w: .999761283}
+  m_LocalPosition: {x: -1.16199934, y: .00800350402, z: 1.35800004}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 459628}
@@ -149,19 +149,15 @@ PolygonCollider2D:
   m_IsTrigger: 1
   m_Poly:
     m_Paths:
-    - - {x: .0259531215, y: 1.20842874}
-      - {x: .0199999996, y: 1.21000004}
-      - {x: .00371343689, y: 1.21280801}
-      - {x: -.140000001, y: -.49000001}
-      - {x: -.25, y: -.779999971}
-      - {x: -.25, y: -.870000005}
-      - {x: -.0900000036, y: -.899999976}
-      - {x: -.0799999982, y: -1.25}
-      - {x: .0900000036, y: -1.25}
-      - {x: .124120541, y: -.875571012}
-      - {x: .254483998, y: -.884482145}
-      - {x: .25, y: -.790000021}
-      - {x: .129999995, y: -.670000017}
+    - - {x: -1.25, y: .230000004}
+      - {x: -1.25, y: .0199999996}
+      - {x: -1.21000004, y: -.200000003}
+      - {x: -1.21000004, y: -.25}
+      - {x: -.879999995, y: -.25}
+      - {x: -.75, y: -.159999996}
+      - {x: 1.22000003, y: .0500000007}
+      - {x: 1.23000002, y: .0799999982}
+      - {x: 1.23000002, y: .230000004}
 --- !u!61 &6159626
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -319,7 +315,7 @@ SpriteRenderer:
   m_ScaleInLightmap: 1
   m_SortingLayerID: 2476494091
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: f7ed037589d16314b961fdd592e04e22, type: 3}
+  m_Sprite: {fileID: 21300000, guid: bfb74454b1bba764980f26dae3723dc8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &100100000
 Prefab:

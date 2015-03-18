@@ -13,19 +13,18 @@ public class enemyLanceTrigger : MonoBehaviour {
 	
 	}
 	void OnTriggerEnter2D(Collider2D other) {
-		if (other.tag == "Player") {
-			this.transform.parent.parent.SendMessage("attacked");
-			if(this.transform.parent.parent.tag == "Famine")
-			{
-				Player.hit((int)this.transform.parent.parent.GetComponent<FamineBehavior>().damage);
-			}
-			else if(this.transform.parent.parent.tag == "Death")
-			{
-				Player.hit((int)this.transform.parent.parent.GetComponent<DeathBehaviour>().damage);
-			}
-			else
-			{
-				Player.hit((int)this.transform.parent.parent.GetComponent<Cavalry_movement>().damage);
+		if (true) {
+			if (other.tag == "Player") {
+				this.transform.parent.parent.SendMessage ("attacked");
+				if (this.transform.parent.parent.tag == "Famine") {
+					Player.hit ((int)this.transform.parent.parent.GetComponent<FamineBehavior> ().damage);
+				} else if (this.transform.parent.parent.tag == "Death") {
+					Player.hit ((int)this.transform.parent.parent.GetComponent<DeathBehaviour> ().damage);
+				} else if (this.transform.parent.parent.tag == "Conquest") {
+					Player.hit ((int)this.transform.parent.parent.GetComponent<conquestBehavior> ().damage);
+				}else {
+					Player.hit ((int)this.transform.parent.parent.GetComponent<Cavalry_movement> ().damage);
+				}
 			}
 		}
 	}

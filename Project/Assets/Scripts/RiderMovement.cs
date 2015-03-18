@@ -25,11 +25,44 @@ public class RiderMovement : MonoBehaviour {
 			transform.parent = null;
 		}
 		if (timer < 0&& !Mounted) {
+			if((StateControl.State != StateControl.state.Pause))
+			{
+				if(Horse.tag == "Famine")
+				{
+					if(Horse.GetComponent<FamineBehavior>().health >= 0)
+					{
+						transform.position = Vector2.MoveTowards(transform.position,Horse.transform.position,
+						                                         2*Time.deltaTime);
+					}
+				}
+				if(Horse.tag == "Death")
+				{
+					if(Horse.GetComponent<DeathBehaviour>().health >= 0)
+					{
+						transform.position = Vector2.MoveTowards(transform.position,Horse.transform.position,
+						                                         2*Time.deltaTime);
+					}
+				}
+				if(Horse.tag == "Conquest")
+				{
+					if(Horse.GetComponent<conquestBehavior>().health >= 0)
+					{
+						transform.position = Vector2.MoveTowards(transform.position,Horse.transform.position,
+						                                         2*Time.deltaTime);
+					}
+				}
+				if(Horse.tag == "Cavalry")
+				{
+					if(Horse.GetComponent<Cavalry_movement>().health >= 0)
+					{
+						transform.position = Vector2.MoveTowards(transform.position,Horse.transform.position,
+						                                         2*Time.deltaTime);
+					}
+				}
 			rigidbody2D.velocity = new Vector2(0,0);
-			direction = this.transform.position - Horse.transform.position;
-			direction.Normalize();
 			transform.position = Vector2.MoveTowards(transform.position,Horse.transform.position,
 			                                         2*Time.deltaTime);
+			}
 			if(Vector2.Distance(this.transform.position, Horse.transform.position)<2)
 			{
 				Mounted = true;
@@ -45,6 +78,10 @@ public class RiderMovement : MonoBehaviour {
 				if(Horse.tag == "Death")
 				{
 					Horse.GetComponent<DeathBehaviour>().mounted = true;
+				}
+				if(Horse.tag == "Conquest")
+				{
+					Horse.GetComponent<conquestBehavior>().mounted = true;
 				}
 				if(Horse.tag == "Cavalry")
 				{
@@ -78,6 +115,10 @@ public class RiderMovement : MonoBehaviour {
 				{
 					Horse.GetComponent<DeathBehaviour>().health -= 1;
 				}
+				if(Horse.tag == "Conquest")
+				{
+					Horse.GetComponent<conquestBehavior>().health -= 1;
+				}
 				if(Horse.tag == "Cavalry")
 				{
 					Horse.GetComponent<Cavalry_movement>().health -= 1;
@@ -93,6 +134,10 @@ public class RiderMovement : MonoBehaviour {
 		if(Horse.tag == "Death")
 		{
 			Horse.GetComponent<DeathBehaviour>().health -= dam;
+		}
+		if(Horse.tag == "Conquest")
+		{
+			Horse.GetComponent<conquestBehavior>().health -= dam;
 		}
 		if (Horse.tag == "Famine") {
 			Horse.GetComponent<FamineBehavior> ().health -= dam;

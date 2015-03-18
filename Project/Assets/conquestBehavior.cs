@@ -1,56 +1,49 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Cavalry_movement : MonoBehaviour {
+public class conquestBehavior : MonoBehaviour {
 
-	public int health = 20;
-
+	public int health = 30;
+	
 	float maxSpeed = 8;
 	float MaxTurningSpeed = 4;
 	float Acceleration = 11;
 	float MaxRotationSpeed = 30;
-
+	
 	float CurrentSpeed = 11;
-
+	
 	Vector2 CurrentIdlePos = new Vector2(-1,-1);
 	Vector2 GotoPos = new Vector2(0,0);
-
+	
 	bool Alert = false;
-
+	
 	enum AiType {Intercept, Follow, Circle};
 	AiType Ai = AiType.Circle;
 	float AttackCool = 0;
-
+	
 	//player game object reference
 	GameObject player;
 	//is there a player
 	bool playerFound = false;
-
+	
 	bool clockWise = false;
 	bool rotateNow = false;
 	float RotAngle = 0;
 	float attackTimer = 0;
 	bool attacking = false;
 	public bool mounted = true;
-
+	
 	public float damage = 5;
-
+	
 	GameObject rider;
-
+	
 	float Itime = 5;
-
+	float swapTimer = 0;
+	AiType prevtype;
 	void Start () {
 		rider = this.transform.GetChild (0).gameObject;
 		//find a group point
-		GameObject[] g = GameObject.FindGameObjectsWithTag ("Group");
-		float dist = float.MaxValue;
-		foreach (GameObject G in g) {
-			if(dist > Vector2.Distance(G.transform.position,transform.position))
-			{
-				dist = Vector2.Distance(G.transform.position,transform.position);
-				CurrentIdlePos = G.transform.position;
-			}
-		}
+		CurrentIdlePos = GameObject.FindGameObjectWithTag ("Group").transform.position;
 		GotoPos = FindNextPoint (CurrentIdlePos);
 		//find the player
 		player = GameObject.FindGameObjectWithTag("Player");
@@ -72,6 +65,7 @@ public class Cavalry_movement : MonoBehaviour {
 			Ai = AiType.Intercept;
 			break;
 		}
+		prevtype = Ai;
 	}
 	void takeDamage(int damage)
 	{
@@ -84,6 +78,27 @@ public class Cavalry_movement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		Debug.Log ("conquest " + health);
+		Debug.Log ("player " + Player.PlayerHealth);
+		swapTimer -= Time.deltaTime;
+		if (swapTimer < 0) {
+			while(Ai == prevtype)
+			{
+				switch (Random.Range ((int)0, (int)3)) {
+				case 0:
+					Ai = AiType.Circle;
+					break;
+				case 1:
+					Ai = AiType.Follow;
+					break;
+				case 2:
+					Ai = AiType.Intercept;
+					break;
+				}
+			}
+			prevtype = Ai;
+			swapTimer = 20;
+		}
 		if (mounted) {
 			damage = 5;
 		} else {
@@ -137,7 +152,7 @@ public class Cavalry_movement : MonoBehaviour {
 					}
 					break;
 				case AiType.Follow:
-
+					
 					//are we infront of the player?
 					DircetTowards = this.transform.position- player.transform.position;
 					angle = Vector2.Angle(player.transform.up, DircetTowards );
@@ -166,7 +181,7 @@ public class Cavalry_movement : MonoBehaviour {
 					}
 					move ();
 					//move around the player
-
+					
 					//attack in the rear
 					break;
 				case AiType.Circle:
@@ -245,20 +260,20 @@ public class Cavalry_movement : MonoBehaviour {
 						}
 						if(!attacking)
 						{
-						GotoPos.x = player.transform.position.x +7*Mathf.Cos(RotAngle);
-						GotoPos.y = player.transform.position.y +7*Mathf.Sin(RotAngle);
-						if(Vector2.Distance(this.transform.position, GotoPos)<2)
-						{
-							if(clockWise)
+							GotoPos.x = player.transform.position.x +7*Mathf.Cos(RotAngle);
+							GotoPos.y = player.transform.position.y +7*Mathf.Sin(RotAngle);
+							if(Vector2.Distance(this.transform.position, GotoPos)<2)
 							{
-								RotAngle+= 20;
+								if(clockWise)
+								{
+									RotAngle+= 20;
+								}
+								else
+								{
+									RotAngle-=20;
+								}
 							}
-							else
-							{
-								RotAngle-=20;
-							}
-						}
-						attackTimer -= Time.deltaTime;
+							attackTimer -= Time.deltaTime;
 						}
 						else
 						{
@@ -266,14 +281,14 @@ public class Cavalry_movement : MonoBehaviour {
 						}
 						move();
 					}
-
+					
 					break;
 				}
 			}
 		}
-
+		
 	}
-
+	
 	void move()
 	{
 		if (StateControl.State != StateControl.state.Pause) {
@@ -287,14 +302,15 @@ public class Cavalry_movement : MonoBehaviour {
 					transform.rotation = Quaternion.Slerp (transform.rotation, q, Time.deltaTime * 1);
 				} else {
 					transform.rigidbody2D.velocity = new Vector2 (0, 0);
+
 				}
 			} else {
 				this.collider2D.enabled = false;
-				transform.rigidbody2D.velocity = transform.up * CurrentSpeed;
+				GUIScript.ConquestKilled = true;
 			}
 		}
 	}
-
+	
 	Vector2 FindNextPoint(Vector2 centre)//calculate a point around the centre within a 15 unit radius
 	{
 		//create a random vector 2 with a magnitude of 1
@@ -304,7 +320,7 @@ public class Cavalry_movement : MonoBehaviour {
 		//return new value
 		return centre+rnd;
 	}
-
+	
 	void OnCollisionStay2D(Collision2D coll) {
 		//if we hit another enemy
 		if (coll.gameObject.tag == this.tag) {

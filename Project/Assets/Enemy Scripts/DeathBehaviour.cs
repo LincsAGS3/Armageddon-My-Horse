@@ -55,15 +55,20 @@ public class DeathBehaviour : MonoBehaviour {
 	}
 	void takeDamage(int damage)
 	{
-		health -= damage;
-		Debug.Log("hurt");
-		rider.GetComponent<RiderMovement> ().Mounted = false;
-		mounted = false;
+		if (mounted) {
+			health -= damage;
+			rider.GetComponent<RiderMovement> ().Mounted = false;
+			mounted = false;
+		}
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		Debug.Log ("death health = " + health);
+		if (mounted) {
+			damage = 5;
+		} else {
+			damage = 0;
+		}
 		//move forwards
 		if (health > 0) {
 			if (Vector2.Distance (this.transform.position, player.transform.position) < 15) {

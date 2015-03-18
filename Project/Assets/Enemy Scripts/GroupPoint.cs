@@ -8,6 +8,7 @@ public class GroupPoint : MonoBehaviour {
 	public int maxSize = 16;
 	public int size=0;
 	public List<GameObject> enemies = new List<GameObject>();
+	public bool active = true;
 	void Start () {
 	
 	}
@@ -31,6 +32,7 @@ public class GroupPoint : MonoBehaviour {
 		} else
 			vacancy = false;
 		//if there is room look for free infantry
+		if (active)
 		if (vacancy) {
 			//get all of the infantry
 			GameObject[] infantry = GameObject.FindGameObjectsWithTag ("Enemy");
