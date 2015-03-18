@@ -45,6 +45,7 @@ public class GroupPoint : MonoBehaviour {
 				float tempDist = Vector2.Distance(this.transform.position, g.transform.position);
 				//get eht script fromt he actor
 				Infantry_Movement temp = g.GetComponent<Infantry_Movement>();
+				//ArcherMovement temp2 = g.GetComponent<ArcherMovement>();
 				//check if the player has already been assigned a group point
 				if(!temp.alloc)
 				{
@@ -59,6 +60,7 @@ public class GroupPoint : MonoBehaviour {
 			if(im != null)
 			{
 				Infantry_Movement temp = im.GetComponent<Infantry_Movement>();
+				//ArcherMovement temp2 = im.GetComponent<ArcherMovement>();
 				temp.alloc = true;
 				temp.groupPoint = this.gameObject;
 				enemies.Add(im);

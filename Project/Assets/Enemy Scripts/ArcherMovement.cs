@@ -2,7 +2,7 @@
 using System.Collections;
 using System;
 
-public class Infantry_Movement : MonoBehaviour {
+public class ArcherMovement : MonoBehaviour {
 	//point to move around (is assigned by the grouppoint itself)
 	public GameObject groupPoint;
 	//bool for if the actor has been allocated a grouppoint
@@ -34,9 +34,9 @@ public class Infantry_Movement : MonoBehaviour {
 	public GameObject arrow;
 
 	float timer;
-
+	
 	void Start () {
-
+		
 		gotoPoint = this.transform.position;
 		groupPoint = null;
 		//look for the player
@@ -51,13 +51,13 @@ public class Infantry_Movement : MonoBehaviour {
 		timer = Time.time + 3;
 	}
 	
-
+	
 	void Update () {
-
+		
 		if (alloc) {
 			if(playerFound)
 			{
-			//look for the player
+				//look for the player
 				if(Vector2.Distance(this.transform.position, player.transform.position)<15)
 				{
 					alert = true;
@@ -76,7 +76,7 @@ public class Infantry_Movement : MonoBehaviour {
 						donefirst = true;
 					}
 					gotoPoint = FindNextPoint (groupPoint.transform.position);
-				//Debug.Log (gotoPoint);//output new target for bug testing
+					//Debug.Log (gotoPoint);//output new target for bug testing
 				}
 			}else{
 				if(dead)
@@ -85,7 +85,7 @@ public class Infantry_Movement : MonoBehaviour {
 					playerFound = false;
 					this.GetComponent<SpriteRenderer>().color = Color.red;
 					this.rigidbody2D.velocity = new Vector2 (0, 0);
-
+					
 				}
 				if(playerFound)
 				{
@@ -95,7 +95,7 @@ public class Infantry_Movement : MonoBehaviour {
 					//gotoPoint = new Vector2(0,0);
 					{
 						/*int current = 0;
-
+						
 						This_pos.x += 1;
 						if(current-1 < PathFinding.buffer1[(int)This_pos.x,(int)This_pos.y])
 						{
@@ -126,24 +126,21 @@ public class Infantry_Movement : MonoBehaviour {
 
 						if(timer < Time.time)
 						{
-						
-							GameObject shot = Instantiate(arrow, transform.position, transform.rotation) as GameObject;
-							//shot.transform.Rotate(90,0,0);
-							Vector2 temp = new Vector2 (UnityEngine.Random.Range(player.transform.position.x ,player.transform.position.x +1), player.transform.position.y);
-							shot.transform.Translate(temp);
-								
+							GameObject shot = Instantiate(arrow, transform.position + (transform.forward * 2), transform.rotation) as GameObject;
+							shot.rigidbody2D.AddForce(transform.forward * 1000);
+
 							timer = Time.time + 3;
-
 						}
-					}
 
+					}
+					
 					//move
 					float rotation = (float)Math.Atan2 (this.transform.position.y - gotoPoint.y, this.transform.position.x - gotoPoint.x);
 					//calculate the different components of the sprites speed
 					speed.x += -((float)Math.Cos (rotation) * 4*Time.deltaTime);
 					speed.y += -((float)Math.Sin (rotation) * 4*Time.deltaTime);
 					//apply the movement
-
+					
 					//this.rigidbody2D.velocity = speed*60;
 					//transform.position = Vector2.MoveTowards(transform.position, gotoPoint,0.01f);
 				}
@@ -151,7 +148,7 @@ public class Infantry_Movement : MonoBehaviour {
 			//move the character
 			if (StateControl.State != StateControl.state.Pause) {
 				if(!dead)
-				move ();
+					move ();
 			} else {
 				this.rigidbody2D.velocity = new Vector2 (0, 0);
 			}
@@ -165,7 +162,7 @@ public class Infantry_Movement : MonoBehaviour {
 		rnd *= wanderRadius;
 		//return new value
 		return centre+rnd;
-
+		
 	}
 	void move()//smoothly move towards gotoPoint
 	{
@@ -191,50 +188,26 @@ public class Infantry_Movement : MonoBehaviour {
 	//check for continuous collisions
 	void OnCollisionStay2D(Collision2D coll) {
 		//if we hit another enemy
-
+		
 		//commented out due to lag
-
+		
 		//if (coll.gameObject.tag == this.tag) {
 		//	//move away from the enemy
 		//	float rotation = (float)Math.Atan2 (this.transform.position.y - coll.transform.position.y,this.transform.position.x - coll.transform.position.x);
 		//	Vector2 moveAway = new Vector2((-(float)Math.Cos(rotation)),(-(float)Math.Sin(rotation)));
 		//	this.rigidbody2D.velocity = moveAway*6f;
 		//}
-
+		
 		Debug.Log(donefirst);
 		//if we hit a wall
 		if(coll != null)
 		if (coll.gameObject.tag !="Player") {
-
-				//goto a new point
-				gotoPoint = FindNextPoint (groupPoint.transform.position);
-
+			
+			//goto a new point
+			gotoPoint = FindNextPoint (groupPoint.transform.position);
+			
 		}
 	}
-	void damaged()
-	{
-		if(hit)
-			{
-				Debug.Log("killed");
-				dead = true;
-			Player.TotalEnemiesKilled += 1; // added for GUI to add to total of enemies killed
-			}
-	
-			else
-			{
-				Debug.Log("hit");
-				hit = true;
-			}
-	}
-
-	void PlaySound(int clip)
-	{
-		audio.clip = audioClip [clip];
-		audio.panLevel = 0;
-		audio.Play ();
-	}
-
-
 
 	void OnTriggerStay2D (Collider2D c)
 	{
@@ -242,9 +215,32 @@ public class Infantry_Movement : MonoBehaviour {
 		{
 			Vector2 temp = (transform.position.normalized - player.transform.position.normalized) * currentSpeed;
 			transform.Translate(temp);
-
+			
 			print ("running");
 		}
 	}
 
+	void damaged()
+	{
+		if(hit)
+		{
+			Debug.Log("killed");
+			dead = true;
+			Player.TotalEnemiesKilled += 1; // added for GUI to add to total of enemies killed
+		}
+		
+		else
+		{
+			Debug.Log("hit");
+			hit = true;
+		}
+	}
+	
+	void PlaySound(int clip)
+	{
+		audio.clip = audioClip [clip];
+		audio.panLevel = 0;
+		audio.Play ();
+	}
+	
 }
