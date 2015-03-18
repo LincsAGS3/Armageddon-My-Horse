@@ -39,6 +39,8 @@ public class Cavalry_movement : MonoBehaviour {
 
 	float Itime = 5;
 
+	public AudioClip[] audioClip;
+
 	void Start () {
 		rider = this.transform.GetChild (0).gameObject;
 		//find a group point
@@ -84,6 +86,7 @@ public class Cavalry_movement : MonoBehaviour {
 			Itime = 5;
 			rotateNow = false;
 			attackTimer = 0;
+			audio.Pause();
 		}
 		if(playerFound) 
 		{
@@ -91,11 +94,18 @@ public class Cavalry_movement : MonoBehaviour {
 			{
 				if (Vector2.Distance (transform.position, GotoPos) < 4) {
 					GotoPos = FindNextPoint (CurrentIdlePos);
+
+
 				}
 				move ();
 			} else {
 				Vector2 DircetTowards;
 				float angle;
+
+				if(!audio.isPlaying)
+					PlaySound(0);
+
+
 				switch(Ai)
 				{
 				case AiType.Intercept:
@@ -309,5 +319,11 @@ public class Cavalry_movement : MonoBehaviour {
 	{
 		AttackCool = 2;
 		attacking = false;
+	}
+
+	void PlaySound(int clip)
+	{
+		audio.clip = audioClip [clip];
+		audio.Play ();
 	}
 }
