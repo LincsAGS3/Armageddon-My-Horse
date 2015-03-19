@@ -28,7 +28,9 @@ public class Infantry_Movement : MonoBehaviour {
 	//reached first point
 	bool donefirst = false;
 	bool hit = false;
-
+	bool archer = true;
+	float ArcherTimer = 0;
+	public GameObject arrow;
 	void Start () {
 
 		gotoPoint = this.transform.position;
@@ -40,6 +42,11 @@ public class Infantry_Movement : MonoBehaviour {
 			playerFound = false;
 		} else {
 			playerFound = true;
+		}
+		if (UnityEngine.Random.Range (0, 2) == 0) {
+			archer = true;
+		} else {
+			archer = false;
 		}
 	}
 	
@@ -86,16 +93,18 @@ public class Infantry_Movement : MonoBehaviour {
 					//choose where to goto
 					//gotoPoint = new Vector2(0,0);
 					{
-						int current = 0;
+						if(archer)
+						{
+						int current = int.MaxValue;
 
 						This_pos.x += 1;
-						if(current-1 < PathFinding.buffer1[(int)This_pos.x,(int)This_pos.y])
+						if(current > PathFinding.buffer1[(int)This_pos.x,(int)This_pos.y])
 						{
 							gotoPoint = This_pos;
 							current = PathFinding.buffer1[(int)This_pos.x,(int)This_pos.y]+1;
 						}
 						This_pos.x -= 2;
-						if(current < PathFinding.buffer1[(int)This_pos.x,(int)This_pos.y])
+						if(current > PathFinding.buffer1[(int)This_pos.x,(int)This_pos.y])
 						{
 							gotoPoint = This_pos;
 							gotoPoint.x -=1;
@@ -103,17 +112,48 @@ public class Infantry_Movement : MonoBehaviour {
 						}
 						This_pos.x += 1;
 						This_pos.y -= 1;
-						if(current < PathFinding.buffer1[(int)This_pos.x,(int)This_pos.y])
+						if(current > PathFinding.buffer1[(int)This_pos.x,(int)This_pos.y])
 						{
 							gotoPoint = This_pos;
 							current = PathFinding.buffer1[(int)This_pos.x,(int)This_pos.y];
 						}
 						This_pos.y += 2;
-						if(current-1 < PathFinding.buffer1[(int)This_pos.x,(int)This_pos.y])
+						if(current-1 > PathFinding.buffer1[(int)This_pos.x,(int)This_pos.y])
 						{
 							gotoPoint = This_pos;
 							gotoPoint.y +=1;
 							current = PathFinding.buffer1[(int)This_pos.x,(int)This_pos.y];
+							}
+						}else{
+							int current = 0;
+							
+							This_pos.x += 1;
+							if(current-1 < PathFinding.buffer1[(int)This_pos.x,(int)This_pos.y])
+							{
+								gotoPoint = This_pos;
+								current = PathFinding.buffer1[(int)This_pos.x,(int)This_pos.y]+1;
+							}
+							This_pos.x -= 2;
+							if(current < PathFinding.buffer1[(int)This_pos.x,(int)This_pos.y])
+							{
+								gotoPoint = This_pos;
+								gotoPoint.x -=1;
+								current = PathFinding.buffer1[(int)This_pos.x,(int)This_pos.y];
+							}
+							This_pos.x += 1;
+							This_pos.y -= 1;
+							if(current < PathFinding.buffer1[(int)This_pos.x,(int)This_pos.y])
+							{
+								gotoPoint = This_pos;
+								current = PathFinding.buffer1[(int)This_pos.x,(int)This_pos.y];
+							}
+							This_pos.y += 2;
+							if(current-1 < PathFinding.buffer1[(int)This_pos.x,(int)This_pos.y])
+							{
+								gotoPoint = This_pos;
+								gotoPoint.y +=1;
+								current = PathFinding.buffer1[(int)This_pos.x,(int)This_pos.y];
+							}
 						}
 					}
 
@@ -127,6 +167,19 @@ public class Infantry_Movement : MonoBehaviour {
 					//this.rigidbody2D.velocity = speed*60;
 					//transform.position = Vector2.MoveTowards(transform.position, gotoPoint,0.01f);
 				}
+			}
+			if(archer)
+			{
+				if(ArcherTimer >3 && alert)
+				{
+					ArcherTimer =0;
+					//fire
+					GameObject g = (GameObject)Instantiate(arrow,this.transform.position+ transform.up*2, transform.rotation);
+					Quaternion rotation = Quaternion.LookRotation (player.transform.position - g.transform.position,
+					                                               g.transform.TransformDirection (Vector3.up));
+					g.transform.rotation = new Quaternion (0, 0, rotation.z, rotation.w);
+				}
+				ArcherTimer += Time.deltaTime;
 			}
 			//move the character
 			if (StateControl.State != StateControl.state.Pause) {
