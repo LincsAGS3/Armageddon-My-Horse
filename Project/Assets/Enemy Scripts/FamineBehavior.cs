@@ -86,32 +86,6 @@ public class FamineBehavior : MonoBehaviour {
 		if (health < 15) {
 			Ai = AiType.Follow;
 		}
-<<<<<<< HEAD:Project/Assets/FamineBehavior.cs
-
-		if (health <= 0) 
-		{
-			Destroy(gameObject);
-			FamineTorch.famineDead = true;
-		}
-		if(playerFound) 
-		{
-			if (!Alert) 
-			{
-				if (Vector2.Distance (transform.position, GotoPos) < 4) {
-					GotoPos = FindNextPoint (CurrentIdlePos);
-
-				}
-				move ();
-			} else {
-				Vector2 DircetTowards;
-				float angle;
-				if(!audio.isPlaying)
-					PlaySound(0);
-
-				switch(Ai)
-				{
-				case AiType.Intercept:
-=======
 		if (health > 0 ) {
 			if((StateControl.State != StateControl.state.Pause))
 			{
@@ -124,9 +98,10 @@ public class FamineBehavior : MonoBehaviour {
 				} else {
 					Vector2 DircetTowards;
 					float angle;
+						if(!audio.isPlaying)
+							PlaySound(0);
 					switch (Ai) {
 					case AiType.Intercept:
->>>>>>> origin/adam-week-6:Project/Assets/Enemy Scripts/FamineBehavior.cs
 					//player speed and our speed
 						Vector2 pSpeed = player.rigidbody2D.velocity;
 						Vector2 eSpeed = this.rigidbody2D.velocity;
