@@ -18,6 +18,9 @@ public class GUIScript : MonoBehaviour {
 	static GameObject Conquest;
 	static GameObject HealthImage;
 
+	 public GameObject Ltorch;
+	 public GameObject Rtorch;
+	public GameObject Gate;
 	//sprites
 	public Sprite DeathAlive;
 	public Sprite DeathDead;
@@ -27,6 +30,9 @@ public class GUIScript : MonoBehaviour {
 
 	public Sprite ConquestAlive;
 	public Sprite ConquestDead;
+
+	public Sprite torchOff;
+	public Sprite torchOn;
 
 	public static bool DeathKilled = false;
 	public static bool FamineKilled = false;
@@ -56,23 +62,28 @@ public class GUIScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		ElapsedTime = Time.time - startTime;
-		TimePlayed.GetComponent<Text> ().text = "Time : " + ElapsedTime.ToString("0.");
-		EnemiesKilled.GetComponent<Text> ().text = "Enemies Killed : " + Player.TotalEnemiesKilled.ToString();
+		TimePlayed.GetComponent<Text> ().text = "Time : " + ElapsedTime.ToString ("0.");
+		EnemiesKilled.GetComponent<Text> ().text = "Enemies Killed : " + Player.TotalEnemiesKilled.ToString ();
 
-		HealthImage.GetComponent<Image>().fillAmount = Player.PlayerHealth / 100;
-		if (DeathKilled == true)
-		{
-			Death.GetComponent<Image>().sprite = DeathDead;
-				}
-		if (FamineKilled == true) 
-		{
-			Famine.GetComponent<Image>().sprite = FamineDead;
-				}
-		if (ConquestKilled == true) 
-		{
-			Conquest.GetComponent<Image>().sprite = ConquestDead;
-				}
+		HealthImage.GetComponent<Image> ().fillAmount = Player.PlayerHealth / 100;
+		if (DeathKilled == true) {
+			Death.GetComponent<Image> ().sprite = DeathDead;
+			Rtorch.GetComponent<SpriteRenderer> ().sprite = torchOn;
+		}
+		if (FamineKilled == true) {
+			Famine.GetComponent<Image> ().sprite = FamineDead;
+			Ltorch.GetComponent<SpriteRenderer> ().sprite = torchOn;
+		}
 
-
+		if (DeathKilled && FamineKilled) {
+			Gate.collider2D.enabled = false;
+			Gate.renderer.enabled = false;
+		}
+		if (Player.PlayerHealth < 0) {
+			Application.LoadLevel (2);
+		}
+		if (ConquestKilled) {
+			Application.LoadLevel(3);
+		}
 	}
 }

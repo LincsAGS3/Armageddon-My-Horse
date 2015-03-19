@@ -4,13 +4,22 @@ using System.Collections;
 public class swordHit : MonoBehaviour {
 
 	// Use this for initialization
+	public Sprite scyth;
+	bool first = true;
 	void Start () {
 	
 	}
 	
 	// Update is called once per frame
 	void Update () {
-	
+		if (first) {
+			if (GUIScript.DeathKilled) {
+				this.GetComponent<SpriteRenderer> ().sprite = scyth;
+				BoxCollider2D b = transform.collider2D as BoxCollider2D;
+				b.size = new Vector2 (2.5f, 0.5f);
+				first = false;
+			}
+		}
 	}
 	void OnCollisionEnter2D(Collision2D coll)
 	{
@@ -18,7 +27,14 @@ public class swordHit : MonoBehaviour {
 			
 		if (coll.transform.tag == "Enemy" ||coll.transform.tag == "Rider") {
 			Debug.Log("sending message");
-			coll.gameObject.SendMessage ("damaged");
+			if(GUIScript.DeathKilled)
+			{
+			coll.gameObject.SendMessage ("damaged",5);
+			}
+			else
+			{
+				coll.gameObject.SendMessage ("damaged",1);
+			}
 		}
 
 	}

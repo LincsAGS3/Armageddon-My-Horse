@@ -30,7 +30,7 @@ public class Player : MonoBehaviour {
 			//if (collider.tag == "Boss){ lose more health--;} and so-on
 		{
 			//Function can be changed to remove health decrementally or provide insta kill
-			PlayerHealth--;
+			PlayerHealth-=0.1f;
 		}
 		if (PlayerHealth == 0)
 		{

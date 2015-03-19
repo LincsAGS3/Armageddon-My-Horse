@@ -182,8 +182,7 @@ public class Infantry_Movement : MonoBehaviour {
 		//	Vector2 moveAway = new Vector2((-(float)Math.Cos(rotation)),(-(float)Math.Sin(rotation)));
 		//	this.rigidbody2D.velocity = moveAway*6f;
 		//}
-
-		Debug.Log(donefirst);
+		
 		//if we hit a wall
 		if(coll != null)
 		if (coll.gameObject.tag !="Player") {
@@ -193,20 +192,22 @@ public class Infantry_Movement : MonoBehaviour {
 
 		}
 	}
-	void damaged()
+	void damaged(int dam)
 	{
-		if(hit)
-			{
-				Debug.Log("killed");
-				dead = true;
+		if (dam > 1) {
+			dead = true;
 			Player.TotalEnemiesKilled += 1; // added for GUI to add to total of enemies killed
-			}
-	
-			else
-			{
-				Debug.Log("hit");
+			hit = true;
+		} else {
+			if (hit) {
+				Debug.Log ("killed");
+				dead = true;
+				Player.TotalEnemiesKilled += 1; // added for GUI to add to total of enemies killed
+			} else {
+				Debug.Log ("hit");
 				hit = true;
 			}
+		}
 	}
 
 	void PlaySound(int clip)

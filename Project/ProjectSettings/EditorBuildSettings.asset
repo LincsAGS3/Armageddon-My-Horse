@@ -9,3 +9,7 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
   - enabled: 1
     path: Assets/Scenes/MainGame.unity
+  - enabled: 1
+    path: Assets/Death.unity
+  - enabled: 1
+    path: Assets/Victory.unity
