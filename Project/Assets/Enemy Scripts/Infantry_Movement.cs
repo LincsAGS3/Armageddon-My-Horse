@@ -28,9 +28,10 @@ public class Infantry_Movement : MonoBehaviour {
 	//reached first point
 	bool donefirst = false;
 	bool hit = false;
-	bool archer = true;
+	public bool archer = true;
 	float ArcherTimer = 0;
 	public GameObject arrow;
+    public AudioClip[] audioClip;
 	void Start () {
 
 		gotoPoint = this.transform.position;
@@ -175,9 +176,11 @@ public class Infantry_Movement : MonoBehaviour {
 					ArcherTimer =0;
 					//fire
 					GameObject g = (GameObject)Instantiate(arrow,this.transform.position+ transform.up*2, transform.rotation);
-					Quaternion rotation = Quaternion.LookRotation (player.transform.position - g.transform.position,
+                    playSound(0);
+                        Quaternion rotation = Quaternion.LookRotation (player.transform.position - g.transform.position,
 					                                               g.transform.TransformDirection (Vector3.up));
 					g.transform.rotation = new Quaternion (0, 0, rotation.z, rotation.w);
+                    
 				}
 				ArcherTimer += Time.deltaTime;
 			}
@@ -260,5 +263,10 @@ public class Infantry_Movement : MonoBehaviour {
 			}
 		}
 	}
+    void playSound(int Clip)
+    {
+        audio.clip = audioClip[Clip];
+        audio.Play();
+    }
 
 }

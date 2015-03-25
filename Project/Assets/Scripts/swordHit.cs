@@ -6,6 +6,7 @@ public class swordHit : MonoBehaviour {
 	// Use this for initialization
 	public Sprite scyth;
 	bool first = true;
+    public AudioClip[] audioClip;
 	void Start () {
 	
 	}
@@ -35,7 +36,14 @@ public class swordHit : MonoBehaviour {
 			{
 				coll.gameObject.SendMessage ("damaged",1);
 			}
+        playSound(UnityEngine.Random.Range(0,5));
 		}
+        
 
 	}
+    void playSound(int Clip)
+    {
+        audio.clip = audioClip[Clip];
+        audio.Play();
+    }
 }

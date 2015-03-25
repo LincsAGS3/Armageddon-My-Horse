@@ -13,6 +13,9 @@ public class FortScript : MonoBehaviour {
 	bool entered  = false;
 	bool bossing = false;
 	bool spwan = true;
+    bool famineDeath = false;
+    bool deathDeath = false;
+    bool conquestDeath = false;
 	// Use this for initialization
 	void Start () {
 		//spawn initial infantry
@@ -72,6 +75,22 @@ public class FortScript : MonoBehaviour {
 				}
 				opened = false;
 				Instantiate (boss, transform.position, transform.rotation);
+                other.audio.Stop();
+                if (boss.name == "Famine")
+                {
+                    Player.famineFound = true;
+                    Debug.Log("Famine found");
+                }
+                if (boss.name == "Death")
+                {
+                    Player.deathFound = true;
+                    Debug.Log("Death found");
+                }
+                if (boss.name == "Conquest")
+                {
+                    Player.conquestFound = true;
+                    Debug.Log("Conquest found");
+                }
 			bossing  = true;
 		}
 	}
@@ -88,5 +107,20 @@ public class FortScript : MonoBehaviour {
 				spwan = false;
 			}
 		}
+        if ((boss.name == "Famine")&&(famineDeath == false))
+        {
+            Player.famineFound = false;
+            Player.soundPlaying = false;
+            Debug.Log("Famine lost");
+            famineDeath = true;
+        }
+        if ((boss.name == "Death") && (deathDeath == false))
+        {
+            Player.deathFound = false;
+            Player.soundPlaying = false;
+            Debug.Log("Death lost");
+            deathDeath = true;
+        }
+
 	}
 }

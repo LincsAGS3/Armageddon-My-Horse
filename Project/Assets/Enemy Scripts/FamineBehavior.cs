@@ -65,7 +65,7 @@ public class FamineBehavior : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		Debug.Log ("Health " + health);
+		//Debug.Log ("Health " + health);
 		if (mounted) {
 			damage = 5*(1f-((float)health / 30f) +0.5f);
 		} else {
