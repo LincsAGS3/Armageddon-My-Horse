@@ -132,14 +132,7 @@ MonoBehaviour:
   maxSpeed: 4
   wanderRadius: 15
   dead: 0
-<<<<<<< HEAD
-<<<<<<< HEAD
-  audioClip: []
-=======
->>>>>>> origin/adam-week-6
-=======
   arrow: {fileID: 129448, guid: 65bcf59e67c078e40a85157ef3e42fb5, type: 2}
->>>>>>> origin/adam-week-6
 --- !u!212 &21288210
 SpriteRenderer:
   m_ObjectHideFlags: 1

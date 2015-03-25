@@ -10619,22 +10619,10 @@ Prefab:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 21200000, guid: be19324c3ef02484ba3e868a54937c5a, type: 2}
-<<<<<<< HEAD
-<<<<<<< HEAD
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 23efca8ac91f270448fe0d855b675e4d, type: 2}
-=======
-=======
->>>>>>> origin/adam-week-6
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: b57228e6cb35ae24da5ff182f6418b33,
         type: 3}
-<<<<<<< HEAD
->>>>>>> origin/adam-week-6
-=======
->>>>>>> origin/adam-week-6
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: be19324c3ef02484ba3e868a54937c5a, type: 2}
   m_RootGameObject: {fileID: 1371740372}
@@ -11081,14 +11069,8 @@ Transform:
   - {fileID: 1836718079}
   - {fileID: 1615174123}
   m_Father: {fileID: 0}
-<<<<<<< HEAD
-<<<<<<< HEAD
-  m_RootOrder: 2
---- !u!82 &478321734
-=======
   m_RootOrder: 5
 --- !u!82 &478321733
->>>>>>> origin/adam-week-6
 AudioSource:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 8256506, guid: 54f5e471d8ebd294da453a94dbb82b5b,
@@ -11147,12 +11129,6 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-<<<<<<< HEAD
-=======
-  m_RootOrder: 5
->>>>>>> origin/adam-week-6
-=======
->>>>>>> origin/adam-week-6
 --- !u!1 &479177148
 GameObject:
   m_ObjectHideFlags: 0
@@ -20207,68 +20183,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 52235911}
   m_RootOrder: 64
-<<<<<<< HEAD
-<<<<<<< HEAD
---- !u!1001 &866863491
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 11446630, guid: a3aab370e5f1c264f995e7a6e758f798, type: 2}
-      propertyPath: audioClip.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 423232, guid: a3aab370e5f1c264f995e7a6e758f798, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 205.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 423232, guid: a3aab370e5f1c264f995e7a6e758f798, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 90.8000031
-      objectReference: {fileID: 0}
-    - target: {fileID: 423232, guid: a3aab370e5f1c264f995e7a6e758f798, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 423232, guid: a3aab370e5f1c264f995e7a6e758f798, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 423232, guid: a3aab370e5f1c264f995e7a6e758f798, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 423232, guid: a3aab370e5f1c264f995e7a6e758f798, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 423232, guid: a3aab370e5f1c264f995e7a6e758f798, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 423232, guid: a3aab370e5f1c264f995e7a6e758f798, type: 2}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 11446630, guid: a3aab370e5f1c264f995e7a6e758f798, type: 2}
-      propertyPath: health
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 11446630, guid: a3aab370e5f1c264f995e7a6e758f798, type: 2}
-      propertyPath: audioClip.Array.data[0]
-      value: 
-      objectReference: {fileID: 8300000, guid: 8663933d8895aa2468451814e74637f9, type: 3}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: a3aab370e5f1c264f995e7a6e758f798, type: 2}
-  m_RootGameObject: {fileID: 1701287102}
-  m_IsPrefabParent: 0
-  m_IsExploded: 1
-=======
->>>>>>> origin/adam-week-6
-=======
->>>>>>> origin/adam-week-6
 --- !u!1 &868821108
 GameObject:
   m_ObjectHideFlags: 0
@@ -27672,23 +27586,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 52235911}
   m_RootOrder: 42
-<<<<<<< HEAD
-<<<<<<< HEAD
---- !u!1 &1209940289
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 1209940290}
-  - 108: {fileID: 1209940291}
-  m_Layer: 0
-  m_Name: Right Light
-  m_TagString: Untagged
-=======
-=======
->>>>>>> origin/adam-week-6
 --- !u!1 &1209345500
 GameObject:
   m_ObjectHideFlags: 0
@@ -27703,66 +27600,10 @@ GameObject:
   m_Layer: 0
   m_Name: rider
   m_TagString: Rider
-<<<<<<< HEAD
->>>>>>> origin/adam-week-6
-=======
->>>>>>> origin/adam-week-6
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
-<<<<<<< HEAD
-<<<<<<< HEAD
---- !u!4 &1209940290
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1209940289}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.30999994, y: 27.1599998, z: -1}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 480251337}
-  m_RootOrder: 3
---- !u!108 &1209940291
-Light:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1209940289}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Type: 2
-  m_Color: {r: .917647064, g: .513725519, b: 0, a: 1}
-  m_Intensity: 2.5
-  m_Range: 2
-  m_SpotAngle: 30
-  m_CookieSize: 10
-  m_Shadows:
-    m_Type: 0
-    m_Resolution: -1
-    m_Strength: 1
-    m_Bias: .0500000007
-    m_Softness: 4
-    m_SoftnessFade: 1
-  m_Cookie: {fileID: 0}
-  m_DrawHalo: 0
-  m_ActuallyLightmapped: 0
-  m_Flare: {fileID: 0}
-  m_RenderMode: 0
-  m_CullingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_Lightmapping: 1
-  m_ShadowSamples: 1
-  m_ShadowRadius: 0
-  m_ShadowAngle: 0
-  m_IndirectIntensity: 1
-  m_AreaSize: {x: 1, y: 1}
-=======
-=======
->>>>>>> origin/adam-week-6
 --- !u!4 &1209345501
 Transform:
   m_ObjectHideFlags: 0
@@ -27823,10 +27664,6 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 62933cdc5576abc45a0376f41149c950, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-<<<<<<< HEAD
->>>>>>> origin/adam-week-6
-=======
->>>>>>> origin/adam-week-6
 --- !u!1001 &1212803641
 Prefab:
   m_ObjectHideFlags: 0
@@ -38474,173 +38311,6 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 2672834363abc174fbd97a775ccf15a9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-<<<<<<< HEAD
-<<<<<<< HEAD
---- !u!1 &1701287102
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 123232, guid: a3aab370e5f1c264f995e7a6e758f798, type: 2}
-  m_PrefabInternal: {fileID: 866863491}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 1701287103}
-  - 212: {fileID: 1701287107}
-  - 50: {fileID: 1701287106}
-  - 61: {fileID: 1701287105}
-  - 114: {fileID: 1701287104}
-  - 82: {fileID: 1701287109}
-  m_Layer: 0
-  m_Name: Famine
-  m_TagString: Famine
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1701287103
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 423232, guid: a3aab370e5f1c264f995e7a6e758f798, type: 2}
-  m_PrefabInternal: {fileID: 866863491}
-  m_GameObject: {fileID: 1701287102}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 205.5, y: 90.8000031, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 580690620}
-  - {fileID: 949182534}
-  m_Father: {fileID: 0}
-  m_RootOrder: 1
---- !u!114 &1701287104
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11446630, guid: a3aab370e5f1c264f995e7a6e758f798,
-    type: 2}
-  m_PrefabInternal: {fileID: 866863491}
-  m_GameObject: {fileID: 1701287102}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66f50a9c8d1165043927efa95e1adea9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 30
-  mounted: 1
-  damage: 5
-  audioClip:
-  - {fileID: 8300000, guid: 8663933d8895aa2468451814e74637f9, type: 3}
---- !u!61 &1701287105
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 6123232, guid: a3aab370e5f1c264f995e7a6e758f798,
-    type: 2}
-  m_PrefabInternal: {fileID: 866863491}
-  m_GameObject: {fileID: 1701287102}
-  m_Enabled: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Size: {x: 1, y: 2}
-  m_Center: {x: 0, y: 0}
---- !u!50 &1701287106
-Rigidbody2D:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 5023232, guid: a3aab370e5f1c264f995e7a6e758f798,
-    type: 2}
-  m_PrefabInternal: {fileID: 866863491}
-  m_GameObject: {fileID: 1701287102}
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: .0500000007
-  m_GravityScale: 0
-  m_FixedAngle: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
---- !u!212 &1701287107
-SpriteRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 21223232, guid: a3aab370e5f1c264f995e7a6e758f798,
-    type: 2}
-  m_PrefabInternal: {fileID: 866863491}
-  m_GameObject: {fileID: 1701287102}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
-  m_Materials:
-  - {fileID: 10754, guid: 0000000000000000e000000000000000, type: 0}
-  m_SubsetIndices: 
-  m_StaticBatchRoot: {fileID: 0}
-  m_UseLightProbes: 0
-  m_LightProbeAnchor: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: ec6054b02de640f4eb4445fbc4cf6f40, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
---- !u!82 &1701287109
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 8266254, guid: a3aab370e5f1c264f995e7a6e758f798,
-    type: 2}
-  m_PrefabInternal: {fileID: 866863491}
-  m_GameObject: {fileID: 1701287102}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    - time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-=======
->>>>>>> origin/adam-week-6
-=======
->>>>>>> origin/adam-week-6
 --- !u!1001 &1703302076
 Prefab:
   m_ObjectHideFlags: 0

@@ -95,8 +95,8 @@ public class FamineBehavior : MonoBehaviour {
 				} else {
 					Vector2 DircetTowards;
 					float angle;
-						if(!audio.isPlaying)
-							PlaySound(0);
+						//if(!audio.isPlaying)
+							//PlaySound(0);
 					switch (Ai) {
 					case AiType.Intercept:
 					//player speed and our speed
