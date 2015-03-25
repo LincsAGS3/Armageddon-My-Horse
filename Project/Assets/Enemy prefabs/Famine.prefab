@@ -30,7 +30,7 @@ GameObject:
   - 50: {fileID: 5023232}
   - 61: {fileID: 6123232}
   - 114: {fileID: 11446630}
-  - 82: {fileID: 8266254}
+  - 82: {fileID: 8291404}
   m_Layer: 0
   m_Name: Famine
   m_TagString: Famine
@@ -185,7 +185,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_Size: {x: 1, y: 2}
   m_Center: {x: 0, y: 0}
---- !u!82 &8266254
+--- !u!82 &8291404
 AudioSource:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -291,7 +291,6 @@ MonoBehaviour:
   health: 30
   mounted: 1
   damage: 5
-  audioClip: []
 --- !u!212 &21223230
 SpriteRenderer:
   m_ObjectHideFlags: 1

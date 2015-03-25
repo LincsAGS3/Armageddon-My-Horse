@@ -37,8 +37,6 @@ public class FamineBehavior : MonoBehaviour {
 	GameObject rider;
 	
 	float Itime = 5;
-
-	public AudioClip[] audioClip;
 	
 	void Start () {
 		rider = this.transform.GetChild (0).gameObject;
@@ -81,7 +79,6 @@ public class FamineBehavior : MonoBehaviour {
 			Itime = 5;
 			rotateNow = false;
 			attackTimer = 0;
-			audio.Pause();
 		}
 		if (health < 15) {
 			Ai = AiType.Follow;
@@ -214,12 +211,5 @@ public class FamineBehavior : MonoBehaviour {
 	{
 		AttackCool = 2;
 		attacking = false;
-	}
-
-	void PlaySound(int clip)
-	{
-		audio.clip = audioClip [clip];
-		audio.panLevel = 0;
-		audio.Play ();
 	}
 }

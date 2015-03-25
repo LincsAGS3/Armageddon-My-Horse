@@ -40,6 +40,7 @@ public class Cavalry_movement : MonoBehaviour {
 	float Itime = 5;
 
 	public AudioClip[] audioClip;
+	bool soundPlaying = false;
 
 	void Start () {
 		rider = this.transform.GetChild (0).gameObject;
@@ -99,7 +100,6 @@ public class Cavalry_movement : MonoBehaviour {
 			Itime = 5;
 			rotateNow = false;
 			attackTimer = 0;
-			audio.Pause();
 		}
 		if(playerFound) 
 		{
@@ -107,18 +107,20 @@ public class Cavalry_movement : MonoBehaviour {
 			{
 				if (Vector2.Distance (transform.position, GotoPos) < 4) {
 					GotoPos = FindNextPoint (CurrentIdlePos);
-
-
 				}
 				move ();
 			} else {
 				Vector2 DircetTowards;
 				float angle;
-
-				if(!audio.isPlaying)
-					PlaySound(0);
-
-
+				if(!audio.isPlaying && soundPlaying == false)
+				{
+					playSound(0);
+					soundPlaying = true;
+				}
+				else if (audio.isPlaying)
+				{
+					return;
+				}
 				switch(Ai)
 				{
 				case AiType.Intercept:
@@ -341,9 +343,9 @@ public class Cavalry_movement : MonoBehaviour {
 		attacking = false;
 	}
 
-	void PlaySound(int clip)
+	void playSound(int Clip)
 	{
-		audio.clip = audioClip [clip];
+		audio.clip = audioClip [Clip];
 		audio.Play ();
 	}
 }

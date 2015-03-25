@@ -73,6 +73,7 @@ NavMeshSettings:
     minRegionArea: 2
     widthInaccuracy: 16.666666
     heightInaccuracy: 10
+    tileSizeHint: 0
   m_NavMesh: {fileID: 0}
 --- !u!1 &868809
 GameObject:
@@ -1984,7 +1985,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 429674, guid: 54f5e471d8ebd294da453a94dbb82b5b, type: 2}
       propertyPath: m_RootOrder
-      value: 0
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 54f5e471d8ebd294da453a94dbb82b5b, type: 2}
@@ -2758,6 +2759,7 @@ GameObject:
   - 50: {fileID: 136971502}
   - 61: {fileID: 136971501}
   - 114: {fileID: 136971500}
+  - 82: {fileID: 136971504}
   m_Layer: 0
   m_Name: Cavalry
   m_TagString: Cavalry
@@ -2794,6 +2796,8 @@ MonoBehaviour:
   health: 20
   mounted: 1
   damage: 5
+  audioClip:
+  - {fileID: 8300000, guid: 06ed4b39300779043a04fe37dd8765b7, type: 3}
 --- !u!61 &136971501
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2845,6 +2849,65 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: ec6054b02de640f4eb4445fbc4cf6f40, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
+--- !u!82 &136971504
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 8256506, guid: 54f5e471d8ebd294da453a94dbb82b5b,
+    type: 2}
+  m_PrefabInternal: {fileID: 175348139}
+  m_GameObject: {fileID: 136971498}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
 --- !u!1001 &139985721
 Prefab:
   m_ObjectHideFlags: 0
@@ -3894,7 +3957,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 429674, guid: 54f5e471d8ebd294da453a94dbb82b5b, type: 2}
       propertyPath: m_RootOrder
-      value: 0
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 54f5e471d8ebd294da453a94dbb82b5b, type: 2}
@@ -7566,6 +7629,7 @@ GameObject:
   - 50: {fileID: 340293334}
   - 61: {fileID: 340293333}
   - 114: {fileID: 340293332}
+  - 82: {fileID: 340293336}
   m_Layer: 0
   m_Name: Cavalry
   m_TagString: Cavalry
@@ -7602,6 +7666,8 @@ MonoBehaviour:
   health: 20
   mounted: 1
   damage: 5
+  audioClip:
+  - {fileID: 8300000, guid: 06ed4b39300779043a04fe37dd8765b7, type: 3}
 --- !u!61 &340293333
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -7653,6 +7719,65 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: ec6054b02de640f4eb4445fbc4cf6f40, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
+--- !u!82 &340293336
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 8256506, guid: 54f5e471d8ebd294da453a94dbb82b5b,
+    type: 2}
+  m_PrefabInternal: {fileID: 990752704}
+  m_GameObject: {fileID: 340293330}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
 --- !u!1001 &340455813
 Prefab:
   m_ObjectHideFlags: 0
@@ -9976,7 +10101,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 429674, guid: 54f5e471d8ebd294da453a94dbb82b5b, type: 2}
       propertyPath: m_RootOrder
-      value: 0
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 54f5e471d8ebd294da453a94dbb82b5b, type: 2}
@@ -10495,14 +10620,20 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 21200000, guid: be19324c3ef02484ba3e868a54937c5a, type: 2}
 <<<<<<< HEAD
+<<<<<<< HEAD
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 23efca8ac91f270448fe0d855b675e4d, type: 2}
 =======
+=======
+>>>>>>> origin/adam-week-6
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: b57228e6cb35ae24da5ff182f6418b33,
         type: 3}
+<<<<<<< HEAD
+>>>>>>> origin/adam-week-6
+=======
 >>>>>>> origin/adam-week-6
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: be19324c3ef02484ba3e868a54937c5a, type: 2}
@@ -10861,7 +10992,7 @@ GameObject:
   - 50: {fileID: 478321730}
   - 61: {fileID: 478321729}
   - 114: {fileID: 478321728}
-  - 82: {fileID: 478321734}
+  - 82: {fileID: 478321733}
   m_Layer: 0
   m_Name: Cavalry
   m_TagString: Cavalry
@@ -10885,7 +11016,7 @@ MonoBehaviour:
   mounted: 1
   damage: 5
   audioClip:
-  - {fileID: 8300000, guid: 5890187b81ef8e54f9371e04feaf216e, type: 3}
+  - {fileID: 8300000, guid: 06ed4b39300779043a04fe37dd8765b7, type: 3}
 --- !u!61 &478321729
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -10951,13 +11082,18 @@ Transform:
   - {fileID: 1615174123}
   m_Father: {fileID: 0}
 <<<<<<< HEAD
+<<<<<<< HEAD
   m_RootOrder: 2
 --- !u!82 &478321734
+=======
+  m_RootOrder: 5
+--- !u!82 &478321733
+>>>>>>> origin/adam-week-6
 AudioSource:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 8292590, guid: 54f5e471d8ebd294da453a94dbb82b5b,
+  m_PrefabParentObject: {fileID: 8256506, guid: 54f5e471d8ebd294da453a94dbb82b5b,
     type: 2}
-  m_PrefabInternal: {fileID: 1826877243}
+  m_PrefabInternal: {fileID: 107653048}
   m_GameObject: {fileID: 478321727}
   m_Enabled: 1
   serializedVersion: 3
@@ -11011,8 +11147,11 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
+<<<<<<< HEAD
 =======
   m_RootOrder: 5
+>>>>>>> origin/adam-week-6
+=======
 >>>>>>> origin/adam-week-6
 --- !u!1 &479177148
 GameObject:
@@ -11111,8 +11250,6 @@ Transform:
   m_Children:
   - {fileID: 1453252587}
   - {fileID: 1371740373}
-  - {fileID: 1308557634}
-  - {fileID: 1209940290}
   m_Father: {fileID: 1017415774}
   m_RootOrder: 3
 --- !u!1 &483642312
@@ -12426,6 +12563,7 @@ GameObject:
   - 50: {fileID: 540738948}
   - 61: {fileID: 540738947}
   - 114: {fileID: 540738946}
+  - 82: {fileID: 540738951}
   m_Layer: 0
   m_Name: Cavalry
   m_TagString: Cavalry
@@ -12448,6 +12586,8 @@ MonoBehaviour:
   health: 20
   mounted: 1
   damage: 5
+  audioClip:
+  - {fileID: 8300000, guid: 06ed4b39300779043a04fe37dd8765b7, type: 3}
 --- !u!61 &540738947
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -12513,6 +12653,65 @@ Transform:
   - {fileID: 1769007070}
   m_Father: {fileID: 0}
   m_RootOrder: 3
+--- !u!82 &540738951
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 8256506, guid: 54f5e471d8ebd294da453a94dbb82b5b,
+    type: 2}
+  m_PrefabInternal: {fileID: 434778111}
+  m_GameObject: {fileID: 540738945}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
 --- !u!1 &542905636
 GameObject:
   m_ObjectHideFlags: 0
@@ -16804,8 +17003,8 @@ MonoBehaviour:
   m_Script: {fileID: 1301386320, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ignoreReversedGraphics: 1
-  blockingObjects: 0
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -20009,6 +20208,7 @@ Transform:
   m_Father: {fileID: 52235911}
   m_RootOrder: 64
 <<<<<<< HEAD
+<<<<<<< HEAD
 --- !u!1001 &866863491
 Prefab:
   m_ObjectHideFlags: 0
@@ -20065,6 +20265,8 @@ Prefab:
   m_RootGameObject: {fileID: 1701287102}
   m_IsPrefabParent: 0
   m_IsExploded: 1
+=======
+>>>>>>> origin/adam-week-6
 =======
 >>>>>>> origin/adam-week-6
 --- !u!1 &868821108
@@ -22512,7 +22714,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 429674, guid: 54f5e471d8ebd294da453a94dbb82b5b, type: 2}
       propertyPath: m_RootOrder
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 54f5e471d8ebd294da453a94dbb82b5b, type: 2}
@@ -27471,6 +27673,7 @@ Transform:
   m_Father: {fileID: 52235911}
   m_RootOrder: 42
 <<<<<<< HEAD
+<<<<<<< HEAD
 --- !u!1 &1209940289
 GameObject:
   m_ObjectHideFlags: 0
@@ -27484,6 +27687,8 @@ GameObject:
   m_Name: Right Light
   m_TagString: Untagged
 =======
+=======
+>>>>>>> origin/adam-week-6
 --- !u!1 &1209345500
 GameObject:
   m_ObjectHideFlags: 0
@@ -27498,11 +27703,15 @@ GameObject:
   m_Layer: 0
   m_Name: rider
   m_TagString: Rider
+<<<<<<< HEAD
+>>>>>>> origin/adam-week-6
+=======
 >>>>>>> origin/adam-week-6
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+<<<<<<< HEAD
 <<<<<<< HEAD
 --- !u!4 &1209940290
 Transform:
@@ -27552,6 +27761,8 @@ Light:
   m_IndirectIntensity: 1
   m_AreaSize: {x: 1, y: 1}
 =======
+=======
+>>>>>>> origin/adam-week-6
 --- !u!4 &1209345501
 Transform:
   m_ObjectHideFlags: 0
@@ -27612,6 +27823,9 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 62933cdc5576abc45a0376f41149c950, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
+<<<<<<< HEAD
+>>>>>>> origin/adam-week-6
+=======
 >>>>>>> origin/adam-week-6
 --- !u!1001 &1212803641
 Prefab:
@@ -29450,69 +29664,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 52235911}
   m_RootOrder: 92
---- !u!1 &1308557633
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 1308557634}
-  - 108: {fileID: 1308557635}
-  m_Layer: 0
-  m_Name: Left Light
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1308557634
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1308557633}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.04000092, y: 27.159996, z: -1}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 480251337}
-  m_RootOrder: 2
---- !u!108 &1308557635
-Light:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1308557633}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Type: 2
-  m_Color: {r: .917647064, g: .513725519, b: 0, a: 1}
-  m_Intensity: 2.5
-  m_Range: 2
-  m_SpotAngle: 30
-  m_CookieSize: 10
-  m_Shadows:
-    m_Type: 0
-    m_Resolution: -1
-    m_Strength: 1
-    m_Bias: .0500000007
-    m_Softness: 4
-    m_SoftnessFade: 1
-  m_Cookie: {fileID: 0}
-  m_DrawHalo: 0
-  m_ActuallyLightmapped: 0
-  m_Flare: {fileID: 0}
-  m_RenderMode: 0
-  m_CullingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_Lightmapping: 1
-  m_ShadowSamples: 1
-  m_ShadowRadius: 0
-  m_ShadowAngle: 0
-  m_IndirectIntensity: 1
-  m_AreaSize: {x: 1, y: 1}
 --- !u!1 &1310393198
 GameObject:
   m_ObjectHideFlags: 0
@@ -30456,7 +30607,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 1371740373}
   - 212: {fileID: 1371740374}
-  - 114: {fileID: 1371740375}
   m_Layer: 0
   m_Name: Left Torch
   m_TagString: Untagged
@@ -30489,7 +30639,7 @@ SpriteRenderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: 23efca8ac91f270448fe0d855b675e4d, type: 2}
+  - {fileID: 10754, guid: 0000000000000000e000000000000000, type: 0}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -30568,18 +30718,6 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
---- !u!114 &1371740375
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1371740372}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 724cd6b5668cd314a80287c7f112a923, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  light: {fileID: 1308557635}
 --- !u!1 &1372878099
 GameObject:
   m_ObjectHideFlags: 0
@@ -32339,7 +32477,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 1453252587}
   - 212: {fileID: 1453252588}
-  - 114: {fileID: 1453252589}
   m_Layer: 0
   m_Name: Right Torch
   m_TagString: Untagged
@@ -32372,7 +32509,7 @@ SpriteRenderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: 23efca8ac91f270448fe0d855b675e4d, type: 2}
+  - {fileID: 10754, guid: 0000000000000000e000000000000000, type: 0}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -32382,18 +32519,6 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: b57228e6cb35ae24da5ff182f6418b33, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
---- !u!114 &1453252589
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1453252586}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 81077b29ae4fbbe4f8ea31262c590d94, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  light: {fileID: 1209940291}
 --- !u!1 &1455039422
 GameObject:
   m_ObjectHideFlags: 0
@@ -35207,7 +35332,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 429674, guid: 54f5e471d8ebd294da453a94dbb82b5b, type: 2}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 54f5e471d8ebd294da453a94dbb82b5b, type: 2}
@@ -36000,6 +36125,7 @@ GameObject:
   - 50: {fileID: 1614197828}
   - 61: {fileID: 1614197827}
   - 114: {fileID: 1614197826}
+  - 82: {fileID: 1614197831}
   m_Layer: 0
   m_Name: Cavalry
   m_TagString: Cavalry
@@ -36022,6 +36148,8 @@ MonoBehaviour:
   health: 20
   mounted: 1
   damage: 5
+  audioClip:
+  - {fileID: 8300000, guid: 06ed4b39300779043a04fe37dd8765b7, type: 3}
 --- !u!61 &1614197827
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -36087,6 +36215,65 @@ Transform:
   - {fileID: 1445212664}
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!82 &1614197831
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 8256506, guid: 54f5e471d8ebd294da453a94dbb82b5b,
+    type: 2}
+  m_PrefabInternal: {fileID: 2142605739}
+  m_GameObject: {fileID: 1614197825}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
 --- !u!1001 &1614516427
 Prefab:
   m_ObjectHideFlags: 0
@@ -36976,10 +37163,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 21200000, guid: 2899d33f159b82f47919ab32896e4d2b, type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 23efca8ac91f270448fe0d855b675e4d, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2899d33f159b82f47919ab32896e4d2b, type: 2}
   m_RootGameObject: {fileID: 1453252586}
@@ -38292,6 +38475,7 @@ SpriteRenderer:
   m_Sprite: {fileID: 21300000, guid: 2672834363abc174fbd97a775ccf15a9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 <<<<<<< HEAD
+<<<<<<< HEAD
 --- !u!1 &1701287102
 GameObject:
   m_ObjectHideFlags: 0
@@ -38453,6 +38637,8 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
+=======
+>>>>>>> origin/adam-week-6
 =======
 >>>>>>> origin/adam-week-6
 --- !u!1001 &1703302076
@@ -45045,6 +45231,7 @@ GameObject:
   - 50: {fileID: 1934682764}
   - 61: {fileID: 1934682763}
   - 114: {fileID: 1934682762}
+  - 82: {fileID: 1934682767}
   m_Layer: 0
   m_Name: Cavalry
   m_TagString: Cavalry
@@ -45067,6 +45254,8 @@ MonoBehaviour:
   health: 20
   mounted: 1
   damage: 5
+  audioClip:
+  - {fileID: 8300000, guid: 06ed4b39300779043a04fe37dd8765b7, type: 3}
 --- !u!61 &1934682763
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -45132,6 +45321,65 @@ Transform:
   - {fileID: 582837115}
   m_Father: {fileID: 0}
   m_RootOrder: 1
+--- !u!82 &1934682767
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 8256506, guid: 54f5e471d8ebd294da453a94dbb82b5b,
+    type: 2}
+  m_PrefabInternal: {fileID: 1573752925}
+  m_GameObject: {fileID: 1934682761}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
 --- !u!1 &1939505025
 GameObject:
   m_ObjectHideFlags: 0

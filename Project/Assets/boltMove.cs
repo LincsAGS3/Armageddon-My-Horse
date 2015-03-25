@@ -20,5 +20,14 @@ public class boltMove : MonoBehaviour {
 			Destroy (this.gameObject);
 		}
 
+		if (coll.transform.tag == "Fort") {
+			Destroy (this.gameObject);
+		}
+
+		if (coll.transform.tag == "Enemy") {
+			Destroy (this.gameObject);
+		}
+
+
 	}
 }

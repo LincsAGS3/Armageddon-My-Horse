@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
+guid: 06ed4b39300779043a04fe37dd8765b7
+=======
 guid: 5890187b81ef8e54f9371e04feaf216e
+>>>>>>> origin/WillSprint2Week3v4
 AudioImporter:
   serializedVersion: 4
   format: 0

@@ -12,7 +12,7 @@ GameObject:
   - 50: {fileID: 5029674}
   - 61: {fileID: 6129674}
   - 114: {fileID: 11474900}
-  - 82: {fileID: 8292590}
+  - 82: {fileID: 8256506}
   m_Layer: 0
   m_Name: Cavalry
   m_TagString: Cavalry
@@ -185,7 +185,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_Size: {x: .600000024, y: .610000014}
   m_Center: {x: 0, y: 0}
---- !u!82 &8292590
+--- !u!82 &8256506
 AudioSource:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -270,7 +270,7 @@ MonoBehaviour:
   mounted: 1
   damage: 5
   audioClip:
-  - {fileID: 8300000, guid: 5890187b81ef8e54f9371e04feaf216e, type: 3}
+  - {fileID: 8300000, guid: 06ed4b39300779043a04fe37dd8765b7, type: 3}
 --- !u!114 &11474902
 MonoBehaviour:
   m_ObjectHideFlags: 1

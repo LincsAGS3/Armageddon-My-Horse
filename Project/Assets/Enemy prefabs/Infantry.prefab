@@ -12,7 +12,7 @@ GameObject:
   - 50: {fileID: 5088210}
   - 114: {fileID: 11402164}
   - 58: {fileID: 5897520}
-  - 82: {fileID: 8246468}
+  - 82: {fileID: 8213048}
   m_Layer: 0
   m_Name: Infantry
   m_TagString: Enemy
@@ -58,7 +58,7 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_Radius: .5
   m_Center: {x: 0, y: 0}
---- !u!82 &8246468
+--- !u!82 &8213048
 AudioSource:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -133,8 +133,12 @@ MonoBehaviour:
   wanderRadius: 15
   dead: 0
 <<<<<<< HEAD
+<<<<<<< HEAD
   audioClip: []
 =======
+>>>>>>> origin/adam-week-6
+=======
+  arrow: {fileID: 129448, guid: 65bcf59e67c078e40a85157ef3e42fb5, type: 2}
 >>>>>>> origin/adam-week-6
 --- !u!212 &21288210
 SpriteRenderer:
