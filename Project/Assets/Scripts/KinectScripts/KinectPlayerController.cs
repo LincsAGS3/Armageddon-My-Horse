@@ -2,10 +2,13 @@
 using System.Collections;
 using KinectNet20;
 using KinectForWheelchair;
+using TankGameInput;
 
 public class KinectPlayerController : MonoBehaviour
 {
-	public KinectInputController kinectInputController;
+	//public KinectInputController kinectInputController;
+	public InputController inputContoller;
+
 	/*Moved to Player.cs script as it was duplicated in two scripts
 	//player speed
 	public float speed = 5;
@@ -18,17 +21,19 @@ public class KinectPlayerController : MonoBehaviour
 	void Start ()
 	{
 		return;
+
 	}
 	// Update is called once per frame
 	void Update ()
 	{
 		// Get the input info
-		SeatedInfo inputInfo = this.kinectInputController.InputInfo;
+		SeatedInfo personInfo = this.inputContoller.playerInfo;
+		GameInputInfo inputInfo = this.inputContoller.InputInfo;
 		if (inputInfo == null)
 			return;
 
 		// Set the player position and direction
-		if (inputInfo.Features == null)
+		if (personInfo.Features == null)
 			return;
 
 		//Debug.Log (inputInfo.Features.Position);
@@ -37,13 +42,42 @@ public class KinectPlayerController : MonoBehaviour
 		
 		//this.transform.rotation = new Quaternion(0, 0, -1*(inputInfo.Features.Angle/(90)) * rotateSpeed * Time.deltaTime, 1);
 
-		transform.Rotate(0, 0, -1 * (inputInfo.Features.Angle / (90)) * Player.rotateSpeed * Time.deltaTime);
+		if (inputInfo.SoldierInfo.IsSkeletonAvailable) 
+		{
 
-		Player.speed += inputInfo.Features.Position.y * Player.speed * Time.deltaTime;
+			if(personInfo.Features.Position.y < 1.2f)
+			{
+				transform.Translate (Vector3.up * Player.speed * Time.deltaTime);
+			}
+			/*else if(personInfo.Features.Position.y > 1.4f)
+			{
+				transform.Translate (Vector3.down * Player.speed * Time.deltaTime);
+			}*/
 
-		Player.speed = Mathf.Clamp(Player.speed, 1, 10);
+			transform.Rotate (0, 0, -1 * (personInfo.Features.Angle / (60)) * Player.rotateSpeed * Time.deltaTime);
+			
+			//this.transform.up = new Vector2(personInfo.Features.Direction.x, personInfo.Features.Direction.y) * 50;
+			
+			print(personInfo.Features.Position.y);
+			
+			/*Debug.Log (personInfo.Features.Angle);
 
-		return;
+			transform.Rotate (0, 0, -1 * (personInfo.Features.Angle / (90)) * Player.rotateSpeed * Time.deltaTime);
+
+			Player.speed += personInfo.Features.Position.y * Player.speed * Time.deltaTime;
+
+			Player.speed = Mathf.Clamp (Player.speed, 1, 10);
+			*/
+
+			if(inputInfo.SoldierInfo.IsSkeletonAvailable)
+				Debug.Log("Skeleton available.");
+
+			return;
+		}
+
+	
+
+
 	}
 	void FixedUpdate()
 	{
