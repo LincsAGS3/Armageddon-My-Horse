@@ -73,6 +73,7 @@ NavMeshSettings:
     minRegionArea: 2
     widthInaccuracy: 16.666666
     heightInaccuracy: 10
+    tileSizeHint: 0
   m_NavMesh: {fileID: 0}
 --- !u!1 &868809
 GameObject:
@@ -16226,6 +16227,10 @@ Prefab:
       value: 
       objectReference: {fileID: 21300000, guid: bfb74454b1bba764980f26dae3723dc8,
         type: 3}
+    - target: {fileID: 11444006, guid: 54712d64faa48334799429bed926bfd6, type: 2}
+      propertyPath: inputContoller
+      value: 
+      objectReference: {fileID: 1274435572}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 54712d64faa48334799429bed926bfd6, type: 2}
   m_RootGameObject: {fileID: 2088882539}
@@ -17031,8 +17036,8 @@ MonoBehaviour:
   m_Script: {fileID: 1301386320, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ignoreReversedGraphics: 1
-  blockingObjects: 0
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -28894,7 +28899,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1274435571}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0968ce35a6fcce94786ee3c0fe47ce5b, type: 3}
+  m_Script: {fileID: 11500000, guid: b4b15d1afefc3b641994cf3f3ff79a6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &1274435573
@@ -49384,7 +49389,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46fd7e9b96fb681498640b99f8d3b933, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputContoller: {fileID: 0}
+  inputContoller: {fileID: 1274435572}
 --- !u!50 &2088882541
 Rigidbody2D:
   m_ObjectHideFlags: 0
