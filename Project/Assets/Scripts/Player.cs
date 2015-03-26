@@ -101,7 +101,7 @@ public class Player : MonoBehaviour {
 			MenuGameMenuStateScript.MenuStateChange(2);
 		}
 	}
-	public static void hit(int damage)
+	public static void hit(float damage)
 	{
 		PlayerHealth -= damage;
 	}

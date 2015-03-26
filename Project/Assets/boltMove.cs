@@ -13,7 +13,7 @@ public class boltMove : MonoBehaviour {
 	}
 	void OnCollisionEnter2D(Collision2D coll) {
 		if (coll.transform.tag == "Player") {
-			Player.hit (5);
+			Player.hit (0.5f);
 			Destroy (this.gameObject);
 		}
 		if(coll.transform.tag == "Wall") {
