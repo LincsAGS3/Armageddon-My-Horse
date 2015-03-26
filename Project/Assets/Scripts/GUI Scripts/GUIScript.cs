@@ -37,6 +37,8 @@ public class GUIScript : MonoBehaviour {
 	public static bool DeathKilled = false;
 	public static bool FamineKilled = false;
 	public static bool ConquestKilled = false;
+	bool addedDeathHealth = false;
+	bool addedFamineHealth = false;
 
 	float startTime;
 	float ElapsedTime;
@@ -69,10 +71,20 @@ public class GUIScript : MonoBehaviour {
 		if (DeathKilled == true) {
 			Death.GetComponent<Image> ().sprite = DeathDead;
 			Rtorch.GetComponent<SpriteRenderer> ().sprite = torchOn;
+			if (addedDeathHealth == false)
+			{
+				Player.PlayerHealth += ((100 - Player.PlayerHealth)/2);
+				addedDeathHealth = true;
+			}
 		}
 		if (FamineKilled == true) {
 			Famine.GetComponent<Image> ().sprite = FamineDead;
 			Ltorch.GetComponent<SpriteRenderer> ().sprite = torchOn;
+			if (addedFamineHealth == false)
+			{
+				Player.PlayerHealth += ((100 - Player.PlayerHealth)/2);
+				addedFamineHealth = true;
+			}
 		}
 
 		if (DeathKilled && FamineKilled) {

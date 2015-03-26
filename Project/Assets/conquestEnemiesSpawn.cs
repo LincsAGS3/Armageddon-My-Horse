@@ -57,6 +57,8 @@ public class conquestEnemiesSpawn : MonoBehaviour {
 			opened = false;
 			Instantiate (boss, transform.position, transform.rotation);
 			bossing = true;
+            Player.conquestFound = true;
+            Debug.Log("Conquest found");
 		}
 	}
 	void OnTriggerEnter2D(Collider2D other) {
