@@ -136,7 +136,6 @@ MonoBehaviour:
   arrow: {fileID: 129448, guid: 65bcf59e67c078e40a85157ef3e42fb5, type: 2}
   audioClip:
   - {fileID: 8300000, guid: 87ac055d7b353d24bb43bf810d449081, type: 3}
-  - {fileID: 8300000, guid: 724ddcc432c02324c9bd9899d626cd27, type: 3}
 --- !u!212 &21288210
 SpriteRenderer:
   m_ObjectHideFlags: 1
