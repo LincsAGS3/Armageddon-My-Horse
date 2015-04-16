@@ -44,7 +44,7 @@ public class Infantry_Movement : MonoBehaviour {
 		} else {
 			playerFound = true;
 		}
-		if (UnityEngine.Random.Range (0, 2) == 0) {
+		if (UnityEngine.Random.Range (0, 4) == 0) {
 			archer = true;
 		} else {
 			archer = false;
@@ -169,7 +169,7 @@ public class Infantry_Movement : MonoBehaviour {
 					//transform.position = Vector2.MoveTowards(transform.position, gotoPoint,0.01f);
 				}
 			}
-			if(archer)
+			if(archer && dead == false)
 			{
 				if(ArcherTimer >3 && alert)
 				{
