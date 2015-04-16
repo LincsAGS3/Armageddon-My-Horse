@@ -32,12 +32,15 @@ public class Infantry_Movement : MonoBehaviour {
 	float ArcherTimer = 0;
 	public GameObject arrow;
     public AudioClip[] audioClip;
+	GameObject trees;
+	Vector3 relativePoint;
 	void Start () {
 
 		gotoPoint = this.transform.position;
 		groupPoint = null;
 		//look for the player
 		player = GameObject.FindGameObjectWithTag("Player");
+		trees = GameObject.FindGameObjectWithTag("Tree");
 		//if there isnt a player then still move 
 		if (player == null) {
 			playerFound = false;
@@ -49,6 +52,8 @@ public class Infantry_Movement : MonoBehaviour {
 		} else {
 			archer = false;
 		}
+
+		relativePoint = transform.InverseTransformPoint (player.transform.position);
 	}
 	
 
@@ -94,7 +99,7 @@ public class Infantry_Movement : MonoBehaviour {
 					//choose where to goto
 					//gotoPoint = new Vector2(0,0);
 					{
-						if(archer)
+						if(archer && Vector2.Distance (this.transform.position, trees.transform.position) > 1)
 						{
 						int current = int.MaxValue;
 
@@ -125,7 +130,7 @@ public class Infantry_Movement : MonoBehaviour {
 							gotoPoint.y +=1;
 							current = PathFinding.buffer1[(int)This_pos.x,(int)This_pos.y];
 							}
-						}else{
+						}else if(Vector2.Distance (this.transform.position, trees.transform.position) < 1){
 							int current = 0;
 							
 							This_pos.x += 1;
@@ -245,6 +250,27 @@ public class Infantry_Movement : MonoBehaviour {
 				gotoPoint = FindNextPoint (groupPoint.transform.position);
 
 		}
+
+		if (coll.collider.tag == "Player")
+		{
+			if(Player.speed > 5)
+			{
+				if (relativePoint.x < 0.0)
+				{
+					Vector2 newPos = new Vector2(this.transform.position.x - 3,this.transform.position.y);
+					this.transform.position = newPos;
+					playSound(1);
+				}
+				
+				if (relativePoint.x > 0.0)
+				{
+					Vector2 newPos = new Vector2(this.transform.position.x + 3,this.transform.position.y);
+					this.transform.position = newPos;
+					playSound(1);
+				}
+			}
+		}
+
 	}
 	void damaged(int dam)
 	{

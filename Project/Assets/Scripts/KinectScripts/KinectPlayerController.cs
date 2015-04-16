@@ -54,6 +54,13 @@ public class KinectPlayerController : MonoBehaviour
 				transform.Translate (Vector3.down * (Player.speed + 4) * Time.deltaTime);
 			}
 
+			if (Application.loadedLevel == 2)
+			{
+				if (inputInfo.SoldierInfo.IsShooting == true)
+				{
+					Application.LoadLevel("MainGame");
+				}
+			}
 			transform.Rotate (0, 0, -1 * (personInfo.Features.Angle / (30)) * Player.rotateSpeed * Time.deltaTime);
 			
 			//this.transform.up = new Vector2(personInfo.Features.Direction.x, personInfo.Features.Direction.y) * 50;

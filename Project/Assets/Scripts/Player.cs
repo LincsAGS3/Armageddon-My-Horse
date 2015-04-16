@@ -21,6 +21,8 @@ public class Player : MonoBehaviour {
     public static bool conquestFound = false;
     float dist = 35.0f;
     public static bool soundPlaying = false;
+	GameObject enemy;
+
 
 
 	// Use this for initialization
@@ -30,6 +32,7 @@ public class Player : MonoBehaviour {
 		PlayerHealth = 100;
 		speed = 5;
 		rotateSpeed = 50;
+		
 	}
 	
 	// Update is called once per frame
@@ -85,6 +88,7 @@ public class Player : MonoBehaviour {
             Debug.Log("Playing track 3");
             playSound(3);
         }
+
 	}
 
 	void OnCollisionEnter2D(Collision2D coll)
@@ -94,7 +98,11 @@ public class Player : MonoBehaviour {
 		{
 			//Function can be changed to remove health decrementally or provide insta kill
 			PlayerHealth-=0.1f;
+	
 		}
+
+
+
 		if (PlayerHealth == 0)
 		{
 			//Game Over...
