@@ -32,6 +32,11 @@ public class Infantry_Movement : MonoBehaviour {
 	float ArcherTimer = 0;
 	public GameObject arrow;
     public AudioClip[] audioClip;
+	public Sprite archerSprite;
+	public Sprite knightSprite;
+	public Sprite bowSprite;
+	public Sprite swordSprite;
+	public GameObject weapon;
 	void Start () {
 
 		gotoPoint = this.transform.position;
@@ -44,10 +49,16 @@ public class Infantry_Movement : MonoBehaviour {
 		} else {
 			playerFound = true;
 		}
-		if (UnityEngine.Random.Range (0, 4) == 0) {
+		if (UnityEngine.Random.Range (0, 2) == 0) {
 			archer = true;
+			this.GetComponent<SpriteRenderer>().sprite = archerSprite;
+			weapon.GetComponent<SpriteRenderer>().sprite = bowSprite;
+			
 		} else {
 			archer = false;
+			
+			this.GetComponent<SpriteRenderer>().sprite = knightSprite;
+			weapon.GetComponent<SpriteRenderer>().sprite = swordSprite;
 		}
 	}
 	
