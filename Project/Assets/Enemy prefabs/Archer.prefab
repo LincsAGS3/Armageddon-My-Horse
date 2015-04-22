@@ -132,8 +132,9 @@ MonoBehaviour:
   maxSpeed: 4
   wanderRadius: 15
   dead: 0
-  audioClip: []
+  archer: 1
   arrow: {fileID: 0}
+  audioClip: []
 --- !u!212 &21247776
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -153,7 +154,7 @@ SpriteRenderer:
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 5
   m_Sprite: {fileID: 21300000, guid: cea6dcae040d4014ebd5c2c191a68bff, type: 3}
   m_Color: {r: .842596233, g: .911764681, b: 0, a: 1}
 --- !u!1001 &100100000

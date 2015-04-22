@@ -45,16 +45,16 @@ public class KinectPlayerController : MonoBehaviour
 		if (inputInfo.SoldierInfo.IsSkeletonAvailable) 
 		{
 
-			if(personInfo.Features.Position.y < 1.2f)
+			if(personInfo.Features.Position.y < 0.95f)
 			{
-				transform.Translate (Vector3.up * Player.speed * Time.deltaTime);
+				transform.Translate (Vector3.up * (Player.speed + 1) * Time.deltaTime);
 			}
-			/*else if(personInfo.Features.Position.y > 1.4f)
+			else if(personInfo.Features.Position.y > 1.1f)
 			{
-				transform.Translate (Vector3.down * Player.speed * Time.deltaTime);
-			}*/
+				transform.Translate (Vector3.down * (Player.speed + 4) * Time.deltaTime);
+			}
 
-			transform.Rotate (0, 0, -1 * (personInfo.Features.Angle / (60)) * Player.rotateSpeed * Time.deltaTime);
+			transform.Rotate (0, 0, -1 * (personInfo.Features.Angle / (30)) * Player.rotateSpeed * Time.deltaTime);
 			
 			//this.transform.up = new Vector2(personInfo.Features.Direction.x, personInfo.Features.Direction.y) * 50;
 			
