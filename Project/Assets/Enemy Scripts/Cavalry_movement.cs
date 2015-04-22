@@ -114,7 +114,7 @@ public class Cavalry_movement : MonoBehaviour {
 				float angle;
 				if(!audio.isPlaying && soundPlaying == false)
 				{
-					playSound(0);
+					//playSound(0);
 					soundPlaying = true;
 				}
 				else if (audio.isPlaying)

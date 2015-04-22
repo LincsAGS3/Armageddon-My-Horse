@@ -18,8 +18,8 @@ public class GUIScript : MonoBehaviour {
 	static GameObject Conquest;
 	static GameObject HealthImage;
 
-	 public GameObject Ltorch;
-	 public GameObject Rtorch;
+	public GameObject Ltorch;
+	public GameObject Rtorch;
 	public GameObject Gate;
 	//sprites
 	public Sprite DeathAlive;
@@ -66,11 +66,12 @@ public class GUIScript : MonoBehaviour {
 		ElapsedTime = Time.time - startTime;
 		TimePlayed.GetComponent<Text> ().text = "Time : " + ElapsedTime.ToString ("0.");
 		EnemiesKilled.GetComponent<Text> ().text = "Enemies Killed : " + Player.TotalEnemiesKilled.ToString ();
-
 		HealthImage.GetComponent<Image> ().fillAmount = Player.PlayerHealth / 100;
+
 		if (DeathKilled == true) {
 			Death.GetComponent<Image> ().sprite = DeathDead;
-			Rtorch.GetComponent<SpriteRenderer> ().sprite = torchOn;
+			Rtorch.GetComponent<SpriteRenderer> ().sprite = torchOff;
+			Rtorch.GetComponent<AudioSource>().mute = false;
 			if (addedDeathHealth == false)
 			{
 				Player.PlayerHealth += ((100 - Player.PlayerHealth)/2);
@@ -80,6 +81,7 @@ public class GUIScript : MonoBehaviour {
 		if (FamineKilled == true) {
 			Famine.GetComponent<Image> ().sprite = FamineDead;
 			Ltorch.GetComponent<SpriteRenderer> ().sprite = torchOn;
+			Ltorch.GetComponent<AudioSource>().mute = false;
 			if (addedFamineHealth == false)
 			{
 				Player.PlayerHealth += ((100 - Player.PlayerHealth)/2);

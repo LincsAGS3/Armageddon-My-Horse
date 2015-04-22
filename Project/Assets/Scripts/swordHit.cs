@@ -17,7 +17,7 @@ public class swordHit : MonoBehaviour {
 			if (GUIScript.DeathKilled) {
 				this.GetComponent<SpriteRenderer> ().sprite = scyth;
 				BoxCollider2D b = transform.collider2D as BoxCollider2D;
-				b.size = new Vector2 (2.5f, 0.5f);
+				b.size = new Vector2 (0.14f, 0.39f);
 				first = false;
 			}
 		}

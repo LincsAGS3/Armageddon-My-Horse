@@ -1,9 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class conquestBehavior : MonoBehaviour {
 
-	public int health = 30;
+	public float health = 30;
 	
 	float maxSpeed = 8;
 	float MaxTurningSpeed = 4;
@@ -36,7 +37,8 @@ public class conquestBehavior : MonoBehaviour {
 	public float damage = 5;
 	
 	GameObject rider;
-	
+	static GameObject ConquestHealthImage;
+	static GameObject HealthBackgroundImage;
 	float Itime = 5;
 	float swapTimer = 0;
 	AiType prevtype;
@@ -66,6 +68,10 @@ public class conquestBehavior : MonoBehaviour {
 			break;
 		}
 		prevtype = Ai;
+		ConquestHealthImage =  GameObject.Find("ConquestHealthBar");
+		ConquestHealthImage.SetActive (true);
+		HealthBackgroundImage =  GameObject.Find("BossHealthBarBackground");
+		HealthBackgroundImage.SetActive (true);
 	}
 	void takeDamage(int damage)
 	{
@@ -293,6 +299,7 @@ public class conquestBehavior : MonoBehaviour {
 	{
 		if (StateControl.State != StateControl.state.Pause) {
 			if (health > 0) {
+				ConquestHealthImage.GetComponent<Image> ().fillAmount = health / 30;
 				if (mounted) {
 					transform.rigidbody2D.velocity = transform.up * CurrentSpeed;
 					Vector3 vectorToTarget = GotoPos - (Vector2)transform.position;
@@ -305,6 +312,8 @@ public class conquestBehavior : MonoBehaviour {
 
 				}
 			} else {
+				ConquestHealthImage.SetActive(false);
+				HealthBackgroundImage.SetActive(false);
 				this.collider2D.enabled = false;
 				GUIScript.ConquestKilled = true;
 			}

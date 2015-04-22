@@ -83,6 +83,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &139744
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 439744}
+  - 61: {fileID: 6139744}
+  - 114: {fileID: 11439744}
+  m_Layer: 0
+  m_Name: DoorTrigger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &173414
 GameObject:
   m_ObjectHideFlags: 0
@@ -119,12 +136,13 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 114080}
   m_LocalRotation: {x: 0, y: 0, z: -.285237193, w: .958456993}
-  m_LocalPosition: {x: 6.1500001, y: 12.04, z: 1.13}
+  m_LocalPosition: {x: 6.5, y: 12.6000004, z: 1.10000002}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 431022}
   - {fileID: 473414}
   - {fileID: 431024}
+  - {fileID: 439744}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!4 &414082
@@ -165,6 +183,18 @@ Transform:
   - {fileID: 414078}
   m_Father: {fileID: 414080}
   m_RootOrder: 2
+--- !u!4 &439744
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 139744}
+  m_LocalRotation: {x: 0, y: 0, z: .999999404, w: -.00110430655}
+  m_LocalPosition: {x: .100000001, y: .5, z: .0299999993}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 414080}
+  m_RootOrder: 3
 --- !u!4 &473414
 Transform:
   m_ObjectHideFlags: 1
@@ -207,6 +237,17 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
+--- !u!61 &6139744
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 139744}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Size: {x: 6, y: 2}
+  m_Center: {x: 0, y: 0}
 --- !u!61 &6151344
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -254,6 +295,18 @@ MonoBehaviour:
   left_door: {fileID: 131022}
   right_door: {fileID: 131024}
   closed: 1
+--- !u!114 &11439744
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 139744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39a7b93be0c30994a8451b9afdc26c83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roof: {fileID: 0}
 --- !u!114 &11473414
 MonoBehaviour:
   m_ObjectHideFlags: 1

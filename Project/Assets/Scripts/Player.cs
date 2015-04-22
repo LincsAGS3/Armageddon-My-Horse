@@ -21,7 +21,9 @@ public class Player : MonoBehaviour {
     public static bool conquestFound = false;
     float dist = 35.0f;
     public static bool soundPlaying = false;
-
+	bool faminemusic = false;
+	bool deathmusic = false;
+	bool conquestmusic = false;
 
 	// Use this for initialization
 	void Start () {
@@ -48,6 +50,7 @@ public class Player : MonoBehaviour {
                     if (cavalryFound == false)
                     {
                         cavalryFound = true;
+						//audio.Stop();
                         playSound(0);                       
                     }
                 }
@@ -60,30 +63,51 @@ public class Player : MonoBehaviour {
         }
         if ((cavalryFound == false) && (famineFound == false) && (deathFound == false) && (conquestFound == false))
         {
-            audio.Stop();
-            soundPlaying = false;
+			if (soundPlaying == false)
+			{
+				//audio.Stop();
+				playSound(4);
+				soundPlaying = true;
+			}
+            //audio.Stop();
+            
         }
 
-        if ((famineFound == true)&&(soundPlaying == false))
+        if (famineFound == true)
         {
+			if (faminemusic == false)
+			{
+				faminemusic = true;
             cavalryFound = false;
-            soundPlaying = true;
+            soundPlaying = false;
             Debug.Log("Playing track 1");
+			//audio.Stop();
             playSound(1);
+			}
         }
-        if ((deathFound == true)&&(soundPlaying == false))
+        if (deathFound == true)
         {
+			if (deathmusic == false)
+			{
+				deathmusic = true;
             cavalryFound = false;
-            soundPlaying = true;
+            soundPlaying = false;
             Debug.Log("Playing track 2");
+			//audio.Stop();
             playSound(2);
+			}
         }
-        if ((conquestFound == true)&&(soundPlaying == false))
+        if (conquestFound == true)
         {
+				if (conquestmusic == false)
+				{
+					conquestmusic = true;
             cavalryFound = false;
-            soundPlaying = true;
+            soundPlaying = false;
             Debug.Log("Playing track 3");
+			//audio.Stop();
             playSound(3);
+			}
         }
 	}
 

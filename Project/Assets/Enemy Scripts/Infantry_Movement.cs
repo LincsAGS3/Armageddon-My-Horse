@@ -36,7 +36,12 @@ public class Infantry_Movement : MonoBehaviour {
 	public Sprite knightSprite;
 	public Sprite bowSprite;
 	public Sprite swordSprite;
+	public Sprite archerDeadSprite;
+	public Sprite knightDeadSprite;
 	public GameObject weapon;
+	public GameObject blood;
+	public RuntimeAnimatorController archerController;
+	public RuntimeAnimatorController knightController;
 	void Start () {
 
 		gotoPoint = this.transform.position;
@@ -49,14 +54,15 @@ public class Infantry_Movement : MonoBehaviour {
 		} else {
 			playerFound = true;
 		}
-		if (UnityEngine.Random.Range (0, 2) == 0) {
+		if (UnityEngine.Random.Range (0, 5) == 0) {
 			archer = true;
+			this.GetComponent<Animator>().runtimeAnimatorController = archerController;
 			this.GetComponent<SpriteRenderer>().sprite = archerSprite;
 			weapon.GetComponent<SpriteRenderer>().sprite = bowSprite;
 			
 		} else {
 			archer = false;
-			
+			this.GetComponent<Animator>().runtimeAnimatorController = knightController;
 			this.GetComponent<SpriteRenderer>().sprite = knightSprite;
 			weapon.GetComponent<SpriteRenderer>().sprite = swordSprite;
 		}
@@ -94,9 +100,14 @@ public class Infantry_Movement : MonoBehaviour {
 				{
 					this.collider2D.enabled = false;
 					playerFound = false;
-					this.GetComponent<SpriteRenderer>().color = Color.red;
+					this.GetComponent<Animator>().runtimeAnimatorController = null;
+					//this.GetComponent<SpriteRenderer>().color = Color.red;
 					this.rigidbody2D.velocity = new Vector2 (0, 0);
-
+					blood.SetActive(true);
+					if (archer)
+						this.GetComponent<SpriteRenderer>().sprite = archerDeadSprite;
+					else
+						this.GetComponent<SpriteRenderer>().sprite = knightDeadSprite;
 				}
 				if(playerFound)
 				{
@@ -201,6 +212,7 @@ public class Infantry_Movement : MonoBehaviour {
 				move ();
 			} else {
 				this.rigidbody2D.velocity = new Vector2 (0, 0);
+
 			}
 		}
 	}
@@ -268,6 +280,7 @@ public class Infantry_Movement : MonoBehaviour {
 				Debug.Log ("killed");
 				dead = true;
 				Player.TotalEnemiesKilled += 1; // added for GUI to add to total of enemies killed
+				this.rigidbody2D.fixedAngle = true;
 			} else {
 				Debug.Log ("hit");
 				hit = true;

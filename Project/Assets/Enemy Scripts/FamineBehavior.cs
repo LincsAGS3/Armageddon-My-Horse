@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class FamineBehavior : MonoBehaviour {
-	public int health = 30;
+	public float health = 30;
 	
 	float maxSpeed = 8;
 	float MaxTurningSpeed = 4;
@@ -37,7 +38,11 @@ public class FamineBehavior : MonoBehaviour {
 	GameObject rider;
 	
 	float Itime = 5;
-	
+
+	static GameObject FamineHealthImage;
+	static GameObject HealthBackgroundImage;
+	public RuntimeAnimatorController FamineDyingController;
+	bool destroyed = false;
 	void Start () {
 		rider = this.transform.GetChild (0).gameObject;
 		//find a group point
@@ -53,6 +58,10 @@ public class FamineBehavior : MonoBehaviour {
 		}
 		//random AI
 		Ai = AiType.Intercept;
+		FamineHealthImage =  GameObject.Find("FamineHealthBar");
+		FamineHealthImage.SetActive (true);
+		HealthBackgroundImage =  GameObject.Find("BossHealthBarBackground");
+		HealthBackgroundImage.SetActive (true);
 	}
 	void takeDamage(int damage)
 	{
@@ -84,6 +93,7 @@ public class FamineBehavior : MonoBehaviour {
 			Ai = AiType.Follow;
 		}
 		if (health > 0 ) {
+			FamineHealthImage.GetComponent<Image> ().fillAmount = health / 30;
 			if((StateControl.State != StateControl.state.Pause))
 			{
 			if (playerFound) {
@@ -147,6 +157,13 @@ public class FamineBehavior : MonoBehaviour {
 				}
 			}
 		} else {
+			FamineHealthImage.SetActive(false);
+			HealthBackgroundImage.SetActive(false);
+			if (destroyed == false)
+			{
+				destroyed = true;
+				StartCoroutine(destroyFamine());
+			}
 			//tell player death is dead
 			GameObject[] forts = GameObject.FindGameObjectsWithTag("Fort");
 			GameObject fort = forts[0];
@@ -211,5 +228,12 @@ public class FamineBehavior : MonoBehaviour {
 	{
 		AttackCool = 2;
 		attacking = false;
+	}
+	IEnumerator destroyFamine()
+	{
+		this.GetComponent<Animator>().runtimeAnimatorController = FamineDyingController;
+		yield return new WaitForSeconds (1);
+		Destroy (this.gameObject);
+		
 	}
 }

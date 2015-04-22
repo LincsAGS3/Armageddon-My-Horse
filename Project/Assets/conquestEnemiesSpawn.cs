@@ -6,7 +6,7 @@ public class conquestEnemiesSpawn : MonoBehaviour {
 	public GroupPoint[] groups;
 	public GameObject enemySpawn;
 	public GameObject boss;
-	int halfEnemies = 64;
+	int halfEnemies = 96;
 	float timer = 0;
 	int spawned = 0;
 	bool opened=false;

@@ -13,6 +13,7 @@ GameObject:
   - 114: {fileID: 11474900}
   - 82: {fileID: 8256506}
   - 60: {fileID: 6038588}
+  - 95: {fileID: 9576902}
   m_Layer: 0
   m_Name: Cavalry
   m_TagString: Cavalry
@@ -80,7 +81,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 129674}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 72.6159973, y: 60.4070015, z: 0}
+  m_LocalPosition: {x: 47.29356, y: 67.4493027, z: 0}
   m_LocalScale: {x: 4.27598, y: 4.27597809, z: 4.27597809}
   m_Children:
   - {fileID: 439032}
@@ -263,6 +264,21 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
+--- !u!95 &9576902
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 129674}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 631df1d1550b87a41acdbb5bd70bd26c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &11439032
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -377,7 +393,7 @@ SpriteRenderer:
   m_ScaleInLightmap: 1
   m_SortingLayerID: 2476494091
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 59ef072c8f9b981408a77768e1c12e8f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c0e5c88f1d8e215429fad53abfb02dfd, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!212 &21274904
 SpriteRenderer:
