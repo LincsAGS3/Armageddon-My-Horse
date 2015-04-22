@@ -1,9 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class DeathBehaviour : MonoBehaviour {
 
-	public int health = 20;
+	public float health = 20;
 	
 	float maxSpeed = 8;
 	float MaxTurningSpeed = 4;
@@ -38,20 +39,33 @@ public class DeathBehaviour : MonoBehaviour {
 	GameObject rider;
 	
 	float Itime = 5;
-	
-	void Start () {
+
+    static GameObject DeathHealthImage;
+    static GameObject DeathHealthBackgroundImage;
+
+	void Start () 
+    {
 		rider = this.transform.GetChild (0).gameObject;
 		//find a group point
 		CurrentIdlePos = GameObject.FindGameObjectWithTag ("Group").transform.position;
 		//find the player
 		player = GameObject.FindGameObjectWithTag("Player");
 		//if there isnt a player then still move 
-		if (player == null) {
+		if (player == null) 
+        {
 			playerFound = false;
-		} else {
+		} 
+        else 
+        {
 			playerFound = true;
 		}
 		Ai = AiType.Circle;;
+
+
+        DeathHealthImage = GameObject.Find("DeathHealthBar");
+        DeathHealthBackgroundImage = GameObject.Find("DeathHealthBarBackground");
+        DeathHealthImage.SetActive(true);
+        DeathHealthBackgroundImage.SetActive(true);
 	}
 	void takeDamage(int damage)
 	{
@@ -63,17 +77,28 @@ public class DeathBehaviour : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
-		if (mounted) {
+	void Update () 
+    {
+
+
+		if (mounted) 
+        {
 			damage = 5;
-		} else {
+		} 
+        else 
+        {
 			damage = 0;
 		}
 		//move forwards
-		if (health > 0) {
-			if (Vector2.Distance (this.transform.position, player.transform.position) < 15) {
+		if (health > 0) 
+        {
+            DeathHealthImage.GetComponent<Image>().fillAmount = health / 20;
+			if (Vector2.Distance (this.transform.position, player.transform.position) < 15) 
+            {
 				Alert = true;
-			} else {
+			} 
+            else 
+            {
 				Alert = false;
 				Itime = 5;
 				rotateNow = false;
@@ -123,8 +148,12 @@ public class DeathBehaviour : MonoBehaviour {
 					break;
 				}
 			}
-		} else {
+		} 
+        else 
+        {
 			//tell player death is dead
+            DeathHealthImage.SetActive(false);
+            DeathHealthBackgroundImage.SetActive(false);
 			GameObject[] forts = GameObject.FindGameObjectsWithTag("Fort");
 			GameObject fort = forts[0];
 			float dist = float.MaxValue;

@@ -42,12 +42,14 @@ public class Cavalry_movement : MonoBehaviour {
 	public AudioClip[] audioClip;
 	bool soundPlaying = false;
 
-	void Start () {
+	void Start () 
+    {
 		rider = this.transform.GetChild (0).gameObject;
 		//find a group point
 		GameObject[] g = GameObject.FindGameObjectsWithTag ("Group");
 		float dist = float.MaxValue;
-		foreach (GameObject G in g) {
+		foreach (GameObject G in g) 
+        {
 			if(dist > Vector2.Distance(G.transform.position,transform.position))
 			{
 				dist = Vector2.Distance(G.transform.position,transform.position);
@@ -58,13 +60,17 @@ public class Cavalry_movement : MonoBehaviour {
 		//find the player
 		player = GameObject.FindGameObjectWithTag("Player");
 		//if there isnt a player then still move 
-		if (player == null) {
+		if (player == null) 
+        {
 			playerFound = false;
-		} else {
+		} 
+        else 
+        {
 			playerFound = true;
 		}
 		//random AI
-		switch (Random.Range ((int)0, (int)3)) {
+		switch (Random.Range ((int)0, (int)3)) 
+        {
 		case 0:
 			Ai = AiType.Circle;
 			break;
@@ -78,7 +84,8 @@ public class Cavalry_movement : MonoBehaviour {
 	}
 	void takeDamage(int damage)
 	{
-		if (mounted) {
+		if (mounted) 
+        {
 			health -= damage;
 			rider.GetComponent<RiderMovement> ().Mounted = false;
 			mounted = false;
@@ -86,16 +93,23 @@ public class Cavalry_movement : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
-		if (mounted) {
+	void Update () 
+    {
+		if (mounted) 
+        {
 			damage = 5;
-		} else {
+		} 
+        else 
+        {
 			damage = 0;
 		}
 		//move forwards
-		if (Vector2.Distance (this.transform.position, player.transform.position) < 15) {
+		if (Vector2.Distance (this.transform.position, player.transform.position) < 15) 
+        {
 			Alert = true;
-		} else {
+		} 
+        else 
+        {
 			Alert = false;
 			Itime = 5;
 			rotateNow = false;
@@ -105,11 +119,14 @@ public class Cavalry_movement : MonoBehaviour {
 		{
 			if (!Alert) 
 			{
-				if (Vector2.Distance (transform.position, GotoPos) < 4) {
+				if (Vector2.Distance (transform.position, GotoPos) < 4) 
+                {
 					GotoPos = FindNextPoint (CurrentIdlePos);
 				}
 				move ();
-			} else {
+			} 
+            else 
+            {
 				Vector2 DircetTowards;
 				float angle;
 				if(!audio.isPlaying && soundPlaying == false)
@@ -288,19 +305,26 @@ public class Cavalry_movement : MonoBehaviour {
 
 	void move()
 	{
-		if (StateControl.State != StateControl.state.Pause) {
-			if (health > 0) {
-				if (mounted) {
+		if (StateControl.State != StateControl.state.Pause) 
+        {
+			if (health > 0) 
+            {
+				if (mounted) 
+                {
 					transform.rigidbody2D.velocity = transform.up * CurrentSpeed;
 					Vector3 vectorToTarget = GotoPos - (Vector2)transform.position;
 					float angle = Mathf.Atan2 (vectorToTarget.y, vectorToTarget.x) * Mathf.Rad2Deg;
 					angle -= 90;
 					Quaternion q = Quaternion.AngleAxis (angle, Vector3.forward);
 					transform.rotation = Quaternion.Slerp (transform.rotation, q, Time.deltaTime * 1);
-				} else {
+				} 
+                else 
+                {
 					transform.rigidbody2D.velocity = new Vector2 (0, 0);
 				}
-			} else {
+			} 
+            else 
+            {
 				this.collider2D.enabled = false;
 				transform.rigidbody2D.velocity = transform.up * CurrentSpeed;
 			}
@@ -317,22 +341,27 @@ public class Cavalry_movement : MonoBehaviour {
 		return centre+rnd;
 	}
 
-	void OnCollisionStay2D(Collision2D coll) {
+	void OnCollisionStay2D(Collision2D coll) 
+    {
 		//if we hit another enemy
-		if (coll.gameObject.tag == this.tag) {
+		if (coll.gameObject.tag == this.tag) 
+        {
 			//move away from the enemy
 			float rotation = (float)Mathf.Atan2 (this.transform.position.y - coll.transform.position.y,this.transform.position.x - coll.transform.position.x);
 			Vector2 moveAway = new Vector2((-(float)Mathf.Cos(rotation)),(-(float)Mathf.Sin(rotation)));
 			this.rigidbody2D.velocity = moveAway*6f;
 		}
 		//if we hit a wall
-		if (coll.gameObject.tag !="Player") {
+		if (coll.gameObject.tag !="Player") 
+        {
 			//goto a new point
 			GotoPos = FindNextPoint (CurrentIdlePos);
 		}
 	}
-	void OnCollisionEnter2D(Collision2D coll) {
-		if (coll.transform.tag == "Player") {
+	void OnCollisionEnter2D(Collision2D coll) 
+    {
+		if (coll.transform.tag == "Player") 
+        {
 			AttackCool = 2;
 			attacking = false;
 		}

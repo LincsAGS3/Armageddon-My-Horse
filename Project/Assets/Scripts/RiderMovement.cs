@@ -9,12 +9,15 @@ public class RiderMovement : MonoBehaviour {
 	Vector2 direction = new Vector2(0,0);
 	float speed = 5;
 	float timer = 5;
-	void Start () {
+	void Start () 
+    {
 		Horse = this.transform.parent.gameObject;
 	}
 
-	void Update () {
-		if (!Mounted && !fallen) {
+	void Update () 
+    {
+		if (!Mounted && !fallen) 
+        {
 			this.gameObject.AddComponent<Rigidbody2D>();
 			rigidbody2D.gravityScale = 0;
 			rigidbody2D.fixedAngle = true;
@@ -24,12 +27,13 @@ public class RiderMovement : MonoBehaviour {
 			direction.Normalize();
 			transform.parent = null;
 		}
-		if (timer < 0&& !Mounted) {
+		if (timer < 0&& !Mounted) 
+        {
 			if((StateControl.State != StateControl.state.Pause))
 			{
 				if(Horse.tag == "Famine")
 				{
-					if(Horse.GetComponent<FamineBehavior>().health >= 0)
+					if(Horse.GetComponent<FamineBehavior>().health > 0)
 					{
 						transform.position = Vector2.MoveTowards(transform.position,Horse.transform.position,
 						                                         2*Time.deltaTime);
@@ -37,7 +41,7 @@ public class RiderMovement : MonoBehaviour {
 				}
 				if(Horse.tag == "Death")
 				{
-					if(Horse.GetComponent<DeathBehaviour>().health >= 0)
+					if(Horse.GetComponent<DeathBehaviour>().health > 0)
 					{
 						transform.position = Vector2.MoveTowards(transform.position,Horse.transform.position,
 						                                         2*Time.deltaTime);
@@ -45,7 +49,7 @@ public class RiderMovement : MonoBehaviour {
 				}
 				if(Horse.tag == "Conquest")
 				{
-					if(Horse.GetComponent<conquestBehavior>().health >= 0)
+					if(Horse.GetComponent<conquestBehavior>().health > 0)
 					{
 						transform.position = Vector2.MoveTowards(transform.position,Horse.transform.position,
 						                                         2*Time.deltaTime);
@@ -53,15 +57,15 @@ public class RiderMovement : MonoBehaviour {
 				}
 				if(Horse.tag == "Cavalry")
 				{
-					if(Horse.GetComponent<Cavalry_movement>().health >= 0)
+                    Debug.Log(Horse.GetComponent<Cavalry_movement>().health);
+					if(Horse.GetComponent<Cavalry_movement>().health > 0)
 					{
 						transform.position = Vector2.MoveTowards(transform.position,Horse.transform.position,
 						                                         2*Time.deltaTime);
 					}
 				}
 			rigidbody2D.velocity = new Vector2(0,0);
-			transform.position = Vector2.MoveTowards(transform.position,Horse.transform.position,
-			                                         2*Time.deltaTime);
+			//transform.position = Vector2.MoveTowards(transform.position,Horse.transform.position,2*Time.deltaTime);
 			}
 			if(Vector2.Distance(this.transform.position, Horse.transform.position)<2)
 			{
@@ -90,7 +94,8 @@ public class RiderMovement : MonoBehaviour {
 				Destroy(rigidbody2D);
 			}
 		}
-		else if (!Mounted) {
+		else if (!Mounted) 
+        {
 			timer -= Time.deltaTime;
 			if(speed > 0)
 			{
@@ -103,9 +108,12 @@ public class RiderMovement : MonoBehaviour {
 			}
 		}
 	}
-	void OnTriggerEnter2D(Collider2D other) {
-		if (other.tag == "Player") {
-			if (Player.speed > 8) {
+	void OnTriggerEnter2D(Collider2D other) 
+    {
+		if (other.tag == "Player") 
+        {
+			if (Player.speed > 8) 
+            {
 				Debug.Log ("trample");
 				if(Horse.tag == "Famine")
 				{

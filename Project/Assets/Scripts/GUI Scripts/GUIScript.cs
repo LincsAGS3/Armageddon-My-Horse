@@ -7,6 +7,8 @@ public class GUIScript : MonoBehaviour {
 					
 	public static float CurrentTime = 100;
 
+    public GameObject DeathInstance;
+    public GameObject FamineInstance;
 
 	//text
 	static GameObject TimePlayed;
@@ -16,10 +18,15 @@ public class GUIScript : MonoBehaviour {
 	static GameObject Death;
 	static GameObject Famine;
 	static GameObject Conquest;
-	static GameObject HealthImage;
 
-	 public GameObject Ltorch;
-	 public GameObject Rtorch;
+	static GameObject HealthImage;
+    static GameObject DeathHealthImage;
+    static GameObject DeathHealthBackgroundImage;
+    static GameObject FamineHealthImage;
+    static GameObject FamineHealthBackgroundImage;
+
+	public GameObject Ltorch;
+	public GameObject Rtorch;
 	public GameObject Gate;
 	//sprites
 	public Sprite DeathAlive;
@@ -55,6 +62,14 @@ public class GUIScript : MonoBehaviour {
 		Conquest = GameObject.Find ("Conquest");
 
 		HealthImage =  GameObject.Find("HealthBar");
+        DeathHealthImage = GameObject.Find("DeathHealthBar");
+        DeathHealthBackgroundImage = GameObject.Find("DeathHealthBarBackground");
+        FamineHealthImage = GameObject.Find("FamineHealthBar");
+        FamineHealthBackgroundImage = GameObject.Find("FamineHealthBarBackground");
+        DeathHealthImage.SetActive(false);
+        DeathHealthBackgroundImage.SetActive(false);
+        FamineHealthImage.SetActive(false);
+        FamineHealthBackgroundImage.SetActive(false);
 
 		Death.GetComponent<Image> ().sprite = DeathAlive;
 		Famine.GetComponent<Image>().sprite = FamineAlive;
@@ -68,6 +83,7 @@ public class GUIScript : MonoBehaviour {
 		EnemiesKilled.GetComponent<Text> ().text = "Enemies Killed : " + Player.TotalEnemiesKilled.ToString ();
 
 		HealthImage.GetComponent<Image> ().fillAmount = Player.PlayerHealth / 100;
+ 
 		if (DeathKilled == true) {
 			Death.GetComponent<Image> ().sprite = DeathDead;
 			Rtorch.GetComponent<SpriteRenderer> ().sprite = torchOn;
