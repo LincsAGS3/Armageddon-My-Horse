@@ -6,6 +6,9 @@ public class FortScript : MonoBehaviour {
 	public GameObject[] doors;
 	public GameObject enemySpawn;
 	public GameObject boss;
+    public GameObject bossHealth;
+    public GameObject bossHealthBackground;
+    public GameObject GUI;
 	int halfEnemies = 32;
 	float timer = 0;
 	int spawned = 0;
@@ -18,6 +21,8 @@ public class FortScript : MonoBehaviour {
     bool conquestDeath = false;
 	// Use this for initialization
 	void Start () {
+
+
 		//spawn initial infantry
 		foreach (GroupPoint g in groups) {
 			Vector2 point = g.transform.position;
@@ -68,13 +73,20 @@ public class FortScript : MonoBehaviour {
 		}
 	}
 	void OnTriggerEnter2D(Collider2D other) {
-		if (other.tag == "Player"&&!bossing ) {
-			Debug.Log ("triggered");
-				foreach (GameObject d in doors) {
-					d.SendMessage ("changeDoorState");
-				}
-				opened = false;
-				Instantiate (boss, transform.position, transform.rotation);
+		if (other.tag == "Player"&&!bossing ) 
+        {
+            if (entered == false)
+            {
+                entered = true;
+                Debug.Log("triggered");
+                foreach (GameObject d in doors)
+                {
+                    d.SendMessage("changeDoorState");
+                }
+                opened = false;
+                Instantiate(boss, transform.position, transform.rotation);
+                bossHealth.SetActive(true);
+                bossHealthBackground.SetActive(true);
                 other.audio.Stop();
                 if (boss.name == "Famine")
                 {
@@ -91,11 +103,13 @@ public class FortScript : MonoBehaviour {
                     Player.conquestFound = true;
                     Debug.Log("Conquest found");
                 }
-			bossing  = true;
+                bossing = true;
+            }
 		}
 	}
 	void BossDefeated()
 	{
+        
 		if (!opened) {
 			foreach(GroupPoint g in groups)
 			{
@@ -113,6 +127,8 @@ public class FortScript : MonoBehaviour {
             Player.soundPlaying = false;
             Debug.Log("Famine lost");
             famineDeath = true;
+            bossHealth.SetActive(false);
+            bossHealthBackground.SetActive(false);
         }
         if ((boss.name == "Death") && (deathDeath == false))
         {
@@ -120,6 +136,8 @@ public class FortScript : MonoBehaviour {
             Player.soundPlaying = false;
             Debug.Log("Death lost");
             deathDeath = true;
+            bossHealth.SetActive(false);
+            bossHealthBackground.SetActive(false);
         }
 
 	}
