@@ -1,2 +1,2 @@
-# Armageddon-My-Wheelchair
+# Armageddon-My-Horse
 University Group Project
